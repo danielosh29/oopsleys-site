@@ -396,19 +396,19 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
           <span class="t" data-i18n="libT">Your version of one of our reels</span><span class="p" data-price="lib">$199</span>
           <span class="d" data-i18n="libD">Pick a published reel and we make a new version with your logo. It is animated again from scratch, so details and movement will not be identical to the original. For now, our reels are set in a pilates studio. Draft in 3 business days.</span></label>
         <label class="opt" data-aud="studio"><input type="radio" name="format" id="fmt-custom" value="custom" checked>
-          <span class="t" data-i18n="cusT">Custom scene</span><span class="p" id="cusPrice">$249</span>
+          <span class="t" data-i18n="cusT">Custom scene</span><span class="p" id="cusPrice">from $179</span>
           <span class="d" data-i18n="cusD">A new moment made for your business: your space, your colors, your logo. Draft in 5 business days.</span></label>
         <label class="opt" data-aud="gift" hidden><input type="radio" name="format" id="fmt-tpl" value="tpl">
-          <span class="t" data-i18n="tplT">Pick one of our scenes</span><span class="p" id="tplPrice">$99</span>
+          <span class="t" data-i18n="tplT">Pick one of our scenes</span><span class="p" id="tplPrice">from $99</span>
           <span class="d" data-i18n="tplD">Choose a scene we already know works and we make it for you. The fastest and most affordable option. Draft in 5 business days.</span></label>
         <label class="opt" data-aud="gift" hidden><input type="radio" name="format" id="fmt-gift" value="gift">
-          <span class="t" data-i18n="giftT">Your own idea</span><span class="p" id="giftPrice">$179</span>
+          <span class="t" data-i18n="giftT">Your own idea</span><span class="p" id="giftPrice">from $149</span>
           <span class="d" data-i18n="giftD">Describe the moment you have in mind and we turn it into a scene. Personal use only. Draft in 5 business days.</span></label>
       </div>
       <div class="f" id="lenBox"><span class="lab" data-i18n="lenL">Length</span>
         <span class="seg" id="lenSeg">
-          <label><input type="radio" name="len" id="len-15" value="15"><span id="len15t">15 seconds · $149</span></label>
-          <label><input type="radio" name="len" id="len-30" value="30" checked><span id="len30t">30 seconds · $249</span></label>
+          <label><input type="radio" name="len" id="len-15" value="15"><span id="len15t">15 seconds · $179</span></label>
+          <label><input type="radio" name="len" id="len-30" value="30" checked><span id="len30t">30 seconds · $299</span></label>
         </span></div>
       <div class="f" id="qBox"><span class="lab" data-i18n="qL">Quality</span>
         <span class="seg">
@@ -512,7 +512,7 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
     <div class="result" id="result" hidden></div>
 
     <div class="totalbar" id="totalbar">
-      <div><div class="sum" id="sum"></div><div class="amt" id="amt">$249</div></div>
+      <div><div class="sum" id="sum"></div><div class="amt" id="amt">$299</div></div>
       <button class="btn" type="submit" data-i18n="pay">Continue to payment</button>
     </div>
   </form>
@@ -604,7 +604,6 @@ var T = { en:{
   l1:'1. Formato', l2:'2. Extras', l3:'3. Detalhes',
   libT:'Reel já feito + o seu logótipo', libD:'Escolha um dos nossos reels publicados. Colocamos o seu logótipo na cena. 3 dias úteis.',
   cusT:'Cena personalizada', cusD:'Um momento novo criado para o seu estúdio: o seu equipamento, as suas cores, o seu logótipo. 7 dias úteis.',
-  len15:'15 segundos · $149', len30:'30 segundos · $249',
   giftT:'Vídeo de presente', giftD:'Um reel pessoal para uma amiga, uma cliente ou a sua instrutora. Até 15 segundos, apenas para uso pessoal. 7 dias úteis.',
   chT:'Personagem à sua imagem', chD:'Desenhamos uma personagem parecida consigo ou com a sua instrutora. Não disponível para reels já feitos.',
   ruT:'Entrega urgente', ruD:'Entrega em 48 horas.',
@@ -645,7 +644,6 @@ var T = { en:{
   l1:'1. Format', l2:'2. Ekstralar', l3:'3. Ayrıntılar',
   libT:'Hazır reel + logonuz', libD:'Yayınladığımız reel\'lerden birini seçin. Logonuzu sahneye yerleştiriyoruz. 3 iş günü.',
   cusT:'Özel sahne', cusD:'Stüdyonuz için hazırlanan yeni bir an: sizin ekipmanınız, renkleriniz ve logonuz. 7 iş günü.',
-  len15:'15 saniye · $149', len30:'30 saniye · $249',
   giftT:'Hediye video', giftD:'Bir arkadaşınız, üyeniz ya da eğitmeniniz için kişisel bir reel. En fazla 15 saniye, yalnızca kişisel kullanım. 7 iş günü.',
   chT:'Size benzeyen karakter', chD:'Size ya da eğitmeninize benzeyen bir karakter tasarlıyoruz. Hazır reel\'lerde kullanılamaz.',
   ruT:'Hızlı teslimat', ruD:'48 saat içinde teslim.',
@@ -688,7 +686,6 @@ T.es = {
   l1:'1. Formato', l2:'2. Extras', l3:'3. Detalles',
   libT:'Reel ya hecho + tu logo', libD:'Elige uno de nuestros reels publicados. Colocamos tu logo en la escena. 3 días hábiles.',
   cusT:'Escena a medida', cusD:'Un momento nuevo creado para tu estudio: tu equipo, tus colores, tu logo. 7 días hábiles.',
-  len15:'15 segundos · $149', len30:'30 segundos · $249',
   giftT:'Vídeo de regalo', giftD:'Un reel personal para una amiga, una clienta o tu instructora. Hasta 15 segundos, solo para uso personal. 7 días hábiles.',
   chT:'Personaje con tu aspecto', chD:'Diseñamos un personaje que se parece a ti o a tu instructora. No disponible para reels ya hechos.',
   ruT:'Entrega urgente', ruD:'Entrega en 48 horas.',
@@ -727,8 +724,7 @@ Object.assign(T.tr, { tag:'Animasyon stüdyosu', portH:'Aynı stüdyodan', portP
   port2:'YouTube\'da küçük çocuklar için bir animasyon dizisi.', port2go:'YouTube\'da izle →' });
 
 Object.assign(T.es, { audS:'Para estudios', audG:'Regalo personal', h1G:'Tu pareja y tú, en un reel de los Oopsleys.',
-  heroPG:'Un momento animado y corto para tu pareja, tu mejor amiga o tu compañera de pilates. Elige la ocasión, describe la escena y nosotros hacemos el resto.',
-  heroNoteG:'Desde $149 · Entrega en 7 días hábiles', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duración',
+  heroPG:'Un momento animado y corto para tu pareja, tu mejor amiga o tu compañera de pilates. Elige la ocasión, describe la escena y nosotros hacemos el resto.', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duración',
   fOcc:'Ocasión', oc1:'Aniversario', oc2:'Cumpleaños', oc3:'Para mi compañera de pilates', oc4:'Boda o compromiso', oc5:'Porque sí',
   fFor:'¿Para quién es?', fPhoto:'Foto de referencia para el personaje (solo adultos)', fHandleG:'Usuario de Instagram (opcional)',
   t5h:'Cómo puedes usarlo', t5p:'Los vídeos de regalo son para uso personal. Compártelos donde quieras, pero no para anunciar un negocio. El personaje de los Oopsleys sigue siendo nuestro.',
@@ -737,8 +733,7 @@ Object.assign(T.es, { audS:'Para estudios', audG:'Regalo personal', h1G:'Tu pare
   cLike:'Todas las personas en las que se basa este personaje son adultas y han dado su consentimiento.',
   fNotes:'Describe la escena o añade detalles' });
 Object.assign(T.pt, { audS:'Para estúdios', audG:'Presente pessoal', h1G:'Vocês os dois, num reel dos Oopsleys.',
-  heroPG:'Um momento animado e curto para a sua cara-metade, a sua melhor amiga ou a sua companheira de pilates. Escolha a ocasião, descreva a cena e nós tratamos do resto.',
-  heroNoteG:'Desde $149 · Entrega em 7 dias úteis', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duração',
+  heroPG:'Um momento animado e curto para a sua cara-metade, a sua melhor amiga ou a sua companheira de pilates. Escolha a ocasião, descreva a cena e nós tratamos do resto.', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duração',
   fOcc:'Ocasião', oc1:'Aniversário de namoro ou casamento', oc2:'Aniversário', oc3:'Para a minha companheira de pilates', oc4:'Casamento ou noivado', oc5:'Só porque sim',
   fFor:'Para quem é?', fPhoto:'Foto de referência para a personagem (apenas adultos)', fHandleG:'Conta de Instagram (opcional)',
   t5h:'Como pode usar', t5p:'Os vídeos de presente são para uso pessoal. Partilhe-os onde quiser, mas não para publicitar um negócio. A personagem dos Oopsleys continua a ser nossa.',
@@ -747,8 +742,7 @@ Object.assign(T.pt, { audS:'Para estúdios', audG:'Presente pessoal', h1G:'Você
   cLike:'Todas as pessoas em quem esta personagem se baseia são adultas e deram o seu acordo.',
   fNotes:'Descreva a cena ou acrescente detalhes' });
 Object.assign(T.tr, { audS:'Stüdyolar için', audG:'Kişisel hediye', h1G:'İkiniz, bir Oopsleys reel\'inde.',
-  heroPG:'Eşiniz, en yakın arkadaşınız ya da pilates arkadaşınız için hazırlanan kısa bir animasyon anı. Vesileyi seçin, sahneyi anlatın, gerisini biz hallederiz.',
-  heroNoteG:'$149\'dan başlayan fiyatlar · 7 iş gününde teslim', sec15:'15 saniye', sec30:'30 saniye', lenL:'Süre',
+  heroPG:'Eşiniz, en yakın arkadaşınız ya da pilates arkadaşınız için hazırlanan kısa bir animasyon anı. Vesileyi seçin, sahneyi anlatın, gerisini biz hallederiz.', sec15:'15 saniye', sec30:'30 saniye', lenL:'Süre',
   fOcc:'Vesile', oc1:'Yıl dönümü', oc2:'Doğum günü', oc3:'Pilates arkadaşım için', oc4:'Düğün ya da nişan', oc5:'Öylesine',
   fFor:'Kimin için?', fPhoto:'Karakter için referans fotoğraf (yalnızca yetişkinler)', fHandleG:'Instagram kullanıcı adı (isteğe bağlı)',
   t5h:'Nasıl kullanabilirsiniz', t5p:'Hediye videolar kişisel kullanım içindir. Dilediğiniz yerde paylaşabilirsiniz, ancak bir işletmenin reklamı için kullanamazsınız. Oopsleys karakteri bize aittir.',
@@ -1006,6 +1000,8 @@ Object.assign(T.es,{soonP:'Déjanos tu correo y te escribiremos en cuanto se abr
 Object.assign(T.pt,{soonP:'Deixe o seu email e escrevemos-lhe assim que as encomendas abrirem. Não é preciso pagar nem dar mais dados agora.',wNote:'Só lhe escrevemos sobre as encomendas na Oopsleys. Pode cancelar a subscrição quando quiser.',wCapMsg:'Assinale a caixa «Não sou um robô» e carregue de novo no botão.',wSending:'A enviar…',wOk:'Já está na lista. Escrevemos-lhe assim que as encomendas abrirem.',wFail:'Não foi possível enviar. Tente de novo ou escreva para hello@oopsleys.com e nós adicionamos.'});
 Object.assign(T.tr,{soonP:'E-postanızı bırakın, siparişler açılır açılmaz size yazalım. Şimdi ödeme ya da başka bilgi gerekmez.',wNote:'Size yalnızca Oopsleys siparişleriyle ilgili yazarız. İstediğiniz zaman listeden çıkabilirsiniz.',wCapMsg:'Lütfen “Ben robot değilim” kutusunu işaretleyin ve düğmeye yeniden basın.',wSending:'Gönderiliyor…',wOk:'Listedesiniz. Siparişler açılır açılmaz size yazacağız.',wFail:'Gönderilemedi. Lütfen yeniden deneyin ya da hello@oopsleys.com adresine yazın, sizi ekleyelim.'});
 
+Object.assign(T.en,{fromP:'from {p}'}); Object.assign(T.es,{fromP:'desde {p}'}); Object.assign(T.pt,{fromP:'desde {p}'}); Object.assign(T.tr,{fromP:'en az {p}'});
+
 var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
 var aud = 'studio';
@@ -1047,9 +1043,9 @@ function render(){
   $('lenBox').hidden = lib;
   $('len15t').textContent = tr('sec15')+' · $'+PRICES[kind+'15'];
   $('len30t').textContent = tr('sec30')+' · $'+PRICES[kind+'30'];
-  $('cusPrice').textContent = '$'+PRICES['custom'+(o.len===15?15:30)];
-  $('giftPrice').textContent = '$'+PRICES['gift'+(o.len===15?15:30)];
-  $('tplPrice').textContent = '$'+PRICES['tpl'+(o.len===15?15:30)];
+  $('cusPrice').textContent = tr('fromP').replace('{p}','$'+PRICES.custom15);
+  $('giftPrice').textContent = tr('fromP').replace('{p}','$'+PRICES.gift15);
+  $('tplPrice').textContent = tr('fromP').replace('{p}','$'+PRICES.tpl15);
   $('chPrice').textContent = '+$'+(aud==='gift'?PRICES.characterG:PRICES.character);
   $('reDesc').textContent = tr(aud==='gift'?'reDG':'reD');
   var full = isFull();
