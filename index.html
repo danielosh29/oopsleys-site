@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oopsleys Animation Studio</title>
+<meta name="description" content="Funny animated reels for your business or as a personal gift, made by Oopsleys Animation Studio. Pick a reel, add your logo, order in minutes.">
+<link rel="canonical" href="https://oopsleys.com/">
+<link rel="icon" type="image/png" href="media/favicon-48.png">
+<link rel="apple-touch-icon" href="media/favicon-180.png">
+<meta property="og:title" content="Oopsleys Animation Studio">
+<meta property="og:description" content="Funny animated reels for your business or as a personal gift.">
+<meta property="og:image" content="https://oopsleys.com/media/og.png">
+<meta property="og:url" content="https://oopsleys.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one phone-first column on a sage studio floor; the order builder is the page, with a total bar that stays in reach. Single theme by choice. */
+:root{
+  color-scheme: light;
+  --sage:#DDE5D6;
+  --paper:#F7F8F2;
+  --ink:#2B2330;
+  --muted:#635A69;
+  --mauve:#8A4A72;
+  --mauve-soft:#EBDCE5;
+  --butter:#F2D98B;
+  --line:#C3CDBB;
+  --edge:#76826F;
+  --bad:#A8322D;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sage);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.5}
+img{max-width:100%}
+a{color:var(--mauve)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:700}
+h2{font-size:clamp(1.7rem,6vw,2.4rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:44px 0}
+.lede{color:var(--muted);max-width:60ch;margin-top:10px}
+:focus-visible{outline:3px solid var(--mauve);outline-offset:2px;border-radius:6px}
+
+html.a11y-big{font-size:120%}
+html.a11y-contrast{--sage:#FFFFFF;--paper:#FFFFFF;--ink:#000000;--muted:#1F1F1F;--mauve:#5A1F47;--mauve-soft:#F3E6EE;--line:#000000;--edge:#000000}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:50;background:#fff;color:#000;padding:10px 14px;border-radius:8px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.a11y{position:relative}
+#a11yBtn{font:600 .82rem var(--body);border:1px solid var(--edge);background:var(--paper);color:var(--ink);padding:9px 13px;border-radius:999px;cursor:pointer}
+#a11yPanel{position:absolute;right:0;top:calc(100% + 6px);z-index:20;background:#fff;color:#000;border:2px solid var(--ink);border-radius:14px;padding:14px;display:grid;gap:10px;min-width:210px}
+#fullToggle{font:600 .8rem var(--body);margin-left:8px;background:none;color:#fff;border:1px solid #fff;border-radius:999px;padding:3px 10px;cursor:pointer}
+#fullToggle[aria-pressed="true"]{background:#fff;color:#000}
+.fullbar{background:var(--butter);color:var(--ink);text-align:center;padding:10px 20px;font-weight:600}
+.fullbar a{color:var(--ink)}
+.spots{margin-top:10px;font-weight:700;font-size:.95rem;color:var(--mauve)}
+.spots:empty{display:none}
+.full{padding-bottom:26px;margin-bottom:16px}
+.viewnote{background:var(--butter);color:var(--ink);border-radius:12px;padding:10px 14px;font-weight:600;font-size:.93rem;margin:0 0 18px}
+.viewonly{padding-bottom:6px}
+.viewonly .opt:has(input:disabled){opacity:.8}
+.viewonly .seg label{opacity:.8;cursor:not-allowed}
+.wait{display:grid;gap:12px;margin-top:18px;max-width:420px}
+.draft{background:var(--ink);color:#fff;font-size:.86rem;padding:8px 20px;text-align:center}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:700;font-size:1.3rem;text-decoration:none;color:var(--ink)}
+.brand span{background:var(--butter);padding:0 .25em;border-radius:6px}
+.brand img{height:46px;width:auto;display:block}
+@media (min-width:760px){.brand img{height:72px}}
+.brand small{display:block;font:600 .72rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.lang{display:flex;gap:4px;background:var(--paper);border:1px solid var(--edge);border-radius:999px;padding:3px}
+.lang button{font:600 .82rem var(--body);border:0;background:none;color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+.aud{display:flex;gap:6px;flex-wrap:wrap}
+.aud a{font:700 .95rem var(--body);text-decoration:none;color:var(--ink);padding:9px 16px;border-radius:999px;border:2px solid var(--ink)}
+.aud a[aria-current="true"]{background:var(--ink);color:#fff}
+#lenBox,#qBox{margin-top:16px}
+#lenBox .seg,#qBox .seg,#box-people .seg{grid-column:auto;margin-top:0}
+.hero{margin-top:18px;padding:26px 20px 30px;display:grid;gap:22px;background:var(--paper);border-radius:28px}
+.hero .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;font:700 1rem var(--body);text-decoration:none;border-radius:999px;padding:14px 22px;border:2px solid var(--ink);cursor:pointer}
+.btn.primary{background:var(--mauve);border-color:var(--mauve);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+.hero .note{margin-top:14px;font-size:.92rem;color:var(--muted)}
+.reels{position:relative;display:flex;justify-content:center;align-items:center;padding:30px 0 34px;isolation:isolate}
+.reels::before{content:"";position:absolute;z-index:-1;width:76%;aspect-ratio:1;border-radius:50%;background:var(--butter);left:12%;top:50%;transform:translateY(-50%)}
+.reels::after{content:"";position:absolute;z-index:-1;width:30%;aspect-ratio:1;border-radius:50%;background:var(--mauve-soft);right:1%;bottom:2%}
+.reels .reel{flex:0 0 35%;border:5px solid #fff;border-radius:22px;box-shadow:0 14px 30px rgba(43,35,48,.24)}
+.reels .reel:nth-child(1){transform:rotate(-5deg);margin-right:-6%;z-index:1}
+.reels .reel:nth-child(2){flex-basis:42%;z-index:2;transform:translateY(-3%)}
+.reels .reel:nth-child(3){transform:rotate(5deg);margin-left:-6%;z-index:1}
+.proof{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.proof li{background:var(--sage);border-radius:999px;padding:7px 14px;font-size:.88rem;color:var(--muted)}
+.proof b{font-family:var(--display);font-size:1rem;color:var(--ink)}
+.num{position:absolute;top:8px;right:8px;z-index:3;background:var(--ink);color:#fff;font:700 .8rem var(--display);padding:3px 9px;border-radius:999px}
+.reel{position:relative;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:var(--mauve-soft);min-width:0}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.scenes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sc{position:relative;display:grid;border:2px solid var(--edge);border-radius:14px;overflow:hidden;cursor:pointer;background:#fff}
+.sc video{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.scenes[aria-invalid="true"]{outline:2px solid var(--bad);outline-offset:5px;border-radius:14px}
+.sc span{padding:8px 10px;font-weight:600;font-size:.9rem}
+.sc input{position:absolute;top:8px;left:8px;width:18px;height:18px;accent-color:var(--mauve)}
+.sc:has(input:checked){border-color:var(--mauve);background:var(--mauve-soft)}
+.catgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 12px;margin-top:22px}
+.catcard{display:grid;gap:8px;align-content:start}
+.catcard .btn{padding:10px 12px;font-size:.92rem;text-align:center}
+.why{display:grid;gap:14px;margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.wcard{background:var(--paper);border-radius:var(--r);padding:20px;border-top:5px solid var(--butter)}
+.wcard p{color:var(--muted);margin-top:6px}
+.soon{background:var(--butter);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:.93rem;margin:4px 0 0}
+#toCustom{font:700 .93rem var(--body);background:none;border:0;color:var(--ink);text-decoration:underline;cursor:pointer;padding:0}
+.strip{display:flex;gap:10px;overflow-x:auto;margin-top:20px;padding-bottom:10px;scroll-snap-type:x proximity}
+.strip .reel{flex:0 0 42%;max-width:190px;scroll-snap-align:start}
+.port{display:grid;gap:14px;margin-top:22px}
+.port a{display:grid;gap:6px;background:var(--paper);border-radius:var(--r);padding:20px;text-decoration:none;color:var(--ink);border:2px solid transparent}
+.port a:hover{border-color:var(--mauve)}
+.port .wm{font:700 1.5rem/1.1 var(--display)}
+.port .wm.lumi{color:#6B4FA0}
+.port p{color:var(--muted)}
+.port .go{font-weight:700;color:var(--mauve)}
+
+.steps{display:grid;gap:14px;margin-top:24px;counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--paper);border-radius:var(--r);padding:18px 18px 18px 64px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--butter);font:700 1rem/32px var(--display);text-align:center}
+.steps p{color:var(--muted);margin-top:4px}
+
+.builder{background:var(--paper);border-radius:26px;padding:22px 18px 0;margin-top:24px}
+fieldset{border:0;padding:0;margin:0 0 30px;min-width:0}
+legend{font:700 1.2rem var(--display);padding:0;margin-bottom:12px}
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:start;border:2px solid var(--edge);border-radius:var(--r);padding:14px;cursor:pointer;background:#fff}
+.opt:has(input:checked){border-color:var(--mauve);background:var(--mauve-soft)}
+.opt:has(input:disabled){opacity:.5;cursor:not-allowed}
+.opt input{margin-top:5px;width:18px;height:18px;accent-color:var(--mauve)}
+.opt .t{font-weight:700}
+.opt .d{grid-column:2/4;color:var(--muted);font-size:.93rem}
+.opt .p{font:700 1.05rem var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.seg{grid-column:2/4;display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.seg label{border:2px solid var(--edge);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.93rem;background:#fff;cursor:pointer}
+.seg label:has(input:checked){border-color:var(--ink);background:var(--ink);color:#fff}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg label:has(input:focus-visible){outline:3px solid var(--mauve);outline-offset:2px}
+
+.fields{display:grid;gap:14px}
+.f{display:grid;gap:5px;min-width:0}
+.f label,.f .lab{font-weight:600;font-size:.95rem}
+.f small{color:var(--muted)}
+input[type=text],input[type=email],input[type=url],select,textarea{font:inherit;color:var(--ink);background:#fff;border:2px solid var(--edge);border-radius:12px;padding:12px;width:100%}
+textarea{min-height:96px;resize:vertical}
+[aria-invalid="true"]{border-color:var(--bad)!important}
+.row2{display:grid;gap:14px}
+.logo{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo img{width:72px;height:72px;object-fit:contain;background:#fff;border:2px solid var(--edge);border-radius:12px;display:none}
+.colors{display:flex;gap:10px}
+.colors input{width:52px;height:44px;padding:2px;border:2px solid var(--edge);border-radius:12px;background:#fff}
+.check{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.95rem}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--mauve)}
+[hidden]{display:none!important}
+
+.totalbar{position:sticky;bottom:0;margin:0 -18px;padding:14px 18px;background:var(--ink);color:#fff;border-radius:0 0 26px 26px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.totalbar .sum{font-size:.85rem;opacity:.85}
+.totalbar .amt{font:700 1.7rem var(--display);font-variant-numeric:tabular-nums}
+.totalbar .btn{border-color:var(--butter);background:var(--butter);color:var(--ink)}
+.err{color:var(--bad);font-weight:600;margin:0 0 16px}
+.result{border:2px solid var(--mauve);border-radius:var(--r);padding:16px;margin-bottom:20px;background:#fff}
+.result ul{margin:10px 0 0;padding-left:18px}
+
+.fine{display:grid;gap:12px;margin-top:22px}
+.fine div{border-left:4px solid var(--mauve);padding:2px 0 2px 14px}
+.fine b{display:block}
+.fine span{color:var(--muted)}
+details{background:var(--paper);border-radius:14px;padding:14px 16px}
+details+details{margin-top:8px}
+summary{font-weight:700;cursor:pointer}
+details p{color:var(--muted);margin-top:8px}
+footer{padding:26px 0 40px;font-size:.9rem;color:var(--muted);display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}
+
+@media (min-width:760px){
+  .catgrid{grid-template-columns:repeat(4,1fr)}
+  .scenes{grid-template-columns:repeat(4,1fr)}
+  .port{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:.88fr 1.12fr;gap:32px;align-items:center;padding:40px 36px 44px}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .builder{padding:32px 32px 0}
+  .totalbar{margin:0 -32px;padding:16px 32px}
+  .row2{grid-template-columns:1fr 1fr}
+  .fine{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#order" data-i18n="skip">Skip to order form</a>
+<div class="draft"><span data-i18n="draft">Draft preview. This page is not live and payments are not connected.</span> <button type="button" id="fullToggle" aria-pressed="false">Preview "fully booked"</button></div>
+<div class="fullbar" id="fullBar" hidden><span data-i18n="fullBar">We are fully booked right now.</span> <a href="#order" id="fullBarLink" data-i18n="fullLink">Join the waitlist</a></div>
+
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="#top"><img src="media/logo-wide.png" alt="Oopsleys Animation Studio" width="900" height="288"></a>
+  <div class="tools">
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+    <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+  </div>
+  <div class="a11y">
+    <button type="button" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" data-i18n="a11yBtn">Accessibility</button>
+    <div id="a11yPanel" hidden>
+      <label class="check"><input type="checkbox" id="a11y-pause"><span data-i18n="a11y1">Pause videos</span></label>
+      <label class="check"><input type="checkbox" id="a11y-big"><span data-i18n="a11y2">Larger text</span></label>
+      <label class="check"><input type="checkbox" id="a11y-contrast"><span data-i18n="a11y3">High contrast</span></label>
+    </div>
+  </div>
+  </div>
+</header>
+
+<nav class="aud" aria-label="Who is it for">
+  <a href="#studios" data-audlink="studio" data-i18n="audS">For businesses</a>
+  <a href="#gifts" data-audlink="gift" data-i18n="audG">Personal gift</a>
+</nav>
+
+<main id="top">
+<section id="catalog" hidden>
+  <p><a class="btn ghost" href="#top" data-i18n="catBack">← Back</a></p>
+  <h2 style="margin-top:22px" data-i18n="catH">All reels</h2>
+  <p class="lede" data-i18n="catP">Tap "Order this one" under a reel to start an order with it.</p>
+  <div class="catgrid">
+    <div class="catcard"><div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Reel 1"></video></div><button type="button" class="btn ghost" data-order="1" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none" aria-label="Reel 2"></video></div><button type="button" class="btn ghost" data-order="2" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none" aria-label="Reel 3"></video></div><button type="button" class="btn ghost" data-order="3" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none" aria-label="Reel 4"></video></div><button type="button" class="btn ghost" data-order="4" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none" aria-label="Reel 5"></video></div><button type="button" class="btn ghost" data-order="5" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none" aria-label="Reel 6"></video></div><button type="button" class="btn ghost" data-order="6" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none" aria-label="Reel 7"></video></div><button type="button" class="btn ghost" data-order="7" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none" aria-label="Reel 8"></video></div><button type="button" class="btn ghost" data-order="8" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none" aria-label="Reel 9"></video></div><button type="button" class="btn ghost" data-order="9" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none" aria-label="Reel 10"></video></div><button type="button" class="btn ghost" data-order="10" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none" aria-label="Reel 11"></video></div><button type="button" class="btn ghost" data-order="11" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none" aria-label="Reel 12"></video></div><button type="button" class="btn ghost" data-order="12" data-i18n="catOrder">Order this one</button></div>
+    <div class="catcard"><div class="reel"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none" aria-label="Reel 13"></video></div><button type="button" class="btn ghost" data-order="13" data-i18n="catOrder">Order this one</button></div>
+  </div>
+</section>
+<section class="hero">
+  <div>
+    <h1 data-aud="studio" data-i18n="h1">Your business, in an Oopsleys reel.</h1>
+    <h1 data-aud="gift" data-i18n="h1G" hidden>The two of you, in an Oopsleys reel.</h1>
+    <p class="lede" data-aud="gift" data-i18n="heroPG" hidden>A short animated moment made for your partner, your best friend or your pilates buddy. Pick the occasion, describe the scene, and we do the rest.</p>
+    <p class="lede" data-aud="studio" data-i18n="heroP">Funny animated moments your clients will want to share, made with your logo in the scene. For pilates and dance studios, gyms, nail salons and any business with a story. No call needed. Order in about three minutes.</p>
+    <div class="actions">
+      <a class="btn primary" id="ctaMain" href="#order" data-i18n="ctaBuild">Build my order</a>
+      <a class="btn ghost" id="ctaPrices" href="#order" data-i18n="ctaPrices">See prices</a>
+    </div>
+    <p class="note" data-aud="gift" data-i18n="heroNoteG" hidden>From $99 · First draft in 5 business days</p>
+    <p class="note" data-aud="studio" data-i18n="heroNote">From $179 · First draft in 3 to 5 business days</p>
+    <ul class="proof">
+      <li data-i18n="pr1">Millions of views on Instagram</li>
+      <li data-i18n="pr2">Thousands of followers</li>
+    </ul>
+  </div>
+  <div class="reels" data-aud="studio" aria-label="Sample reels">
+    <div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Reel: reformer class on a patio"></video></div>
+    <div class="reel"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none" aria-label="Reel: holding a plank"></video></div>
+    <div class="reel"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none" aria-label="Reel: arriving at the pilates studio"></video></div>
+  </div>
+  <div class="reels" data-aud="gift" aria-label="Sample reels" hidden>
+    <div class="reel"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none" aria-label="Reel: dreaming about pilates"></video></div>
+    <div class="reel"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none" aria-label="Reel: the couple and the dog on the sofa"></video></div>
+    <div class="reel"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none" aria-label="Reel: working at the kitchen counter"></video></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-aud="studio" data-i18n="whyH">Why your business needs this</h2>
+  <p class="lede" data-aud="studio" data-i18n="whyP">Upgrade your marketing with animated reels in the style that reached millions of views.</p>
+  <h2 data-aud="gift" data-i18n="whyHG" hidden>Why it makes a great gift</h2>
+  <div class="why" data-aud="studio">
+    <div class="wcard"><h3 data-i18n="w1h">Content people share</h3><p data-i18n="w1p">Funny, familiar moments are the ones clients send to friends and repost in their stories.</p></div>
+    <div class="wcard"><h3 data-i18n="w2h">Get noticed by new clients</h3><p data-i18n="w2p">An animated reel stands out in a feed full of look-alike posts, and gives new people a reason to look at your business.</p></div>
+    <div class="wcard"><h3 data-i18n="w3h">No filming, no editing</h3><p data-i18n="w3p">No camera, no models and no shooting day. You fill in a form and we do the rest.</p></div>
+    <div class="wcard"><h3 data-i18n="w4h">Your brand in the scene</h3><p data-i18n="w4p">Your logo on the wall, your colors in the room, and even a character that looks like you.</p></div>
+  </div>
+  <div class="why" data-aud="gift" hidden>
+    <div class="wcard"><h3 data-i18n="g1h">Personal, not generic</h3><p data-i18n="g1p">A scene about the two of you says more than another gift card.</p></div>
+    <div class="wcard"><h3 data-i18n="g2h">Arrives by email</h3><p data-i18n="g2p">No shipping and no wrapping. Ready to send in a message or post on the day.</p></div>
+    <div class="wcard"><h3 data-i18n="g3h">Made to be shared</h3><p data-i18n="g3p">A short reel your friends will actually watch to the end.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-i18n="howH">How it works</h2>
+  <ol class="steps">
+    <li><h3 data-i18n="s1h">Pick a format</h3><p data-aud="gift" data-i18n="s1pG" hidden>Pick one of our scenes, or describe your own idea.</p><p data-aud="studio" data-i18n="s1p">A new version of one of our reels with your logo, or a scene made for your business.</p></li>
+    <li><h3 data-i18n="s2h">Tell us the details</h3><p data-aud="gift" data-i18n="s2pG" hidden>Choose the occasion and tell us who it is for. Add a photo if you want look-alike characters.</p><p data-aud="studio" data-i18n="s2p">Tell us about your business and the scene you want, then upload your logo.</p></li>
+    <li><h3 data-i18n="s3h">Get your reel</h3><p data-aud="gift" data-i18n="s3pG" hidden>We confirm your order. You approve the scene in writing and then a draft, and the final file arrives by email. The approved version is final.</p><p data-aud="studio" data-i18n="s3p">We confirm your order, send a draft to approve, and then the final file by email. One round of changes to the draft is included. The approved version is final.</p></li>
+  </ol>
+</section>
+
+<section>
+  <h2 data-i18n="moreH">Our reels, by number</h2>
+  <p class="lede" data-i18n="moreP">Every reel has a number. Use it when you order.</p>
+  <div class="strip">
+    <div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Reel 1"></video></div>
+    <div class="reel"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none" aria-label="Reel 2"></video></div>
+    <div class="reel"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none" aria-label="Reel 3"></video></div>
+    <div class="reel"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none" aria-label="Reel 4"></video></div>
+    <div class="reel"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none" aria-label="Reel 5"></video></div>
+    <div class="reel"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none" aria-label="Reel 6"></video></div>
+    <div class="reel"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none" aria-label="Reel 7"></video></div>
+    <div class="reel"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none" aria-label="Reel 8"></video></div>
+    <div class="reel"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none" aria-label="Reel 9"></video></div>
+    <div class="reel"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none" aria-label="Reel 10"></video></div>
+    <div class="reel"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none" aria-label="Reel 11"></video></div>
+    <div class="reel"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none" aria-label="Reel 12"></video></div>
+    <div class="reel"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none" aria-label="Reel 13"></video></div>
+  </div>
+  <p style="margin-top:14px"><a href="#catalog" data-i18n="moreAll">See all reels on one page →</a></p>
+</section>
+
+<section id="order">
+  <h2 data-i18n="orderH">Build your order</h2>
+  <p class="lede" data-i18n="orderP">Vertical, silent, ready for Reels and Stories. Prices are in US dollars.</p>
+
+  <div class="builder full" id="fullBox" hidden>
+    <h3 data-i18n="fullH">We are fully booked right now</h3>
+    <p class="lede" id="fullP" data-i18n="fullP">We take a limited number of orders each day so every reel gets proper attention. Leave your email and we will write to you as soon as a spot opens. No payment and no details needed now.</p>
+    <div class="wait" id="waitForm">
+      <div class="f"><label for="wEmail" data-i18n="wEmail">Your email</label><input type="email" id="wEmail" autocomplete="email"></div>
+      <button type="button" class="btn primary" id="wBtn" data-i18n="fullLink">Join the waitlist</button>
+    </div>
+    <p id="igBox" style="margin-top:18px" hidden><a class="btn primary" id="igBtn" href="https://www.instagram.com/theoopsleys" data-i18n="igFollow">Follow us on Instagram</a></p>
+    <p id="wMsg" role="status" style="margin-top:14px;font-weight:600" hidden></p>
+  </div>
+
+  <form class="builder" id="form" novalidate>
+    <p class="viewnote" id="viewNote" data-i18n="viewNote" hidden>Prices for reference. Ordering reopens when a spot is free.</p>
+    <fieldset id="fs1">
+      <legend data-i18n="l1">1. Format</legend>
+      <div class="opts">
+        <label class="opt" data-aud="studio"><input type="radio" name="format" id="fmt-lib" value="lib">
+          <span class="t" data-i18n="libT">Your version of one of our reels</span><span class="p" data-price="lib">$199</span>
+          <span class="d" data-i18n="libD">Pick a published reel and we make a new version with your logo. It is animated again from scratch, so details and movement will not be identical to the original. For now, our reels are set in a pilates studio. Draft in 3 business days.</span></label>
+        <label class="opt" data-aud="studio"><input type="radio" name="format" id="fmt-custom" value="custom" checked>
+          <span class="t" data-i18n="cusT">Custom scene</span><span class="p" id="cusPrice">$249</span>
+          <span class="d" data-i18n="cusD">A new moment made for your business: your space, your colors, your logo. Draft in 5 business days.</span></label>
+        <label class="opt" data-aud="gift" hidden><input type="radio" name="format" id="fmt-tpl" value="tpl">
+          <span class="t" data-i18n="tplT">Pick one of our scenes</span><span class="p" id="tplPrice">$99</span>
+          <span class="d" data-i18n="tplD">Choose a scene we already know works and we make it for you. The fastest and most affordable option. Draft in 5 business days.</span></label>
+        <label class="opt" data-aud="gift" hidden><input type="radio" name="format" id="fmt-gift" value="gift">
+          <span class="t" data-i18n="giftT">Your own idea</span><span class="p" id="giftPrice">$179</span>
+          <span class="d" data-i18n="giftD">Describe the moment you have in mind and we turn it into a scene. Personal use only. Draft in 5 business days.</span></label>
+      </div>
+      <div class="f" id="lenBox"><span class="lab" data-i18n="lenL">Length</span>
+        <span class="seg" id="lenSeg">
+          <label><input type="radio" name="len" id="len-15" value="15"><span id="len15t">15 seconds · $149</span></label>
+          <label><input type="radio" name="len" id="len-30" value="30" checked><span id="len30t">30 seconds · $249</span></label>
+        </span></div>
+      <div class="f" id="qBox"><span class="lab" data-i18n="qL">Quality</span>
+        <span class="seg">
+          <label><input type="radio" name="q" id="q-1080" value="1080" checked><span id="q1080t">1080p Full HD · included</span></label>
+          <label><input type="radio" name="q" id="q-4k" value="4k"><span id="q4kt">4K · +$40</span></label>
+        </span><small data-i18n="qHint">Instagram shows reels at 1080p at most. 4K is for large screens.</small></div>
+    </fieldset>
+
+    <fieldset id="fs2">
+      <legend data-i18n="l2">2. Add-ons</legend>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" id="ad-character" value="character">
+          <span class="t" data-i18n="chT">Look-alike character</span><span class="p" id="chPrice">+$120</span>
+          <span class="d" data-i18n="chD">We design a character inspired by a real person: hair, beard, glasses, style. A cartoon likeness, not an exact portrait. Adults only. A second person costs extra.</span></label>
+        <label class="opt"><input type="checkbox" id="ad-rush" value="rush">
+          <span class="t" data-i18n="ruT">Rush delivery</span><span class="p">+$60</span>
+          <span class="d" data-i18n="ruD">Draft within 48 hours of our confirmation.</span></label>
+        <label class="opt"><input type="checkbox" id="ad-revision" value="revision">
+          <span class="t" data-i18n="reT">Extra round of changes</span><span class="p">+$50</span>
+          <span class="d" id="reDesc" data-i18n="reD">For the draft stage. One round is already included.</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset id="fs3">
+      <legend data-i18n="l3">3. Details</legend>
+      <div class="fields">
+        <div class="row2">
+          <div class="f"><label for="name" data-i18n="fName">Your name</label><input type="text" id="name" autocomplete="name"></div>
+          <div class="f"><label for="email" data-i18n="fEmail">Email for delivery</label><input type="email" id="email" autocomplete="email"></div>
+        </div>
+        <div class="row2">
+          <div class="f"><label for="handle" id="handleLab" data-i18n="fHandle">Instagram handle or business name</label><input type="text" id="handle"></div>
+          <div class="f"><label for="country" data-i18n="fCountry">Country</label>
+            <select id="country">
+              <option value="" data-i18n="choose">Choose…</option>
+              <option>Australia</option><option>Brazil</option><option>Canada</option><option>France</option><option>Germany</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Mexico</option><option>Netherlands</option><option>New Zealand</option><option>Portugal</option><option>Spain</option><option>Türkiye</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option>
+              <option value="Other" data-i18n="other">Other</option>
+            </select>
+            <small data-i18n="sanction">We can't take orders from countries under US sanctions.</small></div>
+        </div>
+
+        <div class="f" id="box-reels" hidden><span class="lab" data-i18n="rlL">Choose a reel</span>
+          <div class="scenes" id="reelsGrid">
+            <label class="sc"><input type="radio" name="pick" value="1"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="2"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="3"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="4"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="5"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="10"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="11"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+          </div><small data-i18n="pickHint">Tap one to select it. Your choice is shown in the summary before you send.</small>
+          <p class="soon"><span data-i18n="soon">Coming soon: reels for gyms, dance studios and salons. For another kind of business, choose a custom scene.</span> <button type="button" id="toCustom" data-i18n="toCustom">Switch to a custom scene</button></p></div>
+
+        <div class="f" id="box-link" hidden><label for="link" data-i18n="fLink">Or paste a link to a different reel (optional)</label><input type="url" id="link" placeholder="https://www.instagram.com/reel/…"></div>
+
+        <div class="row2" id="box-scene">
+          <div class="f"><label for="equip" data-i18n="fEquip">Type of business</label>
+            <input type="text" id="equip"><small data-i18n="eqHint">For example: pilates studio, gym, nail salon, dance studio</small></div>
+        </div>
+
+        <div class="f" id="box-scenes" hidden><span class="lab" data-i18n="scL">Choose a scene</span>
+          <div class="scenes" id="scenesGrid">
+            <label class="sc"><input type="radio" name="scene" value="6"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="scene" value="7"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="scene" value="8"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="scene" value="9"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="scene" value="12"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="scene" value="13"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+          </div><small data-i18n="pickHint">Tap one to select it. Your choice is shown in the summary before you send.</small></div>
+
+        <div class="row2" id="box-occ" hidden>
+          <div class="f"><label for="occ" data-i18n="fOcc">Occasion</label>
+            <select id="occ"><option data-i18n="oc1">Anniversary</option><option data-i18n="oc2">Birthday</option><option data-i18n="oc3">For my pilates partner</option><option data-i18n="oc4">Wedding or engagement</option><option data-i18n="oc5">Just because</option></select></div>
+          <div class="f"><label for="forwho" data-i18n="fFor">Who is it for?</label><input type="text" id="forwho"></div>
+        </div>
+
+        <div class="f"><label for="notes" id="notesLab" data-i18n="fNotes">Describe the scene you want</label>
+          <textarea id="notes" maxlength="500"></textarea><small id="notesHint"></small><small><span id="count">0</span>/500</small></div>
+
+        <div class="row2" id="box-brand">
+          <div class="f"><span class="lab" data-i18n="fLogo">Logo (PNG or SVG)</span>
+            <div class="logo"><img id="logoPrev" alt=""><input type="file" id="logo" accept="image/png,image/svg+xml,image/jpeg" aria-label="Logo file"></div></div>
+          <div class="f"><label for="colors" data-i18n="fColors">Any color preference? (optional)</label><input type="text" id="colors"><small data-i18n="cHint">We blend your colors into our own style.</small></div>
+        </div>
+
+        <div class="f" id="box-people" hidden><span class="lab" data-i18n="fPeople">How many people?</span>
+          <span class="seg"><label><input type="radio" name="ppl" id="ppl-1" value="1" checked><span id="ppl1t">1 person</span></label><label><input type="radio" name="ppl" id="ppl-2" value="2"><span id="ppl2t">2 people</span></label></span></div>
+
+        <div class="f" id="box-role" hidden><label for="role" data-i18n="fRole">Who should the character be?</label>
+          <select id="role"><option value="r1" data-i18n="r1">The client</option><option value="r2" data-i18n="r2">The owner or a staff member</option></select></div>
+
+        <div class="f" id="box-photo" hidden><span class="lab" data-i18n="fPhoto">Reference photo for the look-alike (adults only)</span><input type="file" id="photo" accept="image/*" multiple aria-label="Reference photo"></div>
+
+        <label class="check" id="box-likeness" hidden><input type="checkbox" id="likeness"><span data-i18n="cLike">Everyone this character is based on is an adult and has agreed to it.</span></label>
+        <label class="check"><input type="checkbox" id="terms"><span data-i18n="cTerms">I agree to the terms below. I understand that once I approve the draft, the order is final and cannot be refunded.</span></label>
+      </div>
+    </fieldset>
+
+    <p class="lede" id="payNote" style="margin:0 0 16px;font-size:.95rem" data-i18n="payNote">Your card is only reserved now. We confirm within 2 business days and charge it then. If we cannot make your request, the hold is released and you pay nothing.</p>
+    <p class="err" id="err" role="alert" hidden></p>
+    <div class="result" id="result" hidden></div>
+
+    <div class="totalbar" id="totalbar">
+      <div><div class="sum" id="sum"></div><div class="amt" id="amt">$249</div></div>
+      <button class="btn" type="submit" data-i18n="pay">Continue to payment</button>
+    </div>
+  </form>
+</section>
+
+<section>
+  <h2 data-i18n="fineH">The terms, in plain words</h2>
+  <div class="fine">
+    <div><b data-i18n="t8h">Order now, charged on confirmation</b><span data-i18n="t8p">You complete your order right away. Your card is reserved, not charged. We confirm within 2 business days and charge it then. If we cannot make it, the hold is released.</span></div>
+    <div><b data-i18n="t1h">Delivery</b><span data-i18n="t1p">The draft time starts once we confirm your order and have everything we need from you, such as your logo or a photo. After you approve the draft, the final version arrives within one business day.</span></div>
+    <div data-aud="studio"><b data-i18n="t7h">Draft first</b><span data-i18n="t7p">You get a low-resolution draft to approve before we render the final quality. One round of changes to the draft is included.</span></div>
+    <div data-aud="gift" hidden><b data-i18n="t7h">Draft first</b><span data-i18n="t7pG">You approve the scene in writing, then a low-resolution draft. After that we render the final quality.</span></div>
+    <div data-aud="gift" hidden><b data-i18n="t2h">Changes</b><span data-i18n="t2pG">Changes to the draft are $50 per round.</span></div>
+    <div data-aud="studio"><b data-i18n="t2h">Changes</b><span data-i18n="t2p">Each extra round of changes to the draft is $50.</span></div>
+    <div data-aud="gift" hidden><b data-i18n="t5h">How you can use it</b><span data-i18n="t5p">Gift videos are for personal use. Share them anywhere you like, but not to advertise a business. The Oopsleys character stays ours.</span></div>
+    <div data-aud="studio"><b data-i18n="t3h">How you can use it</b><span data-i18n="t3p">Business orders include a license to post the reel on your own social channels and website. Paid ads and resale need a separate license. The Oopsleys character stays ours.</span></div>
+    <div><b data-i18n="t6h">Every reel is one of a kind</b><span data-i18n="t6p">Each video is animated from scratch. A new version of an existing reel will look similar to the original, never identical.</span></div>
+    <div><b data-i18n="t9h">Final means final</b><span data-i18n="t9p">Approving the draft is your last step. Once the final version is delivered, the order is complete and we do not make further changes.</span></div>
+    <div><b data-i18n="t4h">Refunds</b><span data-i18n="t4p">Full refund until we start work. Once you approve the draft, the order is final and cannot be refunded. If a file arrives damaged, we send it again.</span></div>
+    <div><b data-i18n="t10h">Your details</b><span data-i18n="t10p">We use your email, logo and photos only to make and deliver your order. Reference photos are deleted after delivery. We never sell or share them.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-i18n="faqH">Questions</h2>
+  <div style="margin-top:20px">
+    <details><summary data-i18n="q1">Is there sound or dialogue?</summary><p data-i18n="a1">No dialogue. That is the idea: the reel works in every language.</p></details>
+    <details><summary data-i18n="q2">Can I talk to someone first?</summary><p data-i18n="a2">Yes. Send a message to @theoopsleys on Instagram.</p></details>
+    <details><summary data-i18n="q3">How are the reels made?</summary><p data-i18n="a3">With AI animation tools, directed scene by scene.</p></details>
+    <details data-aud="studio"><summary data-i18n="q4">Can I order a reel every month?</summary><p data-i18n="a4">A monthly plan for businesses is coming. Message us if you want to be first.</p></details>
+  </div>
+</section>
+<section>
+  <h2 data-i18n="portH">From the same studio</h2>
+  <p class="lede" data-i18n="portP">Two animated worlds, one maker.</p>
+  <div class="port">
+    <a href="https://www.instagram.com/theoopsleys"><span class="wm">The Oopsleys</span><p data-i18n="port1">Silent pilates comedy, on Instagram.</p><span class="go" data-i18n="port1go">See it on Instagram →</span></a>
+    <a href="https://www.youtube.com/@lumiandthemagicalworld"><span class="wm lumi">Lumi and the Magical World</span><p data-i18n="port2">An animated series for young children, on YouTube.</p><span class="go" data-i18n="port2go">Watch on YouTube →</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Oopsleys Studio</span>
+  <a href="https://www.instagram.com/theoopsleys">instagram.com/theoopsleys</a>
+  <span style="flex-basis:100%" data-i18n="a11yS">Accessibility: we work to meet the WCAG 2.1 AA guidelines. If anything is hard to use, message us and we will help.</span>
+</footer>
+</div>
+
+<script>
+/* ---- Prices: edit here ---- */
+/* ---- Daily capacity: orders accepted per day. takenToday will come from the order system once payments are connected. ---- */
+/* ---- Site settings. On the live site set draft:false. waitlistUrl is the address that stores waitlist emails. ---- */
+var SITE = { draft:false, prelaunch:true, waitlistUrl:'', instagram:'https://www.instagram.com/theoopsleys' };
+var CAPACITY = { dailyLimit:5, takenToday:0, closed:!SITE.draft };   // closed:true = manual switch (days off, or before payments are connected)
+function isFull(){ return CAPACITY.closed || CAPACITY.takenToday >= CAPACITY.dailyLimit; }
+
+var PRICES = { lib:199, custom15:179, custom30:299, gift15:149, gift30:229, tpl15:99, tpl30:149, character:120, character2:60, characterG:180, characterG2:90, q4k:40, rush:60, revision:50 };
+
+function orderTotal(o){
+  var personal = o.format==='gift' || o.format==='tpl';
+  var t = o.format==='lib' ? PRICES.lib : PRICES[o.format + (o.len===15?15:30)];
+  if(o.character){ t += personal ? PRICES.characterG : PRICES.character; if(o.ppl===2) t += personal ? PRICES.characterG2 : PRICES.character2; }
+  if(o.q==='4k') t += PRICES.q4k;
+  if(o.rush) t += PRICES.rush;
+  if(o.revision) t += PRICES.revision;
+  return t;
+}
+
+/* ---- Translations (English is read from the page) ---- */
+var T = { en:{
+  sec15:'15 seconds', sec30:'30 seconds', fHandleG:'Instagram handle (optional)', reDG:'For the draft stage only.', wReel:'Reel', wScene:'Scene', soonBar:'Ordering opens soon.', soonH:'Ordering opens soon', soonNote:'Prices for reference. Ordering opens soon.', fullP2:'We take a limited number of orders each day so every reel gets proper attention. Follow us on Instagram to hear the moment ordering opens.', p1:'1 person', p2:'2 people', spotsN:'Spots left today: {n}', wDone:'Draft mode: nothing was sent. On the live site this email would join the waitlist.', wErr:'Please enter a valid email.', fNotesReq:'Describe the scene you want', fNotesOpt:'Anything to add? (optional)', nHintS:'For example: a first class where everything goes wrong, with our logo on the wall.', nHintG:'For example: he joins my pilates class for the first time and regrets it.', qInc:'included',
+  dLib:'3 business days', dStd:'5 business days', dRush:'48 hours', delivery:'Draft in',
+  errFields:'Please complete the highlighted fields.',
+  done:'Draft mode: nothing was charged and nothing was sent. This is the order the studio would receive:'
+}, pt:{
+  draft:'Pré-visualização de rascunho. Esta página não está publicada e os pagamentos não estão ligados.',
+  h1:'O seu estúdio, num reel dos Oopsleys.',
+  heroP:'Os momentos animados de pilates que as suas clientes já partilham, com o seu logótipo na parede. Sem chamadas. Encomende em cerca de três minutos.',
+  ctaBuild:'Criar a minha encomenda', ctaPrices:'Ver preços',
+  heroNote:'Desde $179 · Entrega em 3 a 7 dias úteis',
+  ex1:'Reel + logótipo do estúdio', ex2:'Cena personalizada', ex3:'Personagem à sua imagem', exPh:'Exemplo de reel aqui',
+  howH:'Como funciona',
+  s1h:'Escolha um formato', s1p:'Um reel já feito com o seu logótipo, uma cena criada para o seu estúdio ou um presente para uma amiga.',
+  s2h:'Dê-nos os detalhes', s2p:'Escolha o equipamento e o momento e carregue o seu logótipo.',
+  s3h:'Receba o seu reel', s3p:'Enviamos o ficheiro por email. Está incluída uma ronda de alterações.',
+  orderH:'Crie a sua encomenda', orderP:'Vertical, sem som, pronto para Reels e Stories. Preços em dólares americanos.',
+  l1:'1. Formato', l2:'2. Extras', l3:'3. Detalhes',
+  libT:'Reel já feito + o seu logótipo', libD:'Escolha um dos nossos reels publicados. Colocamos o seu logótipo na cena. 3 dias úteis.',
+  cusT:'Cena personalizada', cusD:'Um momento novo criado para o seu estúdio: o seu equipamento, as suas cores, o seu logótipo. 7 dias úteis.',
+  len15:'15 segundos · $149', len30:'30 segundos · $249',
+  giftT:'Vídeo de presente', giftD:'Um reel pessoal para uma amiga, uma cliente ou a sua instrutora. Até 15 segundos, apenas para uso pessoal. 7 dias úteis.',
+  chT:'Personagem à sua imagem', chD:'Desenhamos uma personagem parecida consigo ou com a sua instrutora. Não disponível para reels já feitos.',
+  ruT:'Entrega urgente', ruD:'Entrega em 48 horas.',
+  reT:'Ronda extra de alterações', reD:'Uma ronda já está incluída.',
+  fName:'O seu nome', fEmail:'Email para a entrega', fHandle:'Conta de Instagram ou nome do estúdio', fCountry:'País',
+  choose:'Escolher…', other:'Outro', sanction:'Não podemos aceitar encomendas de países sob sanções dos EUA.',
+  fLink:'Link do reel que pretende', fEquip:'Equipamento', fMoment:'O momento',
+  eq1:'Reformer', eq2:'Tapete', eq3:'Chair', eq4:'Cadillac', eq5:'Sem equipamento',
+  m1:'Pânico da primeira aula', m2:'A tremedeira', m3:'"Só mais uma"', m4:'Atrasada para a aula', m5:'O brilho depois da aula', m6:'A minha própria ideia (descreva abaixo)',
+  fNotes:'Mais alguma coisa que devamos saber (opcional)', fLogo:'Logótipo (PNG ou SVG)', fColors:'Cores da marca',
+  cLike:'A pessoa em quem esta personagem se baseia deu o seu acordo.', cTerms:'Aceito os termos abaixo.',
+  pay:'Continuar para o pagamento',
+  fineH:'Os termos, em palavras simples',
+  t1h:'Entrega', t1p:'Os dias úteis contam a partir do momento em que recebemos o pagamento e o logótipo.',
+  t2h:'Alterações', t2p:'Está incluída uma ronda de alterações. Cada ronda extra custa $50.',
+  t3h:'Como pode usar', t3p:'As encomendas de estúdio incluem licença para publicar o reel nas suas redes sociais e no seu site. Anúncios pagos e revenda exigem uma licença à parte. A personagem dos Oopsleys continua a ser nossa.',
+  t4h:'Reembolsos', t4p:'Reembolso total até começarmos o trabalho. Depois da entrega, corrigimos o reel em vez de reembolsar.',
+  faqH:'Perguntas',
+  q1:'Tem som ou diálogo?', a1:'Sem diálogo. É essa a ideia: o reel funciona em qualquer língua.',
+  q2:'Posso falar com alguém primeiro?', a2:'Sim. Envie mensagem para @theoopsleys no Instagram.',
+  q3:'Como são feitos os reels?', a3:'Com ferramentas de animação por IA, dirigidas cena a cena.',
+  q4:'Posso encomendar um reel todos os meses?', a4:'Vem aí um plano mensal para estúdios. Envie mensagem se quiser ser das primeiras.',
+  dLib:'3 dias úteis', dStd:'7 dias úteis', dRush:'48 horas', delivery:'Entrega',
+  errFields:'Preencha os campos assinalados.',
+  done:'Modo de rascunho: nada foi cobrado nem enviado. Esta é a encomenda que o estúdio receberia:'
+}, tr:{
+  draft:'Taslak önizleme. Bu sayfa yayında değil ve ödeme sistemi bağlı değil.',
+  h1:'Stüdyonuz, bir Oopsleys reel\'inde.',
+  heroP:'Üyelerinizin zaten paylaştığı animasyon pilates anları, duvarda sizin logonuzla. Görüşme gerekmez. Yaklaşık üç dakikada sipariş verin.',
+  ctaBuild:'Siparişimi oluştur', ctaPrices:'Fiyatları gör',
+  heroNote:'$179\'dan başlayan fiyatlar · 3 ila 7 iş gününde teslim',
+  ex1:'Reel + stüdyo logosu', ex2:'Özel sahne', ex3:'Size benzeyen karakter', exPh:'Örnek reel buraya gelecek',
+  howH:'Nasıl çalışır',
+  s1h:'Bir format seçin', s1p:'Logonuzun eklendiği hazır bir reel, stüdyonuz için hazırlanan bir sahne ya da bir arkadaşa hediye.',
+  s2h:'Ayrıntıları yazın', s2p:'Ekipmanı ve anı seçin, logonuzu yükleyin.',
+  s3h:'Reel\'inizi alın', s3p:'Dosyayı e-postayla gönderiyoruz. Bir değişiklik turu fiyata dahildir.',
+  orderH:'Siparişinizi oluşturun', orderP:'Dikey, sessiz, Reels ve Hikâyeler için hazır. Fiyatlar ABD doları cinsindendir.',
+  l1:'1. Format', l2:'2. Ekstralar', l3:'3. Ayrıntılar',
+  libT:'Hazır reel + logonuz', libD:'Yayınladığımız reel\'lerden birini seçin. Logonuzu sahneye yerleştiriyoruz. 3 iş günü.',
+  cusT:'Özel sahne', cusD:'Stüdyonuz için hazırlanan yeni bir an: sizin ekipmanınız, renkleriniz ve logonuz. 7 iş günü.',
+  len15:'15 saniye · $149', len30:'30 saniye · $249',
+  giftT:'Hediye video', giftD:'Bir arkadaşınız, üyeniz ya da eğitmeniniz için kişisel bir reel. En fazla 15 saniye, yalnızca kişisel kullanım. 7 iş günü.',
+  chT:'Size benzeyen karakter', chD:'Size ya da eğitmeninize benzeyen bir karakter tasarlıyoruz. Hazır reel\'lerde kullanılamaz.',
+  ruT:'Hızlı teslimat', ruD:'48 saat içinde teslim.',
+  reT:'Ek değişiklik turu', reD:'Bir tur zaten dahildir.',
+  fName:'Adınız', fEmail:'Teslimat için e-posta', fHandle:'Instagram kullanıcı adı ya da stüdyo adı', fCountry:'Ülke',
+  choose:'Seçin…', other:'Diğer', sanction:'ABD yaptırımları altındaki ülkelerden sipariş alamıyoruz.',
+  fLink:'İstediğiniz reel\'in bağlantısı', fEquip:'Ekipman', fMoment:'An',
+  eq1:'Reformer', eq2:'Mat', eq3:'Chair', eq4:'Cadillac', eq5:'Ekipmansız',
+  m1:'İlk ders paniği', m2:'Titreme', m3:'"Bir tane daha"', m4:'Derse geç kalmak', m5:'Ders sonrası ışıltı', m6:'Kendi fikrim (aşağıya yazın)',
+  fNotes:'Bilmemiz gereken başka bir şey (isteğe bağlı)', fLogo:'Logo (PNG ya da SVG)', fColors:'Marka renkleri',
+  cLike:'Bu karakterin esinlendiği kişi buna onay verdi.', cTerms:'Aşağıdaki koşulları kabul ediyorum.',
+  pay:'Ödemeye geç',
+  fineH:'Koşullar, sade bir dille',
+  t1h:'Teslimat', t1p:'İş günleri, ödeme ve logonuz bize ulaştığında başlar.',
+  t2h:'Değişiklikler', t2p:'Bir değişiklik turu dahildir. Her ek tur $50.',
+  t3h:'Nasıl kullanabilirsiniz', t3p:'Stüdyo siparişleri, reel\'i kendi sosyal medya hesaplarınızda ve sitenizde paylaşma lisansını içerir. Ücretli reklam ve yeniden satış için ayrı lisans gerekir. Oopsleys karakteri bize aittir.',
+  t4h:'İadeler', t4p:'Çalışmaya başlamadan önce tam iade. Teslimattan sonra iade yerine reel\'i düzeltiyoruz.',
+  faqH:'Sorular',
+  q1:'Ses ya da diyalog var mı?', a1:'Diyalog yok. Fikir de bu: reel her dilde işe yarar.',
+  q2:'Önce biriyle konuşabilir miyim?', a2:'Evet. Instagram\'da @theoopsleys hesabına mesaj gönderin.',
+  q3:'Reel\'ler nasıl yapılıyor?', a3:'Sahne sahne yönetilen yapay zekâ animasyon araçlarıyla.',
+  q4:'Her ay bir reel sipariş edebilir miyim?', a4:'Stüdyolar için aylık plan yakında geliyor. İlk olmak isterseniz bize yazın.',
+  dLib:'3 iş günü', dStd:'7 iş günü', dRush:'48 saat', delivery:'Teslimat',
+  errFields:'Lütfen işaretli alanları doldurun.',
+  done:'Taslak modu: hiçbir ücret alınmadı ve hiçbir şey gönderilmedi. Stüdyonun alacağı sipariş şu:'
+}};
+
+
+T.es = {
+  draft:'Vista previa en borrador. Esta página no está publicada y los pagos no están conectados.',
+  h1:'Tu estudio, en un reel de los Oopsleys.',
+  heroP:'Los momentos animados de pilates que tus clientas ya comparten, con tu logo en la pared. Sin llamadas. Haz tu pedido en unos tres minutos.',
+  ctaBuild:'Crear mi pedido', ctaPrices:'Ver precios',
+  heroNote:'Desde $179 · Entrega en 3 a 7 días hábiles',
+  howH:'Cómo funciona',
+  s1h:'Elige un formato', s1p:'Un reel ya hecho con tu logo, una escena creada para tu estudio o un regalo para una amiga.',
+  s2h:'Cuéntanos los detalles', s2p:'Elige el equipo y el momento, y sube tu logo.',
+  s3h:'Recibe tu reel', s3p:'Te enviamos el archivo por correo. Incluye una ronda de cambios.',
+  orderH:'Crea tu pedido', orderP:'Vertical, sin sonido, listo para Reels e Historias. Precios en dólares estadounidenses.',
+  l1:'1. Formato', l2:'2. Extras', l3:'3. Detalles',
+  libT:'Reel ya hecho + tu logo', libD:'Elige uno de nuestros reels publicados. Colocamos tu logo en la escena. 3 días hábiles.',
+  cusT:'Escena a medida', cusD:'Un momento nuevo creado para tu estudio: tu equipo, tus colores, tu logo. 7 días hábiles.',
+  len15:'15 segundos · $149', len30:'30 segundos · $249',
+  giftT:'Vídeo de regalo', giftD:'Un reel personal para una amiga, una clienta o tu instructora. Hasta 15 segundos, solo para uso personal. 7 días hábiles.',
+  chT:'Personaje con tu aspecto', chD:'Diseñamos un personaje que se parece a ti o a tu instructora. No disponible para reels ya hechos.',
+  ruT:'Entrega urgente', ruD:'Entrega en 48 horas.',
+  reT:'Ronda extra de cambios', reD:'Ya incluye una ronda.',
+  fName:'Tu nombre', fEmail:'Correo para la entrega', fHandle:'Usuario de Instagram o nombre del estudio', fCountry:'País',
+  choose:'Elegir…', other:'Otro', sanction:'No podemos aceptar pedidos de países bajo sanciones de EE. UU.',
+  fLink:'Enlace del reel que quieres', fEquip:'Equipo', fMoment:'El momento',
+  eq1:'Reformer', eq2:'Colchoneta', eq3:'Silla', eq4:'Cadillac', eq5:'Sin equipo',
+  m1:'Pánico de la primera clase', m2:'El temblor', m3:'"Solo una más"', m4:'Tarde a clase', m5:'El brillo después de clase', m6:'Mi propia idea (descríbela abajo)',
+  fNotes:'Algo más que debamos saber (opcional)', fLogo:'Logo (PNG o SVG)', fColors:'Colores de la marca',
+  cLike:'La persona en la que se basa este personaje ha dado su consentimiento.', cTerms:'Acepto las condiciones de abajo.',
+  pay:'Continuar al pago',
+  fineH:'Las condiciones, en palabras sencillas',
+  t1h:'Entrega', t1p:'Los días hábiles cuentan desde que recibimos el pago y tu logo.',
+  t2h:'Cambios', t2p:'Incluye una ronda de cambios. Cada ronda extra cuesta $50.',
+  t3h:'Cómo puedes usarlo', t3p:'Los pedidos de estudio incluyen licencia para publicar el reel en tus redes sociales y tu web. Los anuncios de pago y la reventa requieren una licencia aparte. El personaje de los Oopsleys sigue siendo nuestro.',
+  t4h:'Reembolsos', t4p:'Reembolso completo hasta que empecemos a trabajar. Después de la entrega, corregimos el reel en lugar de reembolsarlo.',
+  faqH:'Preguntas',
+  q1:'¿Tiene sonido o diálogo?', a1:'Sin diálogo. Esa es la idea: el reel funciona en cualquier idioma.',
+  q2:'¿Puedo hablar con alguien antes?', a2:'Sí. Escribe a @theoopsleys en Instagram.',
+  q3:'¿Cómo se hacen los reels?', a3:'Con herramientas de animación con IA, dirigidas escena por escena.',
+  q4:'¿Puedo pedir un reel cada mes?', a4:'Pronto habrá un plan mensual para estudios. Escríbenos si quieres ser de las primeras.',
+  portH:'Del mismo estudio', portP:'Dos mundos animados, una sola creadora.',
+  port1:'Comedia de pilates sin palabras, en Instagram.', port1go:'Ver en Instagram →',
+  port2:'Una serie animada para niños pequeños, en YouTube.', port2go:'Ver en YouTube →',
+  dLib:'3 días hábiles', dStd:'7 días hábiles', dRush:'48 horas', delivery:'Entrega',
+  errFields:'Completa los campos marcados.',
+  done:'Modo borrador: no se ha cobrado ni enviado nada. Este es el pedido que recibiría el estudio:'
+};
+T.es.tag='Estudio de animación';
+Object.assign(T.pt, { tag:'Estúdio de animação', portH:'Do mesmo estúdio', portP:'Dois mundos animados, uma só criadora.',
+  port1:'Comédia de pilates sem palavras, no Instagram.', port1go:'Ver no Instagram →',
+  port2:'Uma série animada para crianças pequenas, no YouTube.', port2go:'Ver no YouTube →' });
+Object.assign(T.tr, { tag:'Animasyon stüdyosu', portH:'Aynı stüdyodan', portP:'İki animasyon dünyası, tek bir yaratıcı.',
+  port1:'Instagram\'da sözsüz pilates komedisi.', port1go:'Instagram\'da gör →',
+  port2:'YouTube\'da küçük çocuklar için bir animasyon dizisi.', port2go:'YouTube\'da izle →' });
+
+Object.assign(T.es, { audS:'Para estudios', audG:'Regalo personal', h1G:'Tu pareja y tú, en un reel de los Oopsleys.',
+  heroPG:'Un momento animado y corto para tu pareja, tu mejor amiga o tu compañera de pilates. Elige la ocasión, describe la escena y nosotros hacemos el resto.',
+  heroNoteG:'Desde $149 · Entrega en 7 días hábiles', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duración',
+  fOcc:'Ocasión', oc1:'Aniversario', oc2:'Cumpleaños', oc3:'Para mi compañera de pilates', oc4:'Boda o compromiso', oc5:'Porque sí',
+  fFor:'¿Para quién es?', fPhoto:'Foto de referencia para el personaje (solo adultos)', fHandleG:'Usuario de Instagram (opcional)',
+  t5h:'Cómo puedes usarlo', t5p:'Los vídeos de regalo son para uso personal. Compártelos donde quieras, pero no para anunciar un negocio. El personaje de los Oopsleys sigue siendo nuestro.',
+  giftD:'Un reel personal para tu pareja, una amiga o tu instructora. Solo para uso personal. 7 días hábiles.',
+  chD:'Diseñamos un personaje que se parece a una persona real (solo adultos, hasta dos personas). No disponible para reels ya hechos.',
+  cLike:'Todas las personas en las que se basa este personaje son adultas y han dado su consentimiento.',
+  fNotes:'Describe la escena o añade detalles' });
+Object.assign(T.pt, { audS:'Para estúdios', audG:'Presente pessoal', h1G:'Vocês os dois, num reel dos Oopsleys.',
+  heroPG:'Um momento animado e curto para a sua cara-metade, a sua melhor amiga ou a sua companheira de pilates. Escolha a ocasião, descreva a cena e nós tratamos do resto.',
+  heroNoteG:'Desde $149 · Entrega em 7 dias úteis', sec15:'15 segundos', sec30:'30 segundos', lenL:'Duração',
+  fOcc:'Ocasião', oc1:'Aniversário de namoro ou casamento', oc2:'Aniversário', oc3:'Para a minha companheira de pilates', oc4:'Casamento ou noivado', oc5:'Só porque sim',
+  fFor:'Para quem é?', fPhoto:'Foto de referência para a personagem (apenas adultos)', fHandleG:'Conta de Instagram (opcional)',
+  t5h:'Como pode usar', t5p:'Os vídeos de presente são para uso pessoal. Partilhe-os onde quiser, mas não para publicitar um negócio. A personagem dos Oopsleys continua a ser nossa.',
+  giftD:'Um reel pessoal para a sua cara-metade, uma amiga ou a sua instrutora. Apenas para uso pessoal. 7 dias úteis.',
+  chD:'Desenhamos uma personagem parecida com uma pessoa real (apenas adultos, até duas pessoas). Não disponível para reels já feitos.',
+  cLike:'Todas as pessoas em quem esta personagem se baseia são adultas e deram o seu acordo.',
+  fNotes:'Descreva a cena ou acrescente detalhes' });
+Object.assign(T.tr, { audS:'Stüdyolar için', audG:'Kişisel hediye', h1G:'İkiniz, bir Oopsleys reel\'inde.',
+  heroPG:'Eşiniz, en yakın arkadaşınız ya da pilates arkadaşınız için hazırlanan kısa bir animasyon anı. Vesileyi seçin, sahneyi anlatın, gerisini biz hallederiz.',
+  heroNoteG:'$149\'dan başlayan fiyatlar · 7 iş gününde teslim', sec15:'15 saniye', sec30:'30 saniye', lenL:'Süre',
+  fOcc:'Vesile', oc1:'Yıl dönümü', oc2:'Doğum günü', oc3:'Pilates arkadaşım için', oc4:'Düğün ya da nişan', oc5:'Öylesine',
+  fFor:'Kimin için?', fPhoto:'Karakter için referans fotoğraf (yalnızca yetişkinler)', fHandleG:'Instagram kullanıcı adı (isteğe bağlı)',
+  t5h:'Nasıl kullanabilirsiniz', t5p:'Hediye videolar kişisel kullanım içindir. Dilediğiniz yerde paylaşabilirsiniz, ancak bir işletmenin reklamı için kullanamazsınız. Oopsleys karakteri bize aittir.',
+  giftD:'Eşiniz, bir arkadaşınız ya da eğitmeniniz için kişisel bir reel. Yalnızca kişisel kullanım. 7 iş günü.',
+  chD:'Gerçek bir kişiye benzeyen bir karakter tasarlıyoruz (yalnızca yetişkinler, en fazla iki kişi). Hazır reel\'lerde kullanılamaz.',
+  cLike:'Bu karakterin esinlendiği herkes yetişkindir ve buna onay vermiştir.',
+  fNotes:'Sahneyi anlatın ya da ayrıntı ekleyin' });
+
+Object.assign(T.es, { libT:'Tu versión de uno de nuestros reels',
+  libD:'Elige un reel publicado y creamos una versión nueva con tu logo. Se anima de nuevo desde cero, así que los detalles y el movimiento serán distintos del original. 3 días hábiles.',
+  s1p:'Una versión nueva de uno de nuestros reels con tu logo, una escena creada para tu estudio o un regalo para una amiga.',
+  t6h:'Cada reel es único', t6p:'Cada vídeo se anima desde cero. Una versión nueva de un reel existente se parecerá al original, pero nunca será idéntica.' });
+Object.assign(T.pt, { libT:'A sua versão de um dos nossos reels',
+  libD:'Escolha um reel publicado e criamos uma versão nova com o seu logótipo. É animado de novo de raiz, por isso os detalhes e o movimento serão diferentes do original. 3 dias úteis.',
+  s1p:'Uma versão nova de um dos nossos reels com o seu logótipo, uma cena criada para o seu estúdio ou um presente para uma amiga.',
+  t6h:'Cada reel é único', t6p:'Cada vídeo é animado de raiz. Uma versão nova de um reel existente será parecida com o original, mas nunca idêntica.' });
+Object.assign(T.tr, { libT:'Reel\'lerimizden birinin size özel versiyonu',
+  libD:'Yayınlanmış bir reel seçin, logonuzla yeni bir versiyonunu hazırlayalım. Sıfırdan yeniden canlandırıldığı için ayrıntılar ve hareketler orijinalinden farklı olur. 3 iş günü.',
+  s1p:'Reel\'lerimizden birinin logonuzla yeni bir versiyonu, stüdyonuz için hazırlanan bir sahne ya da bir arkadaşa hediye.',
+  t6h:'Her reel tektir', t6p:'Her video sıfırdan canlandırılır. Mevcut bir reel\'in yeni versiyonu orijinaline benzer ama asla birebir aynı olmaz.' });
+
+Object.assign(T.es, { heroNoteG:'Desde $99 · Entrega en 7 días hábiles',
+  tplT:'Elige una de nuestras escenas', tplD:'Elige una escena que ya sabemos que funciona y la hacemos para ti. La opción más rápida y económica. 7 días hábiles.',
+  giftT:'Tu propia idea', giftD:'Describe el momento que tienes en mente y lo convertimos en una escena. Solo para uso personal. 7 días hábiles.',
+  scL:'Elige una escena', sc1:'Soñando con pilates', sc2:'Teletrabajo en pareja', sc3:'Sofá con el perro', sc4:'Café de la mañana',
+  t2pG:'Te enviamos la escena por escrito para que la apruebes antes de animarla. Los cambios después de la entrega cuestan $50 por ronda.',
+  s1pG:'Elige una de nuestras escenas o describe tu propia idea.', s2pG:'Elige la ocasión y dinos para quién es. Añade una foto si quieres personajes parecidos a personas reales.',
+  s3pG:'Apruebas la escena por escrito y después te enviamos el archivo por correo.', reDG:'Los cambios después de la entrega se cobran por ronda.',
+  chD:'Diseñamos un personaje inspirado en una persona real: pelo, barba, gafas, estilo. Es un parecido de dibujo animado, no un retrato exacto. Solo adultos. Una segunda persona tiene un coste adicional.' });
+Object.assign(T.pt, { heroNoteG:'Desde $99 · Entrega em 7 dias úteis',
+  tplT:'Escolha uma das nossas cenas', tplD:'Escolha uma cena que já sabemos que resulta e fazemo-la para si. A opção mais rápida e económica. 7 dias úteis.',
+  giftT:'A sua própria ideia', giftD:'Descreva o momento que tem em mente e nós transformamo-lo numa cena. Apenas para uso pessoal. 7 dias úteis.',
+  scL:'Escolha uma cena', sc1:'A sonhar com pilates', sc2:'Teletrabalho a dois', sc3:'Sofá com o cão', sc4:'Café da manhã',
+  t2pG:'Enviamos-lhe a cena por escrito para aprovar antes de a animarmos. As alterações depois da entrega custam $50 por ronda.',
+  s1pG:'Escolha uma das nossas cenas ou descreva a sua própria ideia.', s2pG:'Escolha a ocasião e diga-nos para quem é. Junte uma foto se quiser personagens parecidas com pessoas reais.',
+  s3pG:'Aprova a cena por escrito e depois enviamos o ficheiro por email.', reDG:'As alterações depois da entrega são cobradas por ronda.',
+  chD:'Desenhamos uma personagem inspirada numa pessoa real: cabelo, barba, óculos, estilo. É uma semelhança em desenho animado, não um retrato exato. Apenas adultos. Uma segunda pessoa tem um custo adicional.' });
+Object.assign(T.tr, { heroNoteG:'$99\'dan başlayan fiyatlar · 7 iş gününde teslim',
+  tplT:'Sahnelerimizden birini seçin', tplD:'İşe yaradığını bildiğimiz bir sahneyi seçin, sizin için hazırlayalım. En hızlı ve en uygun fiyatlı seçenek. 7 iş günü.',
+  giftT:'Kendi fikriniz', giftD:'Aklınızdaki anı anlatın, biz onu bir sahneye dönüştürelim. Yalnızca kişisel kullanım. 7 iş günü.',
+  scL:'Bir sahne seçin', sc1:'Pilates rüyası', sc2:'Evden birlikte çalışmak', sc3:'Köpekle koltuk keyfi', sc4:'Sabah kahvesi',
+  t2pG:'Sahneyi canlandırmadan önce onaylamanız için yazılı olarak gönderiyoruz. Teslimattan sonraki değişiklikler tur başına $50.',
+  s1pG:'Sahnelerimizden birini seçin ya da kendi fikrinizi anlatın.', s2pG:'Vesileyi seçin ve kimin için olduğunu yazın. Gerçek kişilere benzeyen karakterler isterseniz bir fotoğraf ekleyin.',
+  s3pG:'Sahneyi yazılı olarak onaylarsınız, ardından dosyayı e-postayla göndeririz.', reDG:'Teslimattan sonraki değişiklikler tur başına ücretlendirilir.',
+  chD:'Gerçek bir kişiden esinlenen bir karakter tasarlıyoruz: saç, sakal, gözlük, tarz. Birebir portre değil, çizgi film benzerliğidir. Yalnızca yetişkinler. İkinci kişi için ek ücret alınır.' });
+
+Object.assign(T.es, { qL:'Calidad', qInc:'incluida', qHint:'Instagram muestra los reels a 1080p como máximo. El 4K es para pantallas grandes.',
+  t7h:'Primero, un borrador', t7p:'Recibes un borrador en baja resolución para aprobarlo antes de que generemos la calidad final. Incluye una ronda de cambios sobre el borrador.',
+  t7pG:'Apruebas la escena por escrito y después un borrador en baja resolución. Luego generamos la calidad final.',
+  t2p:'Cada ronda extra de cambios cuesta $50. Los cambios después de generar la versión final cuentan como ronda extra.',
+  t2pG:'Los cambios en una escena o un borrador que ya aprobaste cuestan $50 por ronda.',
+  s3p:'Te enviamos un borrador para aprobar y después el archivo final por correo. Incluye una ronda de cambios.',
+  s3pG:'Apruebas la escena por escrito y después un borrador. El archivo final llega por correo.' });
+Object.assign(T.pt, { qL:'Qualidade', qInc:'incluída', qHint:'O Instagram mostra os reels a 1080p no máximo. O 4K é para ecrãs grandes.',
+  t7h:'Primeiro, um rascunho', t7p:'Recebe um rascunho em baixa resolução para aprovar antes de gerarmos a qualidade final. Inclui uma ronda de alterações ao rascunho.',
+  t7pG:'Aprova a cena por escrito e depois um rascunho em baixa resolução. A seguir geramos a qualidade final.',
+  t2p:'Cada ronda extra de alterações custa $50. As alterações depois de gerada a versão final contam como ronda extra.',
+  t2pG:'As alterações a uma cena ou a um rascunho que já aprovou custam $50 por ronda.',
+  s3p:'Enviamos um rascunho para aprovar e depois o ficheiro final por email. Inclui uma ronda de alterações.',
+  s3pG:'Aprova a cena por escrito e depois um rascunho. O ficheiro final chega por email.' });
+Object.assign(T.tr, { qL:'Kalite', qInc:'dahil', qHint:'Instagram reel\'leri en fazla 1080p gösterir. 4K büyük ekranlar içindir.',
+  t7h:'Önce taslak', t7p:'Son kaliteyi üretmeden önce onaylamanız için düşük çözünürlüklü bir taslak gönderiyoruz. Taslak üzerinde bir değişiklik turu dahildir.',
+  t7pG:'Önce sahneyi yazılı olarak, ardından düşük çözünürlüklü bir taslağı onaylarsınız. Sonra son kaliteyi üretiriz.',
+  t2p:'Her ek değişiklik turu $50. Son sürüm üretildikten sonraki değişiklikler ek tur sayılır.',
+  t2pG:'Onayladığınız bir sahnede ya da taslakta yapılacak değişiklikler tur başına $50.',
+  s3p:'Onaylamanız için bir taslak, ardından son dosyayı e-postayla gönderiyoruz. Bir değişiklik turu dahildir.',
+  s3pG:'Sahneyi yazılı olarak, ardından bir taslağı onaylarsınız. Son dosya e-postayla gelir.' });
+
+Object.assign(T.es,{pr1:'Millones de visualizaciones en Instagram',pr2:'Miles de seguidores',pr3:'Compartido por estudios de pilates'});
+Object.assign(T.pt,{pr1:'Milhões de visualizações no Instagram',pr2:'Milhares de seguidores',pr3:'Partilhado por estúdios de pilates'});
+Object.assign(T.tr,{pr1:'Instagram\'da milyonlarca görüntülenme',pr2:'Binlerce takipçi',pr3:'Pilates stüdyoları paylaşıyor'});
+Object.assign(T.es,{fColors:'¿Alguna preferencia de colores? (opcional)',cHint:'Integramos tus colores en nuestro propio estilo.'});
+Object.assign(T.pt,{fColors:'Tem preferência de cores? (opcional)',cHint:'Integramos as suas cores no nosso próprio estilo.'});
+Object.assign(T.tr,{fColors:'Renk tercihiniz var mı? (isteğe bağlı)',cHint:'Renklerinizi kendi tarzımızla harmanlıyoruz.'});
+Object.assign(T.es,{pay:'Enviar mi solicitud',payNote:'Ahora no se paga nada. Revisamos cada solicitud y te enviamos un enlace de pago por correo en un máximo de 2 días hábiles.',
+  t8h:'Primero la solicitud, después el pago',t8p:'Enviar una solicitud no cuesta nada. Comprobamos que podemos hacerla y te respondemos con un enlace de pago. El trabajo empieza cuando llega el pago.',
+  s3p:'Confirmamos tu solicitud y te enviamos un enlace de pago. Después recibes un borrador para aprobar y el archivo final por correo. Incluye una ronda de cambios.',
+  s3pG:'Confirmamos tu solicitud y te enviamos un enlace de pago. Apruebas la escena por escrito y después un borrador, y el archivo final llega por correo.'});
+Object.assign(T.pt,{pay:'Enviar o meu pedido',payNote:'Não paga nada agora. Analisamos cada pedido e enviamos-lhe um link de pagamento por email no prazo de 2 dias úteis.',
+  t8h:'Primeiro o pedido, depois o pagamento',t8p:'Enviar um pedido não custa nada. Verificamos se o conseguimos fazer e respondemos com um link de pagamento. O trabalho começa quando o pagamento chega.',
+  s3p:'Confirmamos o seu pedido e enviamos um link de pagamento. Depois recebe um rascunho para aprovar e o ficheiro final por email. Inclui uma ronda de alterações.',
+  s3pG:'Confirmamos o seu pedido e enviamos um link de pagamento. Aprova a cena por escrito e depois um rascunho, e o ficheiro final chega por email.'});
+Object.assign(T.tr,{pay:'Talebimi gönder',payNote:'Şimdi ödeme yok. Her talebi inceliyor ve 2 iş günü içinde ödeme bağlantısını e-postayla gönderiyoruz.',
+  t8h:'Önce talep, sonra ödeme',t8p:'Talep göndermek ücretsizdir. Yapıp yapamayacağımızı kontrol eder ve ödeme bağlantısıyla yanıt veririz. Çalışma, ödeme ulaştığında başlar.',
+  s3p:'Talebinizi onaylar ve ödeme bağlantısını göndeririz. Ardından onaylamanız için bir taslak ve son dosyayı e-postayla alırsınız. Bir değişiklik turu dahildir.',
+  s3pG:'Talebinizi onaylar ve ödeme bağlantısını göndeririz. Sahneyi yazılı olarak, ardından bir taslağı onaylarsınız; son dosya e-postayla gelir.'});
+Object.assign(T.es,{rlL:'Elige un reel',rl1:'Clase de reformer en el patio',rl2:'La plancha',rl3:'Llegando al estudio',rl4:'Equilibrio en el reformer',rl5:'Tumbada en el reformer',
+  fLink:'O pega el enlace de otro reel (opcional)',pickHint:'Toca una opción para seleccionarla. Tu elección aparece en el resumen antes de enviar.'});
+Object.assign(T.pt,{rlL:'Escolha um reel',rl1:'Aula de reformer no pátio',rl2:'A prancha',rl3:'A chegar ao estúdio',rl4:'Equilíbrio no reformer',rl5:'Deitada no reformer',
+  fLink:'Ou cole o link de outro reel (opcional)',pickHint:'Toque numa opção para a selecionar. A sua escolha aparece no resumo antes de enviar.'});
+Object.assign(T.tr,{rlL:'Bir reel seçin',rl1:'Avluda reformer dersi',rl2:'Plank',rl3:'Stüdyoya varış',rl4:'Reformer\'da denge',rl5:'Reformer\'da uzanmak',
+  fLink:'Ya da başka bir reel\'in bağlantısını yapıştırın (isteğe bağlı)',pickHint:'Seçmek için birine dokunun. Seçiminiz göndermeden önce özette görünür.'});
+Object.assign(T.es,{pay:'Continuar al pago',payNote:'Ahora solo se reserva el importe en tu tarjeta. Confirmamos en un máximo de 2 días hábiles y entonces se cobra. Si no podemos hacer tu pedido, la reserva se libera y no pagas nada.',
+  t8h:'Pide ahora, se cobra al confirmar',t8p:'Completas tu pedido al momento. El importe se reserva en tu tarjeta, no se cobra. Confirmamos en un máximo de 2 días hábiles y entonces se cobra. Si no podemos hacerlo, la reserva se libera.',
+  s3p:'Confirmamos tu pedido, te enviamos un borrador para aprobar y después el archivo final por correo. Incluye una ronda de cambios.',
+  s3pG:'Confirmamos tu pedido. Apruebas la escena por escrito y después un borrador, y el archivo final llega por correo.'});
+Object.assign(T.pt,{pay:'Continuar para o pagamento',payNote:'Agora o valor fica apenas reservado no seu cartão. Confirmamos no prazo de 2 dias úteis e só então é cobrado. Se não pudermos fazer a sua encomenda, a reserva é libertada e não paga nada.',
+  t8h:'Encomende agora, cobrado na confirmação',t8p:'Conclui a sua encomenda de imediato. O valor fica reservado no cartão, não é cobrado. Confirmamos no prazo de 2 dias úteis e só então é cobrado. Se não a pudermos fazer, a reserva é libertada.',
+  s3p:'Confirmamos a sua encomenda, enviamos um rascunho para aprovar e depois o ficheiro final por email. Inclui uma ronda de alterações.',
+  s3pG:'Confirmamos a sua encomenda. Aprova a cena por escrito e depois um rascunho, e o ficheiro final chega por email.'});
+Object.assign(T.tr,{pay:'Ödemeye geç',payNote:'Şu anda tutar kartınızda yalnızca bloke edilir. 2 iş günü içinde onaylarız ve tutar o zaman tahsil edilir. Siparişinizi yapamazsak bloke kaldırılır ve hiçbir ücret ödemezsiniz.',
+  t8h:'Şimdi sipariş verin, onayda tahsil edilir',t8p:'Siparişinizi hemen tamamlarsınız. Tutar kartınızda bloke edilir, tahsil edilmez. 2 iş günü içinde onaylarız ve o zaman tahsil edilir. Yapamazsak bloke kaldırılır.',
+  s3p:'Siparişinizi onaylar, onaylamanız için bir taslak ve ardından son dosyayı e-postayla göndeririz. Bir değişiklik turu dahildir.',
+  s3pG:'Siparişinizi onaylarız. Sahneyi yazılı olarak, ardından bir taslağı onaylarsınız; son dosya e-postayla gelir.'});
+Object.assign(T.es,{fNotesReq:'Describe la escena que quieres',fNotesOpt:'¿Algo que añadir? (opcional)',nHintS:'Por ejemplo: una primera clase en la que todo sale mal, con nuestro logo en la pared.',nHintG:'Por ejemplo: viene a mi clase de pilates por primera vez y se arrepiente.'});
+Object.assign(T.pt,{fNotesReq:'Descreva a cena que pretende',fNotesOpt:'Algo a acrescentar? (opcional)',nHintS:'Por exemplo: uma primeira aula em que tudo corre mal, com o nosso logótipo na parede.',nHintG:'Por exemplo: ele vem à minha aula de pilates pela primeira vez e arrepende-se.'});
+Object.assign(T.tr,{fNotesReq:'İstediğiniz sahneyi anlatın',fNotesOpt:'Eklemek istediğiniz bir şey var mı? (isteğe bağlı)',nHintS:'Örneğin: her şeyin ters gittiği bir ilk ders, duvarda logomuzla.',nHintG:'Örneğin: pilates dersime ilk kez geliyor ve pişman oluyor.'});
+Object.assign(T.es,{fRole:'¿Quién debe ser el personaje?',r1:'La alumna',r2:'La instructora',r3:'Las dos'});
+Object.assign(T.pt,{fRole:'Quem deve ser a personagem?',r1:'A aluna',r2:'A instrutora',r3:'As duas'});
+Object.assign(T.tr,{fRole:'Karakter kim olsun?',r1:'Öğrenci',r2:'Eğitmen',r3:'İkisi de'});
+Object.assign(T.es,{wReel:'Reel',wScene:'Escena'}); Object.assign(T.pt,{wReel:'Reel',wScene:'Cena'}); Object.assign(T.tr,{wReel:'Reel',wScene:'Sahne'});
+Object.assign(T.es,{t2p:'Cada ronda extra de cambios en el borrador cuesta $50.',t2pG:'Los cambios en el borrador cuestan $50 por ronda.',
+  t9h:'Lo final es final',t9p:'Aprobar el borrador es tu último paso. Una vez entregada la versión final, el pedido está completo y no hacemos más cambios.',
+  t4p:'Reembolso completo hasta que empecemos a trabajar. Cuando apruebas el borrador, el pedido es definitivo y no se reembolsa. Si un archivo llega dañado, te lo enviamos de nuevo.',
+  reD:'Para la fase de borrador. Ya incluye una ronda.',reDG:'Solo para la fase de borrador.',
+  s3p:'Confirmamos tu pedido, te enviamos un borrador para aprobar y después el archivo final por correo. Incluye una ronda de cambios en el borrador. La versión aprobada es definitiva.',
+  s3pG:'Confirmamos tu pedido. Apruebas la escena por escrito y después un borrador, y el archivo final llega por correo. La versión aprobada es definitiva.'});
+Object.assign(T.pt,{t2p:'Cada ronda extra de alterações ao rascunho custa $50.',t2pG:'As alterações ao rascunho custam $50 por ronda.',
+  t9h:'Final é final',t9p:'Aprovar o rascunho é o seu último passo. Depois de entregue a versão final, a encomenda está concluída e não fazemos mais alterações.',
+  t4p:'Reembolso total até começarmos o trabalho. Depois de aprovar o rascunho, a encomenda é definitiva e não é reembolsável. Se um ficheiro chegar danificado, enviamo-lo de novo.',
+  reD:'Para a fase de rascunho. Uma ronda já está incluída.',reDG:'Apenas para a fase de rascunho.',
+  s3p:'Confirmamos a sua encomenda, enviamos um rascunho para aprovar e depois o ficheiro final por email. Inclui uma ronda de alterações ao rascunho. A versão aprovada é definitiva.',
+  s3pG:'Confirmamos a sua encomenda. Aprova a cena por escrito e depois um rascunho, e o ficheiro final chega por email. A versão aprovada é definitiva.'});
+Object.assign(T.tr,{t2p:'Taslak üzerindeki her ek değişiklik turu $50.',t2pG:'Taslak üzerindeki değişiklikler tur başına $50.',
+  t9h:'Son sürüm kesindir',t9p:'Taslağı onaylamak son adımınızdır. Son sürüm teslim edildikten sonra sipariş tamamlanır ve başka değişiklik yapılmaz.',
+  t4p:'Çalışmaya başlamadan önce tam iade. Taslağı onayladıktan sonra sipariş kesinleşir ve iade edilmez. Dosya bozuk ulaşırsa yeniden göndeririz.',
+  reD:'Taslak aşaması için. Bir tur zaten dahildir.',reDG:'Yalnızca taslak aşaması için.',
+  s3p:'Siparişinizi onaylar, onaylamanız için bir taslak ve ardından son dosyayı e-postayla göndeririz. Taslakta bir değişiklik turu dahildir. Onaylanan sürüm kesindir.',
+  s3pG:'Siparişinizi onaylarız. Sahneyi yazılı olarak, ardından bir taslağı onaylarsınız; son dosya e-postayla gelir. Onaylanan sürüm kesindir.'});
+T.es.cTerms='Acepto las condiciones de abajo. Entiendo que, una vez que apruebe el borrador, el pedido es definitivo y no se reembolsa.';
+T.pt.cTerms='Aceito os termos abaixo. Compreendo que, depois de aprovar o rascunho, a encomenda é definitiva e não é reembolsável.';
+T.tr.cTerms='Aşağıdaki koşulları kabul ediyorum. Taslağı onayladıktan sonra siparişin kesinleştiğini ve iade edilmediğini anlıyorum.';
+Object.assign(T.es,{skip:'Ir al formulario de pedido',a11yBtn:'Accesibilidad',a11y1:'Pausar los vídeos',a11y2:'Texto más grande',a11y3:'Alto contraste',a11yS:'Accesibilidad: trabajamos para cumplir las pautas WCAG 2.1 AA. Si algo te resulta difícil de usar, escríbenos y te ayudamos.'});
+Object.assign(T.pt,{skip:'Ir para o formulário de encomenda',a11yBtn:'Acessibilidade',a11y1:'Pausar os vídeos',a11y2:'Texto maior',a11y3:'Alto contraste',a11yS:'Acessibilidade: trabalhamos para cumprir as diretrizes WCAG 2.1 AA. Se algo for difícil de usar, escreva-nos e ajudamos.'});
+Object.assign(T.tr,{skip:'Sipariş formuna geç',a11yBtn:'Erişilebilirlik',a11y1:'Videoları duraklat',a11y2:'Daha büyük yazı',a11y3:'Yüksek karşıtlık',a11yS:'Erişilebilirlik: WCAG 2.1 AA yönergelerine uymak için çalışıyoruz. Kullanmakta zorlandığınız bir şey olursa bize yazın, yardımcı olalım.'});
+Object.assign(T.es,{whyH:'Por qué tu estudio lo necesita',whyP:'Mejora tu marketing con reels animados en el estilo que alcanzó millones de visualizaciones.',
+  w1h:'Contenido que la gente comparte',w1p:'Los momentos divertidos y cercanos son los que tus clientas envían a sus amigas y republican en sus historias.',
+  w2h:'Llama la atención de nuevas clientas',w2p:'Un reel animado destaca en un feed lleno de los mismos vídeos de entrenamiento y da a gente nueva un motivo para fijarse en tu estudio.',
+  w3h:'Sin grabar ni editar',w3p:'Sin cámara, sin modelos y sin día de rodaje. Rellenas un formulario y nosotros hacemos el resto.',
+  w4h:'Tu marca en la escena',w4p:'Tu logo en la pared, tus colores en la sala e incluso un personaje que se parece a ti.',
+  whyHG:'Por qué es un gran regalo',g1h:'Personal, no genérico',g1p:'Una escena sobre tu pareja y tú dice más que otra tarjeta regalo.',
+  g2h:'Llega por correo electrónico',g2p:'Sin envíos ni envoltorios. Listo para mandar en un mensaje o publicar ese mismo día.',
+  g3h:'Hecho para compartir',g3p:'Un reel corto que tus amigas sí verán hasta el final.'});
+Object.assign(T.pt,{whyH:'Porque é que o seu estúdio precisa disto',whyP:'Melhore o seu marketing com reels animados no estilo que chegou a milhões de visualizações.',
+  w1h:'Conteúdo que as pessoas partilham',w1p:'Os momentos divertidos e familiares são os que as clientes enviam às amigas e republicam nas histórias.',
+  w2h:'Chame a atenção de novas clientes',w2p:'Um reel animado destaca-se num feed cheio dos mesmos vídeos de treino e dá a pessoas novas um motivo para reparar no seu estúdio.',
+  w3h:'Sem filmar nem editar',w3p:'Sem câmara, sem modelos e sem dia de filmagens. Preenche um formulário e nós tratamos do resto.',
+  w4h:'A sua marca na cena',w4p:'O seu logótipo na parede, as suas cores na sala e até uma personagem parecida consigo.',
+  whyHG:'Porque é um ótimo presente',g1h:'Pessoal, não genérico',g1p:'Uma cena sobre vocês os dois diz mais do que outro cartão-presente.',
+  g2h:'Chega por email',g2p:'Sem envios nem embrulhos. Pronto para enviar numa mensagem ou publicar no próprio dia.',
+  g3h:'Feito para partilhar',g3p:'Um reel curto que as suas amigas vão mesmo ver até ao fim.'});
+Object.assign(T.tr,{whyH:'Stüdyonuzun buna neden ihtiyacı var',whyP:'Milyonlarca görüntülenmeye ulaşan tarzda animasyon reel\'lerle pazarlamanızı güçlendirin.',
+  w1h:'İnsanların paylaştığı içerik',w1p:'Üyelerinizin arkadaşlarına gönderdiği ve hikâyelerinde yeniden paylaştığı şeyler, eğlenceli ve tanıdık anlardır.',
+  w2h:'Yeni üyelerin dikkatini çekin',w2p:'Animasyon bir reel, aynı antrenman videolarıyla dolu bir akışta öne çıkar ve yeni insanlara stüdyonuza bakmak için bir neden verir.',
+  w3h:'Çekim yok, kurgu yok',w3p:'Kamera, model ya da çekim günü yok. Bir form doldurursunuz, gerisini biz hallederiz.',
+  w4h:'Sahnede sizin markanız',w4p:'Duvarda logonuz, salonda renkleriniz ve hatta size benzeyen bir karakter.',
+  whyHG:'Neden harika bir hediye',g1h:'Kişisel, sıradan değil',g1p:'İkinizi anlatan bir sahne, bir hediye çekinden çok daha fazlasını söyler.',
+  g2h:'E-postayla gelir',g2p:'Kargo ya da paket yok. O gün mesajla göndermeye ya da paylaşmaya hazır.',
+  g3h:'Paylaşılmak için yapıldı',g3p:'Arkadaşlarınızın gerçekten sonuna kadar izleyeceği kısa bir reel.'});
+Object.assign(T.es,{audS:'Para negocios',h1:'Tu negocio, en un reel de los Oopsleys.',
+  heroP:'Momentos animados y divertidos que tus clientes querrán compartir, con tu logo en la escena. Para estudios de pilates y de baile, gimnasios, salones de uñas y cualquier negocio con una historia. Sin llamadas. Haz tu pedido en unos tres minutos.',
+  cusD:'Un momento nuevo creado para tu negocio: tu espacio, tus colores, tu logo. 7 días hábiles.',
+  s1p:'Una versión nueva de uno de nuestros reels con tu logo o una escena creada para tu negocio.',s2p:'Cuéntanos sobre tu negocio y la escena que quieres, y sube tu logo.',
+  fHandle:'Usuario de Instagram o nombre del negocio',fEquip:'Tipo de negocio',eqHint:'Por ejemplo: estudio de pilates, gimnasio, salón de uñas, estudio de baile',
+  t3p:'Los pedidos de negocios incluyen licencia para publicar el reel en tus redes sociales y tu web. Los anuncios de pago y la reventa requieren una licencia aparte. El personaje de los Oopsleys sigue siendo nuestro.',
+  whyH:'Por qué tu negocio lo necesita',w2p:'Un reel animado destaca en un feed lleno de publicaciones parecidas y da a gente nueva un motivo para fijarse en tu negocio.',
+  r1:'La clienta',r2:'La dueña o alguien del equipo',a4:'Pronto habrá un plan mensual para negocios. Escríbenos si quieres ser de las primeras.'});
+Object.assign(T.pt,{audS:'Para negócios',h1:'O seu negócio, num reel dos Oopsleys.',
+  heroP:'Momentos animados e divertidos que os seus clientes vão querer partilhar, com o seu logótipo na cena. Para estúdios de pilates e de dança, ginásios, salões de unhas e qualquer negócio com uma história. Sem chamadas. Encomende em cerca de três minutos.',
+  cusD:'Um momento novo criado para o seu negócio: o seu espaço, as suas cores, o seu logótipo. 7 dias úteis.',
+  s1p:'Uma versão nova de um dos nossos reels com o seu logótipo ou uma cena criada para o seu negócio.',s2p:'Fale-nos do seu negócio e da cena que pretende, e carregue o seu logótipo.',
+  fHandle:'Conta de Instagram ou nome do negócio',fEquip:'Tipo de negócio',eqHint:'Por exemplo: estúdio de pilates, ginásio, salão de unhas, estúdio de dança',
+  t3p:'As encomendas de negócios incluem licença para publicar o reel nas suas redes sociais e no seu site. Anúncios pagos e revenda exigem uma licença à parte. A personagem dos Oopsleys continua a ser nossa.',
+  whyH:'Porque é que o seu negócio precisa disto',w2p:'Um reel animado destaca-se num feed cheio de publicações parecidas e dá a pessoas novas um motivo para reparar no seu negócio.',
+  r1:'A cliente',r2:'A dona ou alguém da equipa',a4:'Vem aí um plano mensal para negócios. Envie mensagem se quiser ser das primeiras.'});
+Object.assign(T.tr,{audS:'İşletmeler için',h1:'İşletmeniz, bir Oopsleys reel\'inde.',
+  heroP:'Müşterilerinizin paylaşmak isteyeceği eğlenceli animasyon anları, sahnede sizin logonuzla. Pilates ve dans stüdyoları, spor salonları, tırnak salonları ve hikâyesi olan her işletme için. Görüşme gerekmez. Yaklaşık üç dakikada sipariş verin.',
+  cusD:'İşletmeniz için hazırlanan yeni bir an: mekânınız, renkleriniz ve logonuz. 7 iş günü.',
+  s1p:'Reel\'lerimizden birinin logonuzla yeni bir versiyonu ya da işletmeniz için hazırlanan bir sahne.',s2p:'İşletmenizi ve istediğiniz sahneyi anlatın, ardından logonuzu yükleyin.',
+  fHandle:'Instagram kullanıcı adı ya da işletme adı',fEquip:'İşletme türü',eqHint:'Örneğin: pilates stüdyosu, spor salonu, tırnak salonu, dans stüdyosu',
+  t3p:'İşletme siparişleri, reel\'i kendi sosyal medya hesaplarınızda ve sitenizde paylaşma lisansını içerir. Ücretli reklam ve yeniden satış için ayrı lisans gerekir. Oopsleys karakteri bize aittir.',
+  whyH:'İşletmenizin buna neden ihtiyacı var',w2p:'Animasyon bir reel, birbirine benzeyen paylaşımlarla dolu bir akışta öne çıkar ve yeni insanlara işletmenize bakmak için bir neden verir.',
+  r1:'Müşteri',r2:'İşletme sahibi ya da ekipten biri',a4:'İşletmeler için aylık plan yakında geliyor. İlk olmak isterseniz bize yazın.'});
+Object.assign(T.es,{moreH:'Nuestros reels, por número',moreP:'Cada reel tiene un número. Úsalo al hacer tu pedido.',moreAll:'Ver todos los reels en una página →',catH:'Todos los reels',catP:'Toca "Pedir este" debajo de un reel para empezar un pedido con él.',catBack:'← Volver',catOrder:'Pedir este'});
+Object.assign(T.pt,{moreH:'Os nossos reels, por número',moreP:'Cada reel tem um número. Use-o ao encomendar.',moreAll:'Ver todos os reels numa página →',catH:'Todos os reels',catP:'Toque em "Encomendar este" por baixo de um reel para começar uma encomenda com ele.',catBack:'← Voltar',catOrder:'Encomendar este'});
+Object.assign(T.tr,{moreH:'Reel\'lerimiz, numaralarıyla',moreP:'Her reel\'in bir numarası var. Sipariş verirken onu kullanın.',moreAll:'Tüm reel\'leri tek sayfada görün →',catH:'Tüm reel\'ler',catP:'Bir reel ile sipariş başlatmak için altındaki "Bunu sipariş et" düğmesine dokunun.',catBack:'← Geri',catOrder:'Bunu sipariş et'});
+
+Object.assign(T.es,{libD:'Elige un reel publicado y creamos una versión nueva con tu logo. Se anima de nuevo desde cero, así que los detalles y el movimiento serán distintos del original. Por ahora nuestros reels transcurren en un estudio de pilates. 3 días hábiles.',
+  soon:'Próximamente: reels para gimnasios, estudios de baile y salones. Para otro tipo de negocio, elige una escena a medida.',toCustom:'Cambiar a escena a medida'});
+Object.assign(T.pt,{libD:'Escolha um reel publicado e criamos uma versão nova com o seu logótipo. É animado de novo de raiz, por isso os detalhes e o movimento serão diferentes do original. Por agora, os nossos reels passam-se num estúdio de pilates. 3 dias úteis.',
+  soon:'Em breve: reels para ginásios, estúdios de dança e salões. Para outro tipo de negócio, escolha uma cena personalizada.',toCustom:'Mudar para cena personalizada'});
+Object.assign(T.tr,{libD:'Yayınlanmış bir reel seçin, logonuzla yeni bir versiyonunu hazırlayalım. Sıfırdan yeniden canlandırıldığı için ayrıntılar ve hareketler orijinalinden farklı olur. Şimdilik reel\'lerimiz bir pilates stüdyosunda geçiyor. 3 iş günü.',
+  soon:'Yakında: spor salonları, dans stüdyoları ve salonlar için reel\'ler. Başka türde bir işletme için özel sahneyi seçin.',toCustom:'Özel sahneye geç'});
+
+Object.assign(T.es,{fullBar:'Hoy estamos completos.',fullLink:'Únete a la lista de espera',fullH:'Hoy estamos completos',
+  fullP:'Aceptamos un número limitado de pedidos al día para dedicar a cada reel la atención que merece. Déjanos tu correo y te escribiremos en cuanto haya una plaza. Ahora no hace falta pagar ni dar más datos.',
+  wEmail:'Tu correo',spotsN:'Plazas disponibles hoy: {n}',wDone:'Modo borrador: no se ha enviado nada. En el sitio real, este correo se añadiría a la lista de espera.',wErr:'Introduce un correo válido.'});
+Object.assign(T.pt,{fullBar:'Hoje estamos completos.',fullLink:'Junte-se à lista de espera',fullH:'Hoje estamos completos',
+  fullP:'Aceitamos um número limitado de encomendas por dia para dar a cada reel a atenção que merece. Deixe o seu email e escrevemos-lhe assim que houver uma vaga. Não é preciso pagar nem dar mais dados agora.',
+  wEmail:'O seu email',spotsN:'Vagas disponíveis hoje: {n}',wDone:'Modo de rascunho: nada foi enviado. No site real, este email entraria na lista de espera.',wErr:'Introduza um email válido.'});
+Object.assign(T.tr,{fullBar:'Bugün için doluyuz.',fullLink:'Bekleme listesine katılın',fullH:'Bugün için doluyuz',
+  fullP:'Her reel\'e gereken özeni gösterebilmek için günde sınırlı sayıda sipariş alıyoruz. E-postanızı bırakın, yer açılır açılmaz size yazalım. Şimdi ödeme ya da başka bilgi gerekmez.',
+  wEmail:'E-postanız',spotsN:'Bugün kalan yer: {n}',wDone:'Taslak modu: hiçbir şey gönderilmedi. Yayındaki sitede bu e-posta bekleme listesine eklenir.',wErr:'Lütfen geçerli bir e-posta girin.'});
+
+Object.assign(T.es,{fullBar:'Ahora mismo estamos completos.',fullH:'Ahora mismo estamos completos',viewNote:'Precios de referencia. Los pedidos se reabren cuando haya una plaza libre.'});
+Object.assign(T.pt,{fullBar:'De momento estamos completos.',fullH:'De momento estamos completos',viewNote:'Preços para referência. As encomendas reabrem quando houver uma vaga.'});
+Object.assign(T.tr,{fullBar:'Şu anda doluyuz.',fullH:'Şu anda doluyuz',viewNote:'Fiyatlar bilgi amaçlıdır. Yer açıldığında sipariş yeniden açılır.'});
+
+Object.assign(T.es,{ruD:'Entrega en 48 horas desde nuestra confirmación.',
+  t1p:'Los plazos de entrega empiezan cuando confirmamos tu pedido y tenemos todo lo que necesitamos de ti, como tu logo o una foto. El tiempo de espera de tu aprobación no cuenta.',
+  t10h:'Tus datos',t10p:'Usamos tu correo, tu logo y tus fotos solo para crear y entregar tu pedido. Las fotos de referencia se eliminan después de la entrega. Nunca las vendemos ni las compartimos.'});
+Object.assign(T.pt,{ruD:'Entrega em 48 horas após a nossa confirmação.',
+  t1p:'Os prazos de entrega começam quando confirmamos a sua encomenda e temos tudo o que precisamos de si, como o logótipo ou uma foto. O tempo de espera pela sua aprovação não conta.',
+  t10h:'Os seus dados',t10p:'Usamos o seu email, o seu logótipo e as suas fotos apenas para criar e entregar a sua encomenda. As fotos de referência são eliminadas depois da entrega. Nunca as vendemos nem partilhamos.'});
+Object.assign(T.tr,{ruD:'Onayımızdan sonraki 48 saat içinde teslim.',
+  t1p:'Teslim süreleri, siparişinizi onayladığımızda ve logonuz ya da fotoğrafınız gibi sizden gereken her şey elimize ulaştığında başlar. Onayınızı beklediğimiz süre sayılmaz.',
+  t10h:'Bilgileriniz',t10p:'E-postanızı, logonuzu ve fotoğraflarınızı yalnızca siparişinizi hazırlamak ve teslim etmek için kullanırız. Referans fotoğraflar teslimattan sonra silinir. Bunları asla satmayız ya da paylaşmayız.'});
+
+Object.assign(T.es,{fPeople:'¿Cuántas personas?',p1:'1 persona',p2:'2 personas'});
+Object.assign(T.pt,{fPeople:'Quantas pessoas?',p1:'1 pessoa',p2:'2 pessoas'});
+Object.assign(T.tr,{fPeople:'Kaç kişi?',p1:'1 kişi',p2:'2 kişi'});
+
+Object.assign(T.es,{libD:'Elige un reel publicado y creamos una versión nueva con tu logo. Se anima de nuevo desde cero, así que los detalles y el movimiento serán distintos del original. Por ahora nuestros reels transcurren en un estudio de pilates. Borrador en 3 días hábiles.',
+  cusD:'Un momento nuevo creado para tu negocio: tu espacio, tus colores, tu logo. Borrador en 5 días hábiles.',
+  tplD:'Elige una escena que ya sabemos que funciona y la hacemos para ti. La opción más rápida y económica. Borrador en 5 días hábiles.',
+  giftD:'Describe el momento que tienes en mente y lo convertimos en una escena. Solo para uso personal. Borrador en 5 días hábiles.',
+  heroNote:'Desde $179 · Primer borrador en 3 a 5 días hábiles',heroNoteG:'Desde $99 · Primer borrador en 5 días hábiles',
+  ruD:'Borrador en 48 horas desde nuestra confirmación.',delivery:'Borrador en',dStd:'5 días hábiles',
+  t1p:'El plazo del borrador empieza cuando confirmamos tu pedido y tenemos todo lo que necesitamos de ti, como tu logo o una foto. Cuando apruebas el borrador, la versión final llega en un día hábil.'});
+Object.assign(T.pt,{libD:'Escolha um reel publicado e criamos uma versão nova com o seu logótipo. É animado de novo de raiz, por isso os detalhes e o movimento serão diferentes do original. Por agora, os nossos reels passam-se num estúdio de pilates. Rascunho em 3 dias úteis.',
+  cusD:'Um momento novo criado para o seu negócio: o seu espaço, as suas cores, o seu logótipo. Rascunho em 5 dias úteis.',
+  tplD:'Escolha uma cena que já sabemos que resulta e fazemo-la para si. A opção mais rápida e económica. Rascunho em 5 dias úteis.',
+  giftD:'Descreva o momento que tem em mente e nós transformamo-lo numa cena. Apenas para uso pessoal. Rascunho em 5 dias úteis.',
+  heroNote:'Desde $179 · Primeiro rascunho em 3 a 5 dias úteis',heroNoteG:'Desde $99 · Primeiro rascunho em 5 dias úteis',
+  ruD:'Rascunho em 48 horas após a nossa confirmação.',delivery:'Rascunho em',dStd:'5 dias úteis',
+  t1p:'O prazo do rascunho começa quando confirmamos a sua encomenda e temos tudo o que precisamos de si, como o logótipo ou uma foto. Depois de aprovar o rascunho, a versão final chega no prazo de um dia útil.'});
+Object.assign(T.tr,{libD:'Yayınlanmış bir reel seçin, logonuzla yeni bir versiyonunu hazırlayalım. Sıfırdan yeniden canlandırıldığı için ayrıntılar ve hareketler orijinalinden farklı olur. Şimdilik reel\'lerimiz bir pilates stüdyosunda geçiyor. Taslak 3 iş gününde.',
+  cusD:'İşletmeniz için hazırlanan yeni bir an: mekânınız, renkleriniz ve logonuz. Taslak 5 iş gününde.',
+  tplD:'İşe yaradığını bildiğimiz bir sahneyi seçin, sizin için hazırlayalım. En hızlı ve en uygun fiyatlı seçenek. Taslak 5 iş gününde.',
+  giftD:'Aklınızdaki anı anlatın, biz onu bir sahneye dönüştürelim. Yalnızca kişisel kullanım. Taslak 5 iş gününde.',
+  heroNote:'$179\'dan başlayan fiyatlar · İlk taslak 3 ila 5 iş gününde',heroNoteG:'$99\'dan başlayan fiyatlar · İlk taslak 5 iş gününde',
+  ruD:'Onayımızdan sonraki 48 saat içinde taslak.',delivery:'Taslak süresi',dStd:'5 iş günü',
+  t1p:'Taslak süresi, siparişinizi onayladığımızda ve logonuz ya da fotoğrafınız gibi sizden gereken her şey elimize ulaştığında başlar. Taslağı onayladıktan sonra son sürüm bir iş günü içinde ulaşır.'});
+
+Object.assign(T.es,{igFollow:'Síguenos en Instagram',fullP2:'Aceptamos un número limitado de pedidos al día para dedicar a cada reel la atención que merece. Síguenos en Instagram para enterarte en cuanto se abran los pedidos.'});
+Object.assign(T.pt,{igFollow:'Siga-nos no Instagram',fullP2:'Aceitamos um número limitado de encomendas por dia para dar a cada reel a atenção que merece. Siga-nos no Instagram para saber assim que as encomendas abrirem.'});
+Object.assign(T.tr,{igFollow:'Instagram\'da bizi takip edin',fullP2:'Her reel\'e gereken özeni gösterebilmek için günde sınırlı sayıda sipariş alıyoruz. Siparişler açıldığında haberdar olmak için bizi Instagram\'da takip edin.'});
+
+Object.assign(T.es,{soonBar:'Los pedidos se abren pronto.',soonH:'Los pedidos se abren pronto',soonNote:'Precios de referencia. Los pedidos se abren pronto.'});
+Object.assign(T.pt,{soonBar:'As encomendas abrem em breve.',soonH:'As encomendas abrem em breve',soonNote:'Preços para referência. As encomendas abrem em breve.'});
+Object.assign(T.tr,{soonBar:'Siparişler yakında açılıyor.',soonH:'Siparişler yakında açılıyor',soonNote:'Fiyatlar bilgi amaçlıdır. Siparişler yakında açılıyor.'});
+
+var lang = 'en';
+var aud = 'studio';
+var nodes = document.querySelectorAll('[data-i18n]');
+nodes.forEach(function(n){ var k=n.getAttribute('data-i18n'); if(!(k in T.en)) T.en[k]=n.textContent; });
+function tr(k){ return (T[lang] && T[lang][k]) || T.en[k] || k; }
+function setLang(l){
+  lang = T[l] ? l : 'en';
+  document.documentElement.lang = lang;
+  nodes.forEach(function(n){ n.textContent = tr(n.getAttribute('data-i18n')); });
+  document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang===lang)); });
+  try{ localStorage.setItem('oopsLang', lang); }catch(e){}
+  render();
+}
+
+var $ = function(id){ return document.getElementById(id); };
+function state(){
+  var f = document.querySelector('input[name=format]:checked').value;
+  return { aud:aud, format:f, ppl:Number(document.querySelector('input[name=ppl]:checked').value), q:document.querySelector('input[name=q]:checked').value, scene:(document.querySelector('input[name=scene]:checked')||{}).value||'', pick:(document.querySelector('input[name=pick]:checked')||{}).value||'', len:Number(document.querySelector('input[name=len]:checked').value),
+    character:$('ad-character').checked, rush:$('ad-rush').checked, revision:$('ad-revision').checked };
+}
+function lines(o){
+  var a=[];
+  if(o.format==='lib') a.push(tr('libT')+(o.pick?' · '+tr('wReel')+' #'+o.pick:'')); else a.push(tr(o.format==='gift'?'giftT':o.format==='tpl'?'tplT':'cusT')+(o.format==='tpl'&&o.scene?' · '+tr('wScene')+' #'+o.scene:'')+' · '+tr(o.len===15?'sec15':'sec30'));
+  a.push(o.q==='4k'?'4K':'1080p');
+  if(o.character) a.push(tr('chT')+(o.ppl===2?' · '+tr('p2'):(aud==='studio'?' ('+tr($('role').value)+')':'')));
+  if(o.rush) a.push(tr('ruT'));
+  if(o.revision) a.push(tr('reT'));
+  a.push(tr('delivery')+': '+(o.rush?tr('dRush'):o.format==='lib'?tr('dLib'):tr('dStd')));
+  return a;
+}
+function render(){
+  var o = state(), lib = o.format==='lib';
+  o = state();
+  document.querySelectorAll('[data-aud]').forEach(function(el){ el.hidden = el.dataset.aud !== aud; });
+  document.querySelectorAll('[data-audlink]').forEach(function(el){ el.setAttribute('aria-current', String(el.dataset.audlink===aud)); });
+  var personal = o.format==='gift' || o.format==='tpl';
+  var kind = lib ? 'custom' : o.format;
+  $('lenBox').hidden = lib;
+  $('len15t').textContent = tr('sec15')+' · $'+PRICES[kind+'15'];
+  $('len30t').textContent = tr('sec30')+' · $'+PRICES[kind+'30'];
+  $('cusPrice').textContent = '$'+PRICES['custom'+(o.len===15?15:30)];
+  $('giftPrice').textContent = '$'+PRICES['gift'+(o.len===15?15:30)];
+  $('tplPrice').textContent = '$'+PRICES['tpl'+(o.len===15?15:30)];
+  $('chPrice').textContent = '+$'+(aud==='gift'?PRICES.characterG:PRICES.character);
+  $('reDesc').textContent = tr(aud==='gift'?'reDG':'reD');
+  var full = isFull();
+  $('fullBar').hidden = !full; $('fullBox').hidden = !full;
+  $('form').classList.toggle('viewonly', full);
+  $('fs1').disabled = full; $('fs2').disabled = full;
+  ['fs3','payNote','totalbar'].forEach(function(id){ $(id).hidden = full; });
+  $('viewNote').hidden = !full;
+  if(full){ $('err').hidden = true; $('result').hidden = true; }
+  var hasWl = SITE.draft || !!SITE.waitlistUrl;
+  $('waitForm').hidden = !hasWl; $('igBox').hidden = hasWl;
+  $('fullP').textContent = tr(hasWl ? 'fullP' : 'fullP2');
+  var pre = !!SITE.prelaunch;
+  document.querySelector('[data-i18n=fullBar]').textContent = tr(pre ? 'soonBar' : 'fullBar');
+  document.querySelector('[data-i18n=fullH]').textContent = tr(pre ? 'soonH' : 'fullH');
+  $('viewNote').textContent = tr(pre ? 'soonNote' : 'viewNote');
+  $('fullBarLink').textContent = tr(hasWl ? 'fullLink' : 'igFollow'); $('fullBarLink').href = hasWl ? '#order' : SITE.instagram;
+  $('ctaMain').textContent = tr(!full ? 'ctaBuild' : hasWl ? 'fullLink' : 'igFollow'); $('ctaMain').href = (full && !hasWl) ? SITE.instagram : '#order';
+  $('box-scenes').hidden = o.format!=='tpl';
+  document.querySelectorAll('.sc').forEach(function(l){ var i=l.querySelector('input'); l.querySelector('.nm').textContent = tr(i.name==='pick'?'wReel':'wScene')+' '+i.value; });
+  var needDesc = o.format==='custom' || o.format==='gift';
+  $('notesLab').textContent = tr(needDesc?'fNotesReq':'fNotesOpt');
+  $('notesHint').textContent = needDesc ? tr(o.format==='gift'?'nHintG':'nHintS') : '';
+  $('q1080t').textContent = '1080p Full HD · '+tr('qInc');
+  $('q4kt').textContent = '4K · +$'+PRICES.q4k;
+  $('box-occ').hidden = !personal;
+  $('box-photo').hidden = !o.character;
+  $('box-role').hidden = !(o.character && aud==='studio' && o.ppl===1);
+  $('box-people').hidden = !o.character;
+  var cb = aud==='gift' ? PRICES.characterG : PRICES.character, c2 = aud==='gift' ? PRICES.characterG2 : PRICES.character2;
+  $('ppl1t').textContent = tr('p1')+' · +$'+cb;
+  $('ppl2t').textContent = tr('p2')+' · +$'+(cb+c2);
+  $('handleLab').textContent = tr(aud==='gift'?'fHandleG':'fHandle');
+  $('box-link').hidden = !lib;
+  $('box-reels').hidden = !lib;
+  if(o.scene) $('scenesGrid').setAttribute('aria-invalid','false');
+  if(o.pick) $('reelsGrid').setAttribute('aria-invalid','false');
+  $('box-scene').hidden = personal;
+  $('box-brand').hidden = personal;
+  $('box-likeness').hidden = !o.character;
+  $('sum').textContent = lines(o).join(' · ');
+  $('amt').textContent = '$'+orderTotal(o);
+}
+$('form').addEventListener('change', render);
+$('notes').addEventListener('input', function(){ $('count').textContent = this.value.length; });
+$('logo').addEventListener('change', function(){
+  var f=this.files[0], img=$('logoPrev'); if(!f){ img.style.display='none'; return; }
+  var r=new FileReader(); r.onload=function(){ img.src=r.result; img.style.display='block'; }; r.readAsDataURL(f);
+});
+document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+
+$('form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var o = state(), bad = [];
+  function need(id, ok){ var el=$(id); el.setAttribute('aria-invalid', String(!ok)); if(!ok) bad.push(el); }
+  need('name', $('name').value.trim().length>1);
+  need('email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('email').value.trim()));
+  need('handle', aud==='gift' || $('handle').value.trim().length>1);
+  need('country', $('country').value!=='');
+  need('notes', !(o.format==='custom' || o.format==='gift') || $('notes').value.trim().length>=10);
+  var lk = $('link').value.trim();
+  need('link', o.format!=='lib' || lk==='' || /^https?:\/\//.test(lk));
+  need('reelsGrid', o.format!=='lib' || !!o.pick || lk!=='');
+  need('scenesGrid', o.format!=='tpl' || !!o.scene);
+  var boxes = [['terms',true],['likeness',o.character]];
+  boxes.forEach(function(b){ if(b[1] && !$(b[0]).checked) bad.push($(b[0])); });
+  var err=$('err'), res=$('result');
+  if(bad.length){ err.textContent = tr('errFields'); err.hidden=false; res.hidden=true; bad[0].focus(); bad[0].scrollIntoView({block:'center'}); return; }
+  err.hidden = true;
+  res.textContent = '';
+  var p=document.createElement('p'); p.textContent=tr('done'); res.appendChild(p);
+  var ul=document.createElement('ul');
+  lines(o).concat([$('name').value.trim()+' · '+$('email').value.trim(), $('handle').value.trim()+' · '+$('country').value, '$'+orderTotal(o)])
+    .forEach(function(s){ var li=document.createElement('li'); li.textContent=s; ul.appendChild(li); });
+  res.appendChild(ul); res.hidden=false; res.scrollIntoView({block:'center'});
+});
+
+function setAud(a){
+  aud = a==='gift' ? 'gift' : 'studio';
+  var cur = document.querySelector('input[name=format]:checked').value;
+  var curPersonal = cur==='gift' || cur==='tpl';
+  if(aud==='gift' && !curPersonal){ $('fmt-tpl').checked = true; $('len-15').checked = true; }
+  if(aud==='studio' && curPersonal){ $('fmt-custom').checked = true; $('len-30').checked = true; }
+  render();
+}
+var STUDIO_NUMS = [1,2,3,4,5,10,11];
+function showCatalog(on){
+  document.querySelectorAll('main > section').forEach(function(sec){ sec.hidden = on ? sec.id!=='catalog' : sec.id==='catalog'; });
+  document.querySelector('.aud').hidden = on;
+  if(on) window.scrollTo(0,0);
+}
+function route(){
+  var h = location.hash;
+  if(h==='#catalog'){ showCatalog(true); return; }
+  showCatalog(false);
+  if(h==='#gifts') setAud('gift'); else if(h==='#studios') setAud('studio'); else if(h==='#order') $('order').scrollIntoView();
+}
+document.querySelectorAll('[data-order]').forEach(function(btn){ btn.addEventListener('click', function(){
+  var n = btn.dataset.order, studio = STUDIO_NUMS.indexOf(Number(n))>=0;
+  aud = studio ? 'studio' : 'gift';
+  $(studio ? 'fmt-lib' : 'fmt-tpl').checked = true;
+  if(!studio) $('len-15').checked = true;
+  var r = document.querySelector('input[name='+(studio?'pick':'scene')+'][value="'+n+'"]'); if(r) r.checked = true;
+  showCatalog(false); render();
+  if(location.hash!=='#order') location.hash = 'order'; else $('order').scrollIntoView();
+}); });
+window.addEventListener('hashchange', route);
+document.querySelectorAll('[data-audlink]').forEach(function(a){ a.addEventListener('click', function(){ setAud(a.dataset.audlink); }); });
+if(location.hash==='#gifts'){ aud='gift'; $('fmt-tpl').checked=true; $('len-15').checked=true; }
+var NUM = {reel1:1,reel2:2,reel3:3,n1:4,n6:5,n2:6,n3:7,n4:8,n5:9,v10:10,v11:11,v12:12,v13:13};
+document.querySelectorAll('video').forEach(function(x){
+  var k = (x.getAttribute('src').match(/media\/(\w+)\.mp4/)||[])[1];
+  if(NUM[k]){ if(!x.getAttribute('aria-label')) x.setAttribute('aria-label','Reel '+NUM[k]); var b=document.createElement('span'); b.className='num'; b.textContent='#'+NUM[k]; x.parentNode.appendChild(b); }
+});
+var A11Y = { pause:false };
+(function(){
+  var vids = document.querySelectorAll('video');
+  function go(x){ if(A11Y.pause) return; var p = x.play(); if(p && p.catch) p.catch(function(){}); }
+  if(!('IntersectionObserver' in window)){ vids.forEach(go); window.__kick = function(){ vids.forEach(go); }; return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) go(e.target); else e.target.pause(); }); }, {threshold:0.25});
+  vids.forEach(function(x){ io.observe(x); });
+  window.__kick = function(){ vids.forEach(function(x){ io.unobserve(x); io.observe(x); }); };
+})();
+function a11yApply(){
+  var d = document.documentElement;
+  d.classList.toggle('a11y-big', $('a11y-big').checked);
+  d.classList.toggle('a11y-contrast', $('a11y-contrast').checked);
+  A11Y.pause = $('a11y-pause').checked;
+  document.querySelectorAll('video').forEach(function(x){ x.controls = A11Y.pause; if(A11Y.pause) x.pause(); });
+  if(!A11Y.pause && window.__kick) window.__kick();
+  try{ localStorage.setItem('oopsA11y', JSON.stringify({p:A11Y.pause, b:$('a11y-big').checked, c:$('a11y-contrast').checked})); }catch(e){}
+}
+(function(){
+  var st = null; try{ st = JSON.parse(localStorage.getItem('oopsA11y')||'null'); }catch(e){}
+  var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('a11y-pause').checked = st ? !!st.p : rm;
+  $('a11y-big').checked = !!(st && st.b);
+  $('a11y-contrast').checked = !!(st && st.c);
+  ['a11y-pause','a11y-big','a11y-contrast'].forEach(function(id){ $(id).addEventListener('change', a11yApply); });
+  var btn = $('a11yBtn'), pan = $('a11yPanel');
+  function setOpen(o){ pan.hidden = !o; btn.setAttribute('aria-expanded', String(o)); }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); setOpen(pan.hidden); });
+  pan.addEventListener('click', function(e){ e.stopPropagation(); });
+  document.addEventListener('click', function(){ setOpen(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !pan.hidden){ setOpen(false); btn.focus(); } });
+  a11yApply();
+})();
+$('toCustom').addEventListener('click', function(){ $('fmt-custom').checked = true; render(); $('fmt-custom').focus(); });
+if(!SITE.draft){ var dbar = document.querySelector('.draft'); if(dbar) dbar.hidden = true; }
+$('fullToggle').addEventListener('click', function(){ CAPACITY.closed = !CAPACITY.closed; this.setAttribute('aria-pressed', String(isFull())); render(); });
+$('wBtn').addEventListener('click', function(){
+  var ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('wEmail').value.trim()), m = $('wMsg');
+  $('wEmail').setAttribute('aria-invalid', String(!ok));
+  m.textContent = tr(ok ? 'wDone' : 'wErr'); m.hidden = false;
+});
+var saved=null; try{ saved=localStorage.getItem('oopsLang'); }catch(e){}
+setLang(saved||'en');
+if(location.hash==='#catalog') showCatalog(true);
+</script>
+</body>
+</html>
