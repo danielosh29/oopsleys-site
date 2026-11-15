@@ -337,7 +337,9 @@ footer{padding:26px 0 40px;font-size:.9rem;color:var(--muted);display:flex;gap:1
     <p class="lede" id="fullP" data-i18n="fullP">We take a limited number of orders each day so every reel gets proper attention. Leave your email and we will write to you as soon as a spot opens. No payment and no details needed now.</p>
     <div class="wait" id="waitForm">
       <div class="f"><label for="wEmail" data-i18n="wEmail">Your email</label><input type="email" id="wEmail" autocomplete="email"></div>
+      <div id="wCap"></div>
       <button type="button" class="btn primary" id="wBtn" data-i18n="fullLink">Join the waitlist</button>
+      <p style="margin:0;font-size:.85rem;color:var(--muted)" data-i18n="wNote">We will only email you about ordering at Oopsleys. You can unsubscribe at any time.</p>
     </div>
     <p id="igBox" style="margin-top:18px" hidden><a class="btn primary" id="igBtn" href="https://www.instagram.com/theoopsleys" data-i18n="igFollow">Follow us on Instagram</a></p>
     <p id="wMsg" role="status" style="margin-top:14px;font-weight:600" hidden></p>
@@ -523,7 +525,7 @@ footer{padding:26px 0 40px;font-size:.9rem;color:var(--muted);display:flex;gap:1
 /* ---- Prices: edit here ---- */
 /* ---- Daily capacity: orders accepted per day. takenToday will come from the order system once payments are connected. ---- */
 /* ---- Site settings. On the live site set draft:false. waitlistUrl is the address that stores waitlist emails. ---- */
-var SITE = { draft:false, prelaunch:true, waitlistUrl:'', instagram:'https://www.instagram.com/theoopsleys' };
+var SITE = { draft:false, prelaunch:true, waitlistUrl:'https://assets.mailerlite.com/jsonp/2737912/forms/204188195088237850/subscribe', waitlistCaptcha:'6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD', instagram:'https://www.instagram.com/theoopsleys' };
 var CAPACITY = { dailyLimit:5, takenToday:0, closed:!SITE.draft };   // closed:true = manual switch (days off, or before payments are connected)
 function isFull(){ return CAPACITY.closed || CAPACITY.takenToday >= CAPACITY.dailyLimit; }
 
@@ -957,6 +959,12 @@ Object.assign(T.es,{soonBar:'Los pedidos se abren pronto.',soonH:'Los pedidos se
 Object.assign(T.pt,{soonBar:'As encomendas abrem em breve.',soonH:'As encomendas abrem em breve',soonNote:'Preços para referência. As encomendas abrem em breve.'});
 Object.assign(T.tr,{soonBar:'Siparişler yakında açılıyor.',soonH:'Siparişler yakında açılıyor',soonNote:'Fiyatlar bilgi amaçlıdır. Siparişler yakında açılıyor.'});
 
+Object.assign(T.en,{soonP:'Leave your email and we will write to you as soon as ordering opens. No payment and no details needed now.',wCapMsg:'Please tick the “I’m not a robot” box, then press the button again.',wSending:'Sending…',wOk:'You are on the list. If a confirmation email arrives, please click the link in it.',wFail:'Sorry, that did not go through. Please try again, or email hello@oopsleys.com and we will add you.'});
+Object.assign(T.es,{soonP:'Déjanos tu correo y te escribiremos en cuanto se abran los pedidos. Ahora no hace falta pagar ni dar más datos.',wNote:'Solo te escribiremos sobre los pedidos en Oopsleys. Puedes darte de baja cuando quieras.',wCapMsg:'Marca la casilla «No soy un robot» y vuelve a pulsar el botón.',wSending:'Enviando…',wOk:'Ya estás en la lista. Si te llega un correo de confirmación, haz clic en el enlace.',wFail:'No se ha podido enviar. Inténtalo de nuevo o escríbenos a hello@oopsleys.com y te añadimos.'});
+Object.assign(T.pt,{soonP:'Deixe o seu email e escrevemos-lhe assim que as encomendas abrirem. Não é preciso pagar nem dar mais dados agora.',wNote:'Só lhe escrevemos sobre as encomendas na Oopsleys. Pode cancelar a subscrição quando quiser.',wCapMsg:'Assinale a caixa «Não sou um robô» e carregue de novo no botão.',wSending:'A enviar…',wOk:'Já está na lista. Se receber um email de confirmação, clique na ligação.',wFail:'Não foi possível enviar. Tente de novo ou escreva para hello@oopsleys.com e nós adicionamos.'});
+Object.assign(T.tr,{soonP:'E-postanızı bırakın, siparişler açılır açılmaz size yazalım. Şimdi ödeme ya da başka bilgi gerekmez.',wNote:'Size yalnızca Oopsleys siparişleriyle ilgili yazarız. İstediğiniz zaman listeden çıkabilirsiniz.',wCapMsg:'Lütfen “Ben robot değilim” kutusunu işaretleyin ve düğmeye yeniden basın.',wSending:'Gönderiliyor…',wOk:'Listedesiniz. Onay e-postası gelirse içindeki bağlantıya tıklayın.',wFail:'Gönderilemedi. Lütfen yeniden deneyin ya da hello@oopsleys.com adresine yazın, sizi ekleyelim.'});
+
+var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
 var aud = 'studio';
 var nodes = document.querySelectorAll('[data-i18n]');
@@ -1010,9 +1018,10 @@ function render(){
   $('viewNote').hidden = !full;
   if(full){ $('err').hidden = true; $('result').hidden = true; }
   var hasWl = SITE.draft || !!SITE.waitlistUrl;
-  $('waitForm').hidden = !hasWl; $('igBox').hidden = hasWl;
-  $('fullP').textContent = tr(hasWl ? 'fullP' : 'fullP2');
   var pre = !!SITE.prelaunch;
+  $('waitForm').hidden = !hasWl || wJoined; $('igBox').hidden = hasWl;
+  $('fullP').textContent = tr(hasWl ? (pre ? 'soonP' : 'fullP') : 'fullP2');
+  if(wMsgKey) $('wMsg').textContent = tr(wMsgKey);
   document.querySelector('[data-i18n=fullBar]').textContent = tr(pre ? 'soonBar' : 'fullBar');
   document.querySelector('[data-i18n=fullH]').textContent = tr(pre ? 'soonH' : 'fullH');
   $('viewNote').textContent = tr(pre ? 'soonNote' : 'viewNote');
@@ -1150,10 +1159,46 @@ function a11yApply(){
 $('toCustom').addEventListener('click', function(){ $('fmt-custom').checked = true; render(); $('fmt-custom').focus(); });
 if(!SITE.draft){ var dbar = document.querySelector('.draft'); if(dbar) dbar.hidden = true; }
 $('fullToggle').addEventListener('click', function(){ CAPACITY.closed = !CAPACITY.closed; this.setAttribute('aria-pressed', String(isFull())); render(); });
+/* ---- Waitlist: sends the email to the mailing service. wCapState: 0 not loaded, 1 loading, 2 ready, 3 failed ---- */
+function wSay(k){ wMsgKey = k; var m = $('wMsg'); m.textContent = tr(k); m.hidden = false; }
+function wCapLoad(){
+  if(SITE.draft || !SITE.waitlistCaptcha || wCapState) return;
+  wCapState = 1;
+  window.wCapReady = function(){
+    try{
+      wCapId = grecaptcha.render('wCap', { sitekey: SITE.waitlistCaptcha, size: $('waitForm').clientWidth < 310 ? 'compact' : 'normal' });
+      wCapState = 2;
+    }catch(e){ wCapState = 3; }
+  };
+  var sc = document.createElement('script');
+  sc.src = 'https://www.google.com/recaptcha/api.js?render=explicit&onload=wCapReady&hl=' + lang;
+  sc.async = true; sc.onerror = function(){ wCapState = 3; };
+  document.head.appendChild(sc);
+}
+$('wEmail').addEventListener('focus', wCapLoad);
 $('wBtn').addEventListener('click', function(){
-  var ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('wEmail').value.trim()), m = $('wMsg');
+  var btn = this, email = $('wEmail').value.trim(), ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   $('wEmail').setAttribute('aria-invalid', String(!ok));
-  m.textContent = tr(ok ? 'wDone' : 'wErr'); m.hidden = false;
+  if(!ok){ wSay('wErr'); return; }
+  if(SITE.draft){ wSay('wDone'); return; }
+  var token = '';
+  if(SITE.waitlistCaptcha){
+    if(wCapState !== 2){ wCapLoad(); wSay(wCapState === 3 ? 'wFail' : 'wCapMsg'); return; }
+    token = grecaptcha.getResponse(wCapId);
+    if(!token){ wSay('wCapMsg'); return; }
+  }
+  var fd = new FormData();
+  fd.append('fields[email]', email); fd.append('ml-submit', '1'); fd.append('anticsrf', 'true');
+  if(token) fd.append('g-recaptcha-response', token);
+  btn.disabled = true; wSay('wSending');
+  fetch(SITE.waitlistUrl, { method:'POST', body: fd }).then(function(r){ return r.json(); }).then(function(d){
+    btn.disabled = false;
+    if(d && d.success){ wJoined = true; $('waitForm').hidden = true; wSay('wOk'); }
+    else { wSay('wFail'); if(wCapId !== null){ try{ grecaptcha.reset(wCapId); }catch(e){} } }
+  }).catch(function(){
+    btn.disabled = false; wSay('wFail');
+    if(wCapId !== null){ try{ grecaptcha.reset(wCapId); }catch(e){} }
+  });
 });
 var saved=null; try{ saved=localStorage.getItem('oopsLang'); }catch(e){}
 setLang(saved||'en');
