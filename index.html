@@ -335,7 +335,6 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="pt" aria-pressed="false">PT</button>
     <button type="button" data-lang="tr" aria-pressed="false">TR</button>
-    <button type="button" data-lang="he" aria-pressed="false" lang="he" aria-label="עברית">עב</button>
   </div>
   <div class="a11y">
     <button type="button" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" data-i18n="a11yBtn">Accessibility</button>
@@ -1229,8 +1228,9 @@ var view = 'home', step = 1, retState = null;
 var nodes = document.querySelectorAll('[data-i18n]');
 nodes.forEach(function(n){ var k=n.getAttribute('data-i18n'); if(!(k in T.en)) T.en[k]=n.textContent; });
 function tr(k){ return (T[lang] && T[lang][k]) || T.en[k] || k; }
+var LANGS_ON = ['en','es','pt','tr'];   // Hebrew is translated and kept in T.he; add 'he' here and its button in the header to switch it back on
 function setLang(l){
-  lang = T[l] ? l : 'en';
+  lang = (T[l] && LANGS_ON.indexOf(l) >= 0) ? l : 'en';
   document.documentElement.lang = lang; document.documentElement.dir = lang==='he' ? 'rtl' : 'ltr';
   nodes.forEach(function(n){ n.textContent = tr(n.getAttribute('data-i18n')); });
   document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang===lang)); });
