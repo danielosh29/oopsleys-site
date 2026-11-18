@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: a quiet near-white floor with white, hairline-edged surfaces; one tinted hero band, large tight headings, generous air, mauve as the only accent. Single theme by choice. */
 :root{
@@ -33,8 +33,8 @@
   --line:#E2E2E7;
   --edge:#7C7C85;
   --bad:#A8322D;
-  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Bricolage Grotesque","Heebo","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree","Heebo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --r:20px;
   --card-edge:transparent; /* cards are lifted by shadow, not outlined */
   --shadow:0 1px 1px rgba(31,26,35,.04),0 8px 18px -8px rgba(31,26,35,.10),0 30px 56px -24px rgba(111,47,78,.34);
@@ -62,7 +62,7 @@ html.a11y-contrast{--bg:#FFFFFF;--sage:#FFFFFF;--paper:#FFFFFF;--ink:#000000;--m
 
 /* top strips */
 .draft{background:var(--ink);color:#fff;font-size:.84rem;padding:8px 20px;text-align:center}
-#fullToggle{font:600 .78rem var(--body);margin-left:8px;background:none;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;cursor:pointer}
+#fullToggle{font:600 .78rem var(--body);margin-inline-start:8px;background:none;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;cursor:pointer}
 #fullToggle[aria-pressed="true"]{background:#fff;color:#000}
 .fullbar{background:var(--butter);color:var(--ink);text-align:center;padding:10px 20px;font-weight:600;font-size:.95rem}
 .fullbar a{color:var(--ink)}
@@ -79,7 +79,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:10p
 .lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .a11y{position:relative}
 #a11yBtn{font:600 .8rem var(--body);border:1px solid var(--edge);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer}
-#a11yPanel{position:absolute;right:0;top:calc(100% + 8px);z-index:40;background:#fff;color:#000;border:1px solid var(--edge);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:220px;box-shadow:var(--shadow)}
+#a11yPanel{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:40;background:#fff;color:#000;border:1px solid var(--edge);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:220px;box-shadow:var(--shadow)}
 
 /* audience switch: one segmented control */
 .aud{display:inline-flex;gap:2px;background:var(--sage);border-radius:999px;padding:4px;max-width:100%}
@@ -129,6 +129,8 @@ html.a11y-contrast .reels::before{display:none}
 .sc{position:relative;display:grid;border:1.5px solid var(--edge);border-radius:16px;overflow:hidden;cursor:pointer;background:#fff;transition:border-color .15s}
 .sc video{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 .scenes[aria-invalid="true"]{outline:2px solid var(--bad);outline-offset:5px;border-radius:16px}
+#kidsSeg[aria-invalid="true"]{outline:2px solid var(--bad);outline-offset:5px;border-radius:999px}
+#box-kids small{margin-top:4px}
 .sc span{padding:9px 12px;font-weight:600;font-size:.9rem}
 .sc input{position:absolute;top:8px;left:8px;width:18px;height:18px;accent-color:var(--mauve)}
 .sc:has(input:checked){border-color:var(--mauve);box-shadow:0 0 0 1px var(--mauve);background:var(--mauve-soft)}
@@ -169,7 +171,7 @@ legend{font:700 1.3rem var(--display);letter-spacing:-.015em;padding:0;margin-bo
 .opt .p{font:700 1.08rem var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
 #lenBox,#qBox{margin-top:18px}
 .seg{grid-column:2/4;display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-#lenBox .seg,#qBox .seg,#box-people .seg{grid-column:auto;margin-top:0}
+#lenBox .seg,#qBox .seg,#box-people .seg,#box-kids .seg{grid-column:auto;margin-top:0}
 .seg label{border:1.5px solid var(--edge);border-radius:999px;padding:7px 15px;font-weight:600;font-size:.93rem;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}
 .seg label:hover{border-color:var(--ink)}
 .seg label:has(input:checked){border-color:var(--ink);background:var(--ink);color:#fff}
@@ -200,7 +202,7 @@ textarea{min-height:104px;resize:vertical}
 .totalbar .btn:hover{background:var(--butter);border-color:var(--butter)}
 .err{color:var(--bad);font-weight:600;margin:0 0 16px}
 .result{border:1.5px solid var(--mauve);border-radius:var(--r);padding:18px;margin-bottom:20px;background:#fff}
-.result ul{margin:10px 0 0;padding-left:18px}
+.result ul{margin:10px 0 0;padding-inline-start:18px}
 
 /* terms, questions, portfolio, footer */
 .fine{display:grid;gap:0 40px;margin-top:26px}
@@ -240,7 +242,84 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
   .fine{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* guided flow: home, audience page, order wizard */
+html.js:not(.ready) main>section{visibility:hidden}
+.choose{display:grid;gap:18px;margin-top:28px}
+.ccard{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--card-edge);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.ccard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.ccard h3{font-size:1.4rem}
+.ccard p{color:var(--muted);margin-top:8px}
+.ccard .go{display:inline-block;margin-top:16px;font-weight:600;color:var(--mauve)}
+html.a11y-contrast .ccard{border:1.5px solid #000}
+.wiz{list-style:none;display:flex;gap:8px;flex-wrap:wrap;padding:0;margin:0 0 28px;counter-reset:w}
+.wiz li{counter-increment:w}
+.wiz button{display:flex;align-items:center;gap:8px;font:600 .9rem var(--body);padding:8px 16px 8px 8px;border-radius:999px;border:0;background:var(--bg);color:var(--muted);cursor:default;min-height:40px}
+.wiz button::before{content:counter(w);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--ink);font-size:.8rem}
+.wiz button.done{background:var(--mauve-soft);color:var(--ink);cursor:pointer}
+.wiz button[aria-current="step"]{background:var(--ink);color:#fff}
+html.a11y-contrast .wiz button{border:1px solid #000}
+.tb-btns{display:flex;gap:8px;flex-wrap:wrap}
+.totalbar .btn.back{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.totalbar .btn.back:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.cta-end{text-align:center}
+.fmtline{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:7px 15px 7px 11px;border-radius:999px;background:var(--butter);color:var(--ink);font:600 .88rem/1.3 var(--body)}
+.fmtline::before{content:"";flex:none;width:11px;height:18px;border:2px solid var(--ink);border-radius:3px}
+html.a11y-contrast .fmtline{border:1.5px solid #000;background:#fff}
+.witem{margin:0;min-width:0}
+.witem figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px;flex-wrap:wrap}
+.witem b{font:700 1.05rem var(--display)}
+.pickbtn{font:600 .85rem var(--body);border:1.5px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 13px;cursor:pointer;min-height:36px}
+.pickbtn:hover{background:var(--mauve-soft)}
+.shotwrap{margin-top:40px}
+.shotwrap h3{font:700 1.3rem var(--display);margin:0}
+.shotwrap p{margin:8px 0 0;color:var(--muted)}
+.shots{display:flex;gap:12px;margin-top:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+.shots::-webkit-scrollbar{display:none}
+.shot{position:relative;flex:0 0 66%;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:9/16;background:var(--mauve-soft);scroll-snap-align:center}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .mark{position:absolute;border:2.5px dashed #fff;border-radius:10px;box-shadow:0 0 0 1.5px rgba(31,26,35,.45),inset 0 0 0 1.5px rgba(31,26,35,.25)}
+.shot .tag{position:absolute;transform:translateX(-50%);max-width:86%;width:max-content;text-align:center;background:var(--ink);color:#fff;font:700 .84rem/1.25 var(--body);padding:8px 12px;border-radius:14px;box-shadow:0 8px 18px -8px rgba(31,26,35,.6)}
+.shot .tag::before{content:"";position:absolute;left:50%;top:-9px;transform:translateX(-50%);border:9px solid transparent;border-top:0;border-bottom-color:var(--ink)}
+.shot b{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--ink);font:700 .85rem var(--display);padding:3px 9px;border-radius:999px}
+@media (min-width:760px){ .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible} .shot .tag{font-size:.92rem} }
+.snd{position:absolute;inset-inline-end:8px;bottom:8px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;padding:0;background:rgba(31,26,35,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer}
+.snd svg{width:18px;height:18px}
+.snd[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.snd:focus-visible{outline:3px solid var(--mauve);outline-offset:2px}
+.a11y-pause .snd{display:none}
+.sndhint{margin-top:10px;color:var(--muted);font-size:.95rem}
+.creator{display:flex;align-items:center;gap:14px;margin-top:22px;font-weight:600}
+.creator img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow);flex:none}
+.packs{margin-top:26px}
+.packs h3{font:700 1.3rem var(--display);margin:0}
+.pgrid{display:grid;gap:14px;margin-top:16px}
+.pcard{background:var(--paper);border:1px solid var(--card-edge);border-radius:20px;padding:20px;box-shadow:var(--shadow);display:grid;gap:8px;align-content:start}
+.pcard b{font:700 1.08rem/1.25 var(--display)}
+.pcard .pp{font:700 1.3rem var(--display);color:var(--mauve)}
+.pcard p{margin:0;color:var(--muted);font-size:.95rem}
+.hook{margin:14px 0 0;font-weight:700}
+.kcard .t,.kcard .p{grid-column:2/4}
+.kcard .p{color:var(--mauve)}
+#rvForm .err{margin-top:14px}
+@media (min-width:760px){ .pgrid{grid-template-columns:repeat(3,1fr)} }
+.wgrid{margin-top:22px}
+[dir=rtl] input[type=email],[dir=rtl] input[type=url],[dir=rtl] #handle,[dir=rtl] #link{direction:ltr;text-align:right}
+[dir=rtl] .skip{left:auto;right:-999px}
+[dir=rtl] .skip:focus{right:12px}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{letter-spacing:0}
+.wgrid .reel{box-shadow:0 14px 26px -16px rgba(31,26,35,.4)}
+.review{background:var(--bg);border-radius:16px;padding:14px 18px;margin:0 0 16px}
+.review b{display:block;font:600 .82rem var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+html.a11y-contrast .review{border:1.5px solid #000}
+@media (max-width:759px){ .totalbar .sum{display:none} .totalbar{gap:10px} .tb-btns{flex:1;justify-content:flex-end} .totalbar .btn{padding:11px 18px} .aud{overflow-x:auto;scrollbar-width:none} .aud a{padding:9px 11px;font-size:.9rem;white-space:nowrap} }
+.incl{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.incl li{background:var(--paper);border:1px solid var(--card-edge);border-radius:16px;padding:14px 18px;padding-inline-start:46px;position:relative;box-shadow:var(--shadow)}
+.incl li::before{content:"\2713";position:absolute;inset-inline-start:18px;top:13px;color:var(--mauve);font-weight:700}
+html.a11y-contrast .incl li{border:1.5px solid #000}
+@media (min-width:760px){ .choose{grid-template-columns:1fr 1fr} .incl{grid-template-columns:1fr 1fr} }
 </style>
+<script>document.documentElement.className+=' js';setTimeout(function(){document.documentElement.classList.add('ready')},1500);</script>
 </head>
 <body>
 <a class="skip" href="#order" data-i18n="skip">Skip to order form</a>
@@ -249,13 +328,14 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
 
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="#top"><img src="media/logo-wide.png" alt="Oopsleys Animation Studio" width="900" height="288"></a>
+  <a class="brand" href="#home"><img src="media/logo-wide.png" alt="Oopsleys Animation Studio" width="900" height="288"></a>
   <div class="tools">
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="pt" aria-pressed="false">PT</button>
     <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+    <button type="button" data-lang="he" aria-pressed="false" lang="he" aria-label="עברית">עב</button>
   </div>
   <div class="a11y">
     <button type="button" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" data-i18n="a11yBtn">Accessibility</button>
@@ -268,24 +348,84 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
   </div>
 </header>
 
-<nav class="aud" aria-label="Who is it for">
-  <a href="#studios" data-audlink="studio" data-i18n="audS">For businesses</a>
-  <a href="#gifts" data-audlink="gift" data-i18n="audG">Personal gift</a>
+<nav class="aud" aria-label="Sections">
+  <a href="#studios" data-audlink="studio" data-i18n="audS">Business</a>
+  <a href="#gifts" data-audlink="gift" data-i18n="audG">Personal</a>
+  <a href="#work" id="navWork" data-i18n="navWork">Work</a>
+  <a href="#order" id="navOrder" data-i18n="navOrder">Order</a>
 </nav>
 
 <main id="top">
-<section class="hero">
+<section class="hero" data-view="home">
+  <div>
+    <h1 data-i18n="hH1">Short animated videos, made to order.</h1>
+    <p class="fmtline" data-i18n="fmtL">Vertical video (9:16) for Instagram Reels, TikTok and YouTube Shorts</p>
+    <p class="lede" data-i18n="hP" style="margin-top:14px">We are the studio behind The Oopsleys, the wordless animated comedy with over 10 million views on Instagram. We turn your business, or your own story, into a short animated video in the same style, ready for Reels, Stories and ads.</p>
+    <ul class="proof">
+      <li data-i18n="pr1">Over 10 million views on Instagram</li>
+      <li data-i18n="pr2">Over 10,000 followers</li>
+    </ul>
+  </div>
+  <div class="reels" aria-label="Sample reels">
+    <div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Reel: reformer class on a patio"></video></div>
+    <div class="reel"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none" aria-label="Reel: the couple and the dog on the sofa"></video></div>
+    <div class="reel"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none" aria-label="Reel: arriving at the pilates studio"></video></div>
+  </div>
+</section>
+
+<section data-view="work">
+  <h2 data-i18n="wkH">Our work</h2>
+  <p class="lede" data-i18n="wkP">Every video here was made by us, in the Oopsleys style. Yours is made from scratch, around your business or your story.</p>
+  <p class="fmtline" data-i18n="fmtL">Vertical video (9:16) for Instagram Reels, TikTok and YouTube Shorts</p>
+  <p id="wkP2" style="margin-top:18px;color:var(--muted)"></p>
+  <p class="sndhint" data-i18n="sndHint">Tap the speaker on a video to hear its music and sound effects.</p>
+  <div class="catgrid wgrid">
+    <figure class="witem"><div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Video 1"></video></div><figcaption><b>#1</b><button type="button" class="pickbtn" data-pick="1" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none" aria-label="Video 2"></video></div><figcaption><b>#2</b><button type="button" class="pickbtn" data-pick="2" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none" aria-label="Video 3"></video></div><figcaption><b>#3</b><button type="button" class="pickbtn" data-pick="3" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none" aria-label="Video 4"></video></div><figcaption><b>#4</b><button type="button" class="pickbtn" data-pick="4" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none" aria-label="Video 5"></video></div><figcaption><b>#5</b><button type="button" class="pickbtn" data-pick="5" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none" aria-label="Video 6"></video></div><figcaption><b>#6</b><button type="button" class="pickbtn" data-pick="6" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none" aria-label="Video 7"></video></div><figcaption><b>#7</b><button type="button" class="pickbtn" data-pick="7" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none" aria-label="Video 8"></video></div><figcaption><b>#8</b><button type="button" class="pickbtn" data-pick="8" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none" aria-label="Video 9"></video></div><figcaption><b>#9</b><button type="button" class="pickbtn" data-pick="9" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none" aria-label="Video 10"></video></div><figcaption><b>#10</b><button type="button" class="pickbtn" data-pick="10" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none" aria-label="Video 11"></video></div><figcaption><b>#11</b><button type="button" class="pickbtn" data-pick="11" data-for="studio" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none" aria-label="Video 12"></video></div><figcaption><b>#12</b><button type="button" class="pickbtn" data-pick="12" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none" aria-label="Video 13"></video></div><figcaption><b>#13</b><button type="button" class="pickbtn" data-pick="13" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v14.mp4" poster="media/v14.jpg" muted loop playsinline preload="none" aria-label="Video 14"></video></div><figcaption><b>#14</b><button type="button" class="pickbtn" data-pick="14" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v15.mp4" poster="media/v15.jpg" muted loop playsinline preload="none" aria-label="Video 15"></video></div><figcaption><b>#15</b><button type="button" class="pickbtn" data-pick="15" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v16.mp4" poster="media/v16.jpg" muted loop playsinline preload="none" aria-label="Video 16"></video></div><figcaption><b>#16</b><button type="button" class="pickbtn" data-pick="16" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v17.mp4" poster="media/v17.jpg" muted loop playsinline preload="none" aria-label="Video 17"></video></div><figcaption><b>#17</b><button type="button" class="pickbtn" data-pick="17" data-for="any" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v18.mp4" poster="media/v18.jpg" muted loop playsinline preload="none" aria-label="Video 18"></video></div><figcaption><b>#18</b><button type="button" class="pickbtn" data-pick="18" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v19.mp4" poster="media/v19.jpg" muted loop playsinline preload="none" aria-label="Video 19"></video></div><figcaption><b>#19</b><button type="button" class="pickbtn" data-pick="19" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v20.mp4" poster="media/v20.jpg" muted loop playsinline preload="none" aria-label="Video 20"></video></div><figcaption><b>#20</b><button type="button" class="pickbtn" data-pick="20" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+    <figure class="witem"><div class="reel"><video src="media/v21.mp4" poster="media/v21.jpg" muted loop playsinline preload="none" aria-label="Video 21"></video></div><figcaption><b>#21</b><button type="button" class="pickbtn" data-pick="21" data-for="gift" data-i18n="wkPick">Order this one</button></figcaption></figure>
+  </div>
+</section>
+
+<section data-view="home work">
+  <h2 data-i18n="chH">Who is the video for?</h2>
+  <div class="choose">
+    <a class="ccard" href="#studios"><h3 data-i18n="chS">For my business</h3><p data-i18n="chSP">A reel or short ad with your logo in the scene. For studios, salons, clinics, cafés, shops and any small business.</p><span class="go" data-i18n="chSGo">Videos for businesses →</span></a>
+    <a class="ccard" href="#gifts"><h3 data-i18n="chG">For me, or a gift</h3><p data-i18n="chGP">A personal scene about you and the people you love: a birthday, an anniversary or just a funny moment.</p><span class="go" data-i18n="chGGo">Personal videos →</span></a>
+  </div>
+</section>
+
+<section class="hero" data-view="aud">
   <div>
     <h1 data-aud="studio" data-i18n="h1">Animated reels and short ads for your business.</h1>
     <h1 data-aud="gift" data-i18n="h1G" hidden>The two of you, in an Oopsleys reel.</h1>
     <p class="lede" data-aud="gift" data-i18n="heroPG" hidden>A short animated moment made for your partner, your best friend or your pilates buddy. Pick the occasion, describe the scene, and we do the rest.</p>
     <p class="lede" data-aud="studio"><span data-i18n="heroP">Short, funny animated videos your clients will want to share, made with your logo in the scene. For studios, salons, clinics, cafés, shops and any small business.</span> <span id="heroCta">Ordering opens soon. Join the waitlist in a few seconds.</span></p>
+    <p class="fmtline" data-i18n="fmtL">Vertical video (9:16) for Instagram Reels, TikTok and YouTube Shorts</p>
     <div class="actions">
       <a class="btn primary" id="ctaMain" href="#order" data-i18n="ctaBuild">Build my order</a>
       <a class="btn ghost" id="ctaPrices" href="#order" data-i18n="ctaPrices">See prices</a>
     </div>
+    <p class="hook" data-aud="studio" data-i18n="bizHook">Already sharing our reels? Get the same reel with your logo in the scene, or with a character inspired by you.</p>
     <p class="note" data-aud="gift" data-i18n="heroNoteG" hidden>From $99 · First draft in 5 business days</p>
-    <p class="note" data-aud="studio" data-i18n="heroNote">From $179 · First draft in 3 to 5 business days</p>
+    <p class="note" data-aud="studio" data-i18n="heroNote">From $179 · First draft in 5 business days</p>
     <ul class="proof">
       <li data-i18n="pr1">Over 10 million views on Instagram</li>
       <li data-i18n="pr2">Over 10,000 followers</li>
@@ -303,7 +443,7 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
   </div>
 </section>
 
-<section>
+<section data-view="aud">
   <h2 data-aud="studio" data-i18n="whyH">Why your business needs this</h2>
   <p class="lede" data-aud="studio" data-i18n="whyP">Upgrade your marketing with animated reels in the style that reached millions of views.</p>
   <h2 data-aud="gift" data-i18n="whyHG" hidden>Why it makes a great gift</h2>
@@ -311,7 +451,16 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
     <div class="wcard"><h3 data-i18n="w1h">Content people share</h3><p data-i18n="w1p">Funny, familiar moments are the ones clients send to friends and repost in their stories.</p></div>
     <div class="wcard"><h3 data-i18n="w2h">Get noticed by new clients</h3><p data-i18n="w2p">An animated reel stands out in a feed full of look-alike posts, and gives new people a reason to look at your business.</p></div>
     <div class="wcard"><h3 data-i18n="w3h">No filming, no editing</h3><p data-i18n="w3p">No camera, no models and no shooting day. You fill in a form and we do the rest.</p></div>
-    <div class="wcard"><h3 data-i18n="w4h">Your brand in the scene</h3><p data-i18n="w4p">Your logo on the wall, your colors in the room, and even a character that looks like you.</p></div>
+    <div class="wcard"><h3 data-i18n="w4h">Your brand in the scene</h3><p data-i18n="w4p">Your logo on the wall, your colors in the room, and even a character inspired by you.</p></div>
+  </div>
+  <div class="shotwrap" data-aud="studio">
+    <h3 data-i18n="exH">Where your business shows up</h3>
+    <p data-i18n="exP">Three frames from our videos. In yours, the marked spots carry your name and logo.</p>
+    <div class="shots">
+      <figure class="shot"><img src="media/ex1.jpg" alt="Frame from video 15: the entrance of a pilates studio with its name above the door" loading="lazy" width="540" height="960"><i class="mark" style="left:27%;top:14.5%;width:58%;height:12.5%"></i><span class="tag" style="left:56%;top:29.5%" data-i18n="exL1">Your business name here</span><b>#15</b></figure>
+      <figure class="shot"><img src="media/ex2.jpg" alt="Frame from video 12: a woman leaving a nail salon with its sign above the door" loading="lazy" width="540" height="960"><i class="mark" style="left:6%;top:1.5%;width:90%;height:11.5%"></i><span class="tag" style="left:50%;top:15.5%" data-i18n="exL2">Your logo here</span><b>#12</b></figure>
+      <figure class="shot"><img src="media/ex3.jpg" alt="Frame from video 16: a woman coming home with shopping bags that carry a shop name" loading="lazy" width="540" height="960"><i class="mark" style="left:11%;top:50%;width:23%;height:16%"></i><i class="mark" style="left:54%;top:49%;width:23%;height:17%"></i><span class="tag" style="left:44%;top:70%" data-i18n="exL3">Your logo on the bags</span><b>#16</b></figure>
+    </div>
   </div>
   <div class="why" data-aud="gift" hidden>
     <div class="wcard"><h3 data-i18n="g1h">Personal, not generic</h3><p data-i18n="g1p">A scene about the two of you says more than another gift card.</p></div>
@@ -320,18 +469,31 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
   </div>
 </section>
 
-<section>
+<section data-view="aud">
+  <h2 data-i18n="incH">What you get</h2>
+  <ul class="incl">
+    <li data-i18n="inc1">A vertical 9:16 video: the format of Reels, TikTok and Shorts</li>
+    <li data-i18n="inc2">Made from scratch for you, with original music and sound effects</li>
+    <li data-aud="studio" data-i18n="inc3">Your logo and your colors in the scene</li>
+    <li data-aud="gift" data-i18n="inc3G" hidden>Your occasion and your story in the scene</li>
+    <li data-i18n="inc4">A draft to approve before the final version</li>
+    <li data-i18n="inc5">One round of changes included</li>
+    <li data-i18n="inc6">A Full HD file by email, yours to use wherever you like</li>
+  </ul>
+</section>
+
+<section data-view="aud">
   <h2 data-i18n="howH">How it works</h2>
   <ol class="steps">
-    <li><h3 data-i18n="s1h">Choose a length</h3><p data-aud="gift" data-i18n="s1pG" hidden>15 or 30 seconds, from your own idea. Add extras if you like.</p><p data-aud="studio" data-i18n="s1p">15 or 30 seconds, made for your business. Add extras if you like.</p></li>
-    <li><h3 data-i18n="s2h">Tell us the details</h3><p data-aud="gift" data-i18n="s2pG" hidden>Choose the occasion and tell us who it is for. Add a photo if you want look-alike characters.</p><p data-aud="studio" data-i18n="s2p">Tell us about your business and the scene you want, then upload your logo.</p></li>
+    <li><h3 data-i18n="s1h">Choose your video</h3><p data-aud="gift" data-i18n="s1pG" hidden>Pick one of our videos, or start a new story and choose its length.</p><p data-aud="studio" data-i18n="s1p">Pick one of our videos, or start a new story and choose its length.</p></li>
+    <li><h3 data-i18n="s2h">Tell us the details</h3><p data-aud="gift" data-i18n="s2pG" hidden>Choose the occasion and tell us who it is for. Add a photo if you want characters inspired by real people.</p><p data-aud="studio" data-i18n="s2p">Tell us about your business and the scene you want, then upload your logo.</p></li>
     <li><h3 data-i18n="s3h">Get your reel</h3><p data-i18n="s3p">We confirm your order, send a draft to approve, and then the final file by email. One round of changes to the draft is included. The approved version is final.</p></li>
   </ol>
 </section>
 
-<section>
+<section data-view="home aud">
   <h2 data-i18n="moreH">Examples of our work</h2>
-  <p class="lede" data-i18n="moreP">So far our published reels come from the pilates world. Yours is made from scratch, around your business or your story.</p>
+  <p class="lede" data-i18n="moreP">Every video here can be made for you: with your logo, or with characters inspired by you.</p>
   <div class="strip">
     <div class="reel"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none" aria-label="Reel 1"></video></div>
     <div class="reel"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none" aria-label="Reel 2"></video></div>
@@ -347,12 +509,24 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
     <div class="reel"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none" aria-label="Reel 12"></video></div>
     <div class="reel"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none" aria-label="Reel 13"></video></div>
   </div>
+  <p style="margin-top:6px"><a href="#work" data-i18n="moreAll">See all our work →</a></p>
 </section>
 
-<section id="order">
+
+<section id="order" data-view="order">
   <h2 data-i18n="orderH">Build your order</h2>
-  <p class="lede" data-i18n="orderP">Vertical, with music and sound effects and no dialogue, ready for Reels and Stories. Prices are in US dollars.</p>
+  <p class="fmtline" data-i18n="fmtL">Vertical video (9:16) for Instagram Reels, TikTok and YouTube Shorts</p>
+  <p class="lede" data-i18n="orderP" style="margin-top:14px">Vertical, with music and sound effects and no dialogue, ready for Reels and Stories. Prices are in US dollars.</p>
   <div class="result" id="thanks" role="status" tabindex="-1" style="margin-top:22px" hidden></div>
+
+  <div class="packs" id="packs">
+    <h3 data-i18n="packsH">What you can order</h3>
+    <div class="pgrid">
+      <div class="pcard"><b data-i18n="kR">One of our videos, with a character inspired by you or with your logo</b><span class="pp" id="pk1P"></span><p data-i18n="kRD">Pick the video you like. We make a new version of it for you. Similar to the original, never identical.</p></div>
+      <div class="pcard"><b data-i18n="kC">A new story</b><span class="pp" id="pk2P"></span><p data-i18n="kCD">Tell us your idea and we turn it into a new reel, made from scratch.</p></div>
+      <div class="pcard"><b data-i18n="pk3T">Starring you</b><span class="pp" id="pk3P"></span><p id="pk3D"></p></div>
+    </div>
+  </div>
 
   <div class="builder full" id="fullBox">
     <h3 data-i18n="fullH">Ordering opens soon</h3>
@@ -367,58 +541,82 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
     <p id="wMsg" role="status" style="margin-top:14px;font-weight:600" hidden></p>
   </div>
 
-  <form class="builder" id="form" novalidate>
-    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+  <form class="builder" id="form" novalidate hidden>
+    <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"><label>Website <input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
     <p class="viewnote" id="viewNote" data-i18n="viewNote" hidden>Prices for reference. Ordering opens soon.</p>
-    <fieldset id="fs0">
-      <legend data-i18n="l0">1. Who is the video for?</legend>
-      <div class="opts">
-        <label class="opt"><input type="radio" name="audpick" id="aud-studio" value="studio" checked>
-          <span class="t" data-i18n="whoS">My business</span>
-          <span class="d" data-i18n="whoSD">A reel or short ad with your logo: for a studio, salon, clinic, café, shop or any small business.</span></label>
-        <label class="opt"><input type="radio" name="audpick" id="aud-gift" value="gift">
-          <span class="t" data-i18n="whoG">Me, or a gift</span>
-          <span class="d" data-i18n="whoGD">A personal scene: a birthday, an anniversary, a funny moment with someone you love.</span></label>
-      </div>
-    </fieldset>
+    <ol class="wiz" id="wiz" tabindex="-1">
+      <li><button type="button" data-step="1" data-i18n="wz1">Your video</button></li>
+      <li><button type="button" data-step="2" data-i18n="wz2">Make it yours</button></li>
+      <li><button type="button" data-step="3" data-i18n="wz3">Details</button></li>
+    </ol>
     <fieldset id="fs1">
-      <legend data-i18n="l1">2. Your video</legend>
-      <div hidden><input type="radio" name="format" id="fmt-lib" value="lib"><input type="radio" name="format" id="fmt-custom" value="custom" checked><input type="radio" name="format" id="fmt-tpl" value="tpl"><input type="radio" name="format" id="fmt-gift" value="gift"></div>
-      <p id="kindP" style="margin:0 0 16px;color:var(--muted)"></p>
+      <legend data-i18n="l1">Your video</legend>
       <div class="opts" style="margin-bottom:18px">
-        <label class="opt"><input type="checkbox" id="useBase">
-          <span class="t" id="baseT"></span><span class="p" id="basePrice"></span>
-          <span class="d" id="baseD"></span></label>
+        <label class="opt kcard"><input type="radio" name="kind" id="kind-ready" value="ready" checked>
+          <span class="t" data-i18n="kR">One of our videos, with a character inspired by you or with your logo</span><span class="p" id="kRP"></span>
+          <span class="d" data-i18n="kRD">Pick the video you like. We make a new version of it for you. Similar to the original, never identical.</span></label>
+        <label class="opt kcard"><input type="radio" name="kind" id="kind-custom" value="custom">
+          <span class="t" data-i18n="kC">A new story</span><span class="p" id="kCP"></span>
+          <span class="d" data-i18n="kCD">Tell us your idea and we turn it into a new reel, made from scratch.</span></label>
       </div>
-      <div class="f" id="lenBox"><span class="lab" data-i18n="lenL">Length</span>
-        <span class="seg" id="lenSeg">
-          <label><input type="radio" name="len" id="len-15" value="15"><span id="len15t">15 seconds · $179</span></label>
-          <label><input type="radio" name="len" id="len-30" value="30" checked><span id="len30t">30 seconds · $299</span></label>
-        </span></div>
-      <div class="f" id="qBox"><span class="lab" data-i18n="qL">Quality</span>
-        <span class="seg">
-          <label><input type="radio" name="q" id="q-1080" value="1080" checked><span id="q1080t">1080p Full HD · included</span></label>
-          <label><input type="radio" name="q" id="q-4k" value="4k"><span id="q4kt">4K · +$40</span></label>
-        </span><small data-i18n="qHint">Instagram shows reels at 1080p at most. 4K is for large screens.</small></div>
+      <div class="f" id="box-reels" hidden><span class="lab" data-i18n="rlL">Choose a video</span>
+          <div class="scenes" id="reelsGrid">
+            <label class="sc"><input type="radio" name="pick" value="1"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="2"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="3"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="4"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="5"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="6"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="7"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="8"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="9"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="10"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="11"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="12"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="13"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="14"><video src="media/v14.mp4" poster="media/v14.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="15"><video src="media/v15.mp4" poster="media/v15.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="16"><video src="media/v16.mp4" poster="media/v16.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="17"><video src="media/v17.mp4" poster="media/v17.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="18"><video src="media/v18.mp4" poster="media/v18.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="19"><video src="media/v19.mp4" poster="media/v19.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="20"><video src="media/v20.mp4" poster="media/v20.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+            <label class="sc"><input type="radio" name="pick" value="21"><video src="media/v21.mp4" poster="media/v21.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
+          </div><small data-i18n="pickHint">Tap one to select it. Your choice is shown in the summary before you send.</small>
+          <p class="soon" data-aud="studio"><span data-i18n="soon">Most of these are set in a pilates studio or at home. If none fits your business, order a custom video.</span> <button type="button" id="toCustom" data-i18n="toCustom">Switch to a custom video</button></p></div>
+      <div class="f" id="lenBox" hidden><span class="lab" data-i18n="lenL">Length</span>
+        <div class="opts" id="lenSeg">
+          <label class="opt"><input type="radio" name="len" id="len-30" value="30" checked><span class="t" id="len30t">30 seconds</span><span class="p" id="len30p"></span><span class="d" data-i18n="len30D">One situation, about three moments.</span></label>
+          <label class="opt"><input type="radio" name="len" id="len-45" value="45"><span class="t" id="len45t">45 seconds</span><span class="p" id="len45p"></span><span class="d" data-i18n="len45D">About four or five moments.</span></label>
+          <label class="opt"><input type="radio" name="len" id="len-60" value="60"><span class="t" id="len60t">60 seconds</span><span class="p" id="len60p"></span><span class="d" data-i18n="len60D">About six moments.</span></label>
+        </div><small data-i18n="lenHint">We fit your idea to the length you choose. If it needs more time, we tell you before charging.</small></div>
+
     </fieldset>
 
     <fieldset id="fs2">
-      <legend data-i18n="l2">3. Add-ons</legend>
+      <legend data-i18n="l2">Make it yours</legend>
       <div class="opts">
+        <label class="opt"><input type="checkbox" id="isBiz">
+          <span class="t" data-i18n="bizT">It is for my business</span><span class="p" data-i18n="qInc">included</span>
+          <span class="d" data-i18n="bizD">We put your logo and your brand colors in the scene.</span></label>
         <label class="opt"><input type="checkbox" id="ad-character" value="character">
-          <span class="t" data-i18n="chT">Look-alike character</span><span class="p" id="chPrice">+$150</span>
+          <span class="t" data-i18n="chT">Character inspired by a real person</span><span class="p" id="chPrice">+$150</span>
           <span class="d" id="chDesc"></span></label>
-        <label class="opt"><input type="checkbox" id="ad-rush" value="rush">
-          <span class="t" data-i18n="ruT">Rush delivery</span><span class="p">+$60</span>
+        <div class="f" id="box-people" hidden><span class="lab" data-i18n="fPeople">How many people?</span>
+          <span class="seg"><label><input type="radio" name="ppl" id="ppl-1" value="1" checked><span id="ppl1t">1</span></label><label><input type="radio" name="ppl" id="ppl-2" value="2"><span id="ppl2t">2</span></label><label><input type="radio" name="ppl" id="ppl-3" value="3"><span id="ppl3t">3</span></label><label><input type="radio" name="ppl" id="ppl-4" value="4"><span id="ppl4t">4</span></label><label><input type="radio" name="ppl" id="ppl-5" value="5"><span id="ppl5t">5</span></label></span></div>
+        <label class="opt" id="box-rush"><input type="checkbox" id="ad-rush" value="rush">
+          <span class="t" data-i18n="ruT">Rush delivery</span><span class="p" id="ruPrice">+$90</span>
           <span class="d" data-i18n="ruD">Draft within 48 hours of our confirmation.</span></label>
-        <label class="opt"><input type="checkbox" id="ad-revision" value="revision">
-          <span class="t" data-i18n="reT">Extra round of changes</span><span class="p">+$49</span>
-          <span class="d" id="reDesc" data-i18n="reD">For the draft stage. One round is already included.</span></label>
       </div>
+      <div style="margin-top:22px"><div class="f" id="qBox"><span class="lab" data-i18n="qL">Quality</span>
+        <span class="seg">
+          <label><input type="radio" name="q" id="q-1080" value="1080" checked><span id="q1080t">1080p Full HD · included</span></label>
+          <label><input type="radio" name="q" id="q-4k" value="4k"><span id="q4kt">4K · +$40</span></label>
+        </span><small data-i18n="qHint">Instagram shows reels at 1080p at most. 4K is for large screens.</small></div></div>
     </fieldset>
 
     <fieldset id="fs3" hidden>
-      <legend data-i18n="l3">4. Details</legend>
+      <legend data-i18n="l3">Your details</legend>
       <div class="fields">
         <div class="row2">
           <div class="f"><label for="name" data-i18n="fName">Your name</label><input type="text" id="name" autocomplete="name"></div>
@@ -426,43 +624,18 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
         </div>
         <div class="row2">
           <div class="f"><label for="handle" id="handleLab" data-i18n="fHandle">Instagram handle or business name</label><input type="text" id="handle"></div>
-          <div class="f"><label for="country" data-i18n="fCountry">Country</label>
-            <select id="country">
-              <option value="" data-i18n="choose">Choose…</option>
-              <option>Australia</option><option>Brazil</option><option>Canada</option><option>France</option><option>Germany</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Mexico</option><option>Netherlands</option><option>New Zealand</option><option>Portugal</option><option>Spain</option><option>Türkiye</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option>
-              <option value="Other" data-i18n="other">Other</option>
-            </select>
-            <small data-i18n="sanction">We can't take orders from countries under US sanctions.</small></div>
         </div>
 
-        <div class="f" id="box-reels" hidden><span class="lab" data-i18n="rlL">Choose a reel</span>
-          <div class="scenes" id="reelsGrid">
-            <label class="sc"><input type="radio" name="pick" value="1"><video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="2"><video src="media/reel2.mp4" poster="media/reel2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="3"><video src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="4"><video src="media/n1.mp4" poster="media/n1.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="5"><video src="media/n6.mp4" poster="media/n6.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="10"><video src="media/v10.mp4" poster="media/v10.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="pick" value="11"><video src="media/v11.mp4" poster="media/v11.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-          </div><small data-i18n="pickHint">Tap one to select it. Your choice is shown in the summary before you send.</small>
-          <p class="soon"><span data-i18n="soon">These reels are set in a pilates studio. For any other kind of business, order a custom video.</span> <button type="button" id="toCustom" data-i18n="toCustom">Switch to a custom video</button></p></div>
+        
 
-        <div class="f" id="box-link" hidden><label for="link" data-i18n="fLink">Or paste a link to a different reel (optional)</label><input type="url" id="link" placeholder="https://www.instagram.com/reel/…"></div>
+        
 
         <div class="row2" id="box-scene">
           <div class="f"><label for="equip" data-i18n="fEquip">Type of business</label>
             <input type="text" id="equip"><small data-i18n="eqHint">For example: pilates studio, hair salon, dental clinic, café, online shop</small></div>
         </div>
 
-        <div class="f" id="box-scenes" hidden><span class="lab" data-i18n="scL">Choose a scene</span>
-          <div class="scenes" id="scenesGrid">
-            <label class="sc"><input type="radio" name="scene" value="6"><video src="media/n2.mp4" poster="media/n2.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="scene" value="7"><video src="media/n3.mp4" poster="media/n3.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="scene" value="8"><video src="media/n4.mp4" poster="media/n4.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="scene" value="9"><video src="media/n5.mp4" poster="media/n5.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="scene" value="12"><video src="media/v12.mp4" poster="media/v12.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-            <label class="sc"><input type="radio" name="scene" value="13"><video src="media/v13.mp4" poster="media/v13.jpg" muted loop playsinline preload="none"></video><span class="nm"></span></label>
-          </div><small data-i18n="pickHint">Tap one to select it. Your choice is shown in the summary before you send.</small></div>
+        
 
         <div class="row2" id="box-occ" hidden>
           <div class="f"><label for="occ" data-i18n="fOcc">Occasion</label>
@@ -470,7 +643,10 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
           <div class="f"><label for="forwho" data-i18n="fFor">Who is it for?</label><input type="text" id="forwho"></div>
         </div>
 
-        <div class="f"><label for="notes" id="notesLab" data-i18n="fNotes">Describe the scene you want</label>
+        <div class="f" id="box-st1" hidden><label for="st-where" data-i18n="stWhere">Where does it happen?</label><input type="text" id="st-where" maxlength="160"></div>
+        <div class="f" id="box-st2" hidden><label for="st-what" data-i18n="stWhat">What happens?</label><textarea id="st-what" maxlength="320" style="min-height:84px"></textarea></div>
+        <div class="f" id="box-st3" hidden><label for="st-end" data-i18n="stEnd">How does it end?</label><input type="text" id="st-end" maxlength="160"><small data-i18n="stHint">A few short lines are enough. One situation works best.</small></div>
+        <div class="f" id="box-notes"><label for="notes" id="notesLab" data-i18n="fNotes">Describe the scene you want</label>
           <textarea id="notes" maxlength="500"></textarea><small id="notesHint"></small><small><span id="count">0</span>/500</small></div>
 
         <div class="row2" id="box-brand">
@@ -479,57 +655,103 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
           <div class="f"><label for="colors" data-i18n="fColors">Any color preference? (optional)</label><input type="text" id="colors"><small data-i18n="cHint">We blend your colors into our own style.</small></div>
         </div>
 
-        <div class="f" id="box-people" hidden><span class="lab" data-i18n="fPeople">How many people?</span>
-          <span class="seg"><label><input type="radio" name="ppl" id="ppl-1" value="1" checked><span id="ppl1t">1</span></label><label><input type="radio" name="ppl" id="ppl-2" value="2"><span id="ppl2t">2</span></label><label><input type="radio" name="ppl" id="ppl-3" value="3"><span id="ppl3t">3</span></label><label><input type="radio" name="ppl" id="ppl-4" value="4"><span id="ppl4t">4</span></label><label><input type="radio" name="ppl" id="ppl-5" value="5"><span id="ppl5t">5</span></label></span></div>
+        
 
         <div class="f" id="box-role" hidden><label for="role" data-i18n="fRole">Who should the character be?</label>
           <select id="role"><option value="r1" data-i18n="r1">The client</option><option value="r2" data-i18n="r2">The owner or a staff member</option></select></div>
 
-        <div class="f" id="box-photo" hidden><span class="lab" data-i18n="fPhoto">Reference photo for the look-alike (adults only)</span><input type="file" id="photo" accept="image/*" multiple aria-label="Reference photo"></div>
+        <div class="f" id="box-photo" hidden><span class="lab" data-i18n="fPhoto">Reference photos for the character</span><input type="file" id="photo" accept="image/*" multiple aria-label="Reference photos"><small data-i18n="photoHint">Everyday photos, fully clothed, with the face clearly visible. Location data is removed from your photos before they are sent.</small></div>
 
-        <label class="check" id="box-likeness" hidden><input type="checkbox" id="likeness"><span data-i18n="cLike">Everyone this character is based on is an adult and has agreed to it.</span></label>
+        <div class="f" id="box-kids" hidden><span class="lab" data-i18n="kidsQ">Is anyone in the photos under 18?</span>
+          <span class="seg" id="kidsSeg" role="radiogroup"><label><input type="radio" name="kids" id="kids-no" value="no"><span data-i18n="kidsNo">No, adults only</span></label><label><input type="radio" name="kids" id="kids-yes" value="yes"><span data-i18n="kidsYes">Yes</span></label></span>
+          <small id="kidRules" data-i18n="kidRules" hidden>For children we accept everyday photos only: fully clothed, no swimwear, bath or underwear photos. Scenes with children are family scenes only. We may decline an order and release your card.</small></div>
+
+        <label class="check" id="box-likeness" hidden><input type="checkbox" id="likeness"><span data-i18n="cLike">Every adult in the photos has agreed to a character inspired by them.</span></label>
+        <label class="check" id="box-guardian" hidden><input type="checkbox" id="guardian"><span data-i18n="cKid">I am the parent or legal guardian of every child in the photos. I agree that their photos are used, with AI tools, only to create a cartoon character inspired by them for this video.</span></label>
         <label class="check"><input type="checkbox" id="terms"><span data-i18n="cTerms">I agree to the terms below. I understand that once I approve the draft, the order is final and cannot be refunded.</span></label>
       </div>
     </fieldset>
 
-    <p class="lede" id="payNote" hidden style="margin:0 0 16px;font-size:.95rem" data-i18n="payNote">Your card is only reserved now. We confirm within 2 business days and charge it then. If we cannot make your request, the hold is released and you pay nothing.</p>
+    <div class="review" id="review" hidden><b data-i18n="revH">Your order</b><span id="sum2"></span></div>
+<p class="lede" id="payNote" hidden style="margin:0 0 16px;font-size:.95rem" data-i18n="payNote">Your card is only reserved now. We confirm within 2 business days and charge it then. If we cannot make your request, the hold is released and you pay nothing.</p>
     <p class="err" id="err" role="alert" hidden></p>
     <div class="result" id="result" hidden></div>
 
     <div class="totalbar" id="totalbar" hidden>
       <div><div class="sum" id="sum"></div><div class="amt" id="amt">$299</div></div>
-      <button class="btn" type="submit" data-i18n="pay">Continue to payment</button>
+      <div class="tb-btns"><button class="btn back" type="button" id="wBack" data-i18n="wBackT" hidden>Back</button><button class="btn" type="button" id="wNext" data-i18n="wNextT">Next</button><button class="btn" type="submit" id="paySubmit" data-i18n="pay" hidden>Continue to payment</button></div>
     </div>
   </form>
 </section>
 
-<section>
+<section data-view="revision" id="revision">
+  <h2 data-i18n="rvH">Buy an extra round of changes</h2>
+  <p class="lede" id="rvP"></p>
+  <form class="builder" id="rvForm" novalidate style="padding-bottom:26px">
+    <div class="fields">
+      <div class="row2">
+        <div class="f"><label for="rv-id" data-i18n="rvId">Order number</label><input type="text" id="rv-id" placeholder="OP-XXXXXXX" autocapitalize="characters" autocomplete="off" maxlength="12"></div>
+        <div class="f"><label for="rv-email" data-i18n="rvEmail">The email you ordered with</label><input type="email" id="rv-email" autocomplete="email"></div>
+      </div>
+      <div class="f"><label for="rv-notes" data-i18n="rvNotes">What would you like changed?</label><textarea id="rv-notes" maxlength="700"></textarea></div>
+      <label class="check"><input type="checkbox" id="rv-terms"><span data-i18n="rvTerms">I understand that this buys one more round of changes to the draft, and that it is available only until the final version is delivered.</span></label>
+    </div>
+    <p class="err" id="rvErr" role="alert" hidden></p>
+    <div class="result" id="rvResult" hidden></div>
+    <p style="margin:18px 0 0"><button class="btn primary" type="submit" id="rvPay"></button></p>
+  </form>
+</section>
+
+<section data-view="aud order">
+  <h2 data-i18n="cfH">Order with confidence</h2>
+  <div class="why">
+    <div class="wcard"><h3 data-i18n="cf1h">Your card is only reserved</h3><p data-i18n="cf1p">Nothing is charged until we confirm we can make your video. If we cannot, the hold is released.</p></div>
+    <div class="wcard"><h3 data-i18n="cf2h">You approve a draft first</h3><p data-i18n="cf2p">You see a draft before the final version, with one round of changes included.</p></div>
+    <div class="wcard"><h3 data-i18n="cf3h">Clear delivery times</h3><p data-i18n="cf3p">A first draft in 5 business days. When our schedule allows, a 48-hour option is offered.</p></div>
+    <div class="wcard"><h3 data-i18n="cf4h">Full refund until we start</h3><p data-i18n="cf4p">Changed your mind before we begin work? You get all your money back.</p></div>
+  </div>
+</section>
+
+<section class="cta-end" data-view="aud">
+  <h2 data-i18n="ctaEndH">Ready to start?</h2>
+  <p style="margin-top:24px"><a class="btn primary" id="ctaEnd" href="#order" data-i18n="ctaBuild">Build my order</a></p>
+</section>
+
+<section data-view="home aud order">
   <h2 data-i18n="fineH">The terms, in plain words</h2>
   <div class="fine">
     <div><b data-i18n="t8h">Order now, charged on confirmation</b><span data-i18n="t8p">You complete your order right away. Your card is reserved, not charged. We confirm within 2 business days and charge it then. If we cannot make it, the hold is released.</span></div>
     <div><b data-i18n="t1h">Delivery</b><span data-i18n="t1p">The draft time starts once we confirm your order and have everything we need from you, such as your logo or a photo. After you approve the draft, the final version arrives within one business day.</span></div>
     <div><b data-i18n="t7h">Draft first</b><span data-i18n="t7p">You get a low-resolution draft to approve before we render the final quality. One round of changes to the draft is included.</span></div>
-    <div><b data-i18n="t2h">Changes</b><span data-i18n="t2p">Each extra round of changes to the draft is $49.</span></div>
+    <div><b data-i18n="t2h">Changes</b><span data-i18n="t2p">Each extra round of changes to the draft is $49.</span> <a href="#revision" data-i18n="rvLink">Buy an extra round</a></div>
     <div><b data-i18n="t3h">How you can use it</b><span data-i18n="t3p">Your video is yours to use wherever you like: social media, your website and paid ads. The Oopsleys character itself stays ours.</span></div>
     <div><b data-i18n="t6h">Every reel is one of a kind</b><span data-i18n="t6p">Each video is animated from scratch. A new version of an existing reel will look similar to the original, never identical.</span></div>
-    <div><b data-i18n="t9h">Final means final</b><span data-i18n="t9p">Approving the draft is your last step. Once the final version is delivered, the order is complete and we do not make further changes.</span></div>
+    <div><b data-i18n="t14h">Fitting your idea to the length</b><span data-i18n="t14p">We adapt your idea to the length you chose, and may shorten or merge moments so that it works. If it does not fit, we tell you before charging, so you can choose a longer reel.</span></div>
+    <div><b data-i18n="t9h">After you approve</b><span data-i18n="t9p">Approving the draft is your last step. Once the final version is delivered, the order is complete; further changes would be a new order.</span></div>
     <div><b data-i18n="t4h">Refunds</b><span data-i18n="t4p">Full refund until we start work. Once you approve the draft, the order is final and cannot be refunded. If a file arrives damaged, we send it again.</span></div>
-    <div><b data-i18n="t10h">Your details</b><span data-i18n="t10p">We use your email, logo and photos only to make and deliver your order. Reference photos are deleted after delivery. We never sell or share them.</span></div>
+    <div><b data-i18n="t12h">Inspired by, not a portrait</b><span data-i18n="t12p">A character based on a photo is a cartoon character inspired by the person: hair, build, style. It is not an exact portrait.</span></div>
+    <div><b data-i18n="t10h">Your details</b><span data-i18n="t10p">We use your email, logo and photos only to make and deliver your order. Reference photos are deleted after delivery. We never sell them, and we pass them to no one except the animation tools that produce your video.</span></div>
+    <div><b data-i18n="t11h">Children</b><span data-i18n="t11p">A character inspired by a child is made only when the child's parent or legal guardian places the order and confirms it in the form. We accept everyday, fully clothed photos only, and we make family scenes only. Children's photos are used only to create the character for that order, are deleted after delivery and within 30 days at the latest, and are never used in advertising or shown as examples. A video that includes a child's character is never shown among our examples without written permission from the parent or guardian. You can ask us to delete the photos at any time: hello@oopsleys.com. Only adults can place orders.</span></div>
+    <div><b data-i18n="t13h">Where you can order from</b><span data-i18n="t13p">We take orders from almost everywhere. We cannot take orders from places under comprehensive US sanctions: Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk regions.</span></div>
   </div>
 </section>
 
-<section>
+<section data-view="home aud">
   <h2 data-i18n="faqH">Questions</h2>
   <div style="margin-top:20px">
-    <details><summary data-i18n="q1">Is there sound or dialogue?</summary><p data-i18n="a1">There is no dialogue. That is the idea: the reel works in every language. Each video comes with its own background music and sound effects, created together with the animation.</p></details>
+    <details><summary data-i18n="q1">Is there sound or dialogue?</summary><p data-i18n="a1">There is no dialogue. That is the idea: the reel works in every language. Each video comes with its own background music and sound effects, created together with the animation. Tap the speaker on any video on this site to hear it.</p></details>
     <details><summary data-i18n="q2">Can I talk to someone first?</summary><p data-i18n="a2">Yes. Email hello@oopsleys.com or message @theoopsleys on Instagram.</p></details>
     <details><summary data-i18n="q3">How are the reels made?</summary><p data-i18n="a3">With AI animation tools, directed scene by scene.</p></details>
+    <details><summary data-i18n="q5">Can I get a horizontal video?</summary><p data-i18n="a5">Not at the moment. Every video is vertical (9:16), made for Reels, TikTok and Shorts. It is not a horizontal video for a regular YouTube upload or a TV screen.</p></details>
+    <details><summary data-i18n="q7">Will the character look exactly like me?</summary><p data-i18n="a7">The character is inspired by you and your features: your hair, your style and your general look, drawn in the Oopsleys style. It will remind people of you, but it will not look exactly like you.</p></details>
+    <details><summary data-i18n="q6">Can my children appear in the video?</summary><p data-i18n="a6">Yes, as cartoon characters inspired by them. Only a parent or legal guardian can order this, and confirms it in the form. We ask for everyday photos, make family scenes only, and delete the photos within 30 days at the latest.</p></details>
     <details data-aud="studio"><summary data-i18n="q4">Can I order a reel every month?</summary><p data-i18n="a4">A monthly plan for businesses is coming. Message us if you want to be first.</p></details>
   </div>
 </section>
-<section>
-  <h2 data-i18n="portH">From the same studio</h2>
-  <p class="lede" data-i18n="portP">Two animated worlds, one maker.</p>
+<section data-view="home work">
+  <h2 data-i18n="portH">About the studio</h2>
+  <p class="lede" data-i18n="portP">Oopsleys Animation Studio is a small independent studio behind two animated worlds: The Oopsleys, a wordless comedy about pilates and everyday life, and Lumi and the Magical World, a series for young children. Every custom video is made by the same creator.</p>
+  <p class="creator"><img src="media/creator.jpg" alt="" width="240" height="240" loading="lazy"><span data-i18n="portMe">The main character is based on the studio's creator herself.</span></p>
   <div class="port">
     <a href="https://www.instagram.com/theoopsleys"><span class="wm">The Oopsleys</span><p data-i18n="port1">Wordless pilates comedy, on Instagram.</p><span class="go" data-i18n="port1go">See it on Instagram →</span></a>
     <a href="https://www.youtube.com/@lumiandthemagicalworld"><span class="wm lumi">Lumi and the Magical World</span><p data-i18n="port2">An animated series for young children, on YouTube.</p><span class="go" data-i18n="port2go">Watch on YouTube →</span></a>
@@ -549,16 +771,20 @@ footer{margin-top:28px;padding:28px 0 48px;border-top:1px solid var(--line);font
 /* ---- Prices: edit here ---- */
 /* ---- Daily capacity: orders accepted per day. takenToday will come from the order system once payments are connected. ---- */
 /* ---- Site settings. On the live site set draft:false. waitlistUrl is the address that stores waitlist emails. ---- */
-var SITE = { draft:false, prelaunch:true, waitlistUrl:'https://assets.mailerlite.com/jsonp/2737912/forms/204188195088237850/subscribe', waitlistCaptcha:'6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD', instagram:'https://www.instagram.com/theoopsleys', api:'https://api.oopsleys.com' };
+var SITE = { draft:false, prelaunch:true, waitlistUrl:'https://assets.mailerlite.com/jsonp/2737912/forms/204188195088237850/subscribe', waitlistCaptcha:'6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD', instagram:'https://www.instagram.com/theoopsleys', api:'https://api.oopsleys.com', analytics:'' };
+var RUSH_OK = SITE.draft;   // the 48-hour option is offered only when the studio switches it on
 var CAPACITY = { dailyLimit:5, takenToday:0, closed:!SITE.draft };   // closed:true = manual switch (days off, or before payments are connected)
 function isFull(){ return CAPACITY.closed || CAPACITY.takenToday >= CAPACITY.dailyLimit; }
 
-var PRICES = { custom15:179, custom30:299, tpl15:99, tpl30:179, character:150, characterExtra:75, q4k:40, rush:60, revision:49 };
+var PRICES = { ready35:299, ready45:379, ready60:459, custom30:399, custom45:579, custom60:749, character:150, characterExtra:75, q4k:40, rush:90, revision:49 };
 var MAX_PEOPLE = 5;
+// length of every published video, in seconds. A version of one of them is priced by the length of the original.
+var VIDEO_SECS = {1:30,2:30,3:25,4:30,5:30,6:34,7:37,8:30,9:43,10:30,11:25,12:54,13:31,14:29,15:25,16:40,17:50,18:30,19:30,20:30,21:30};
+function videoPrice(n){ var s = VIDEO_SECS[n]; return !s ? 0 : s <= 37 ? PRICES.ready35 : s <= 45 ? PRICES.ready45 : PRICES.ready60; }
 
 function orderTotal(o){
   var template = o.format==='lib' || o.format==='tpl';
-  var t = PRICES[(template ? 'tpl' : 'custom') + (o.len===15 ? 15 : 30)];
+  var t = template ? videoPrice(o.pick || o.scene) : (PRICES['custom' + o.len] || 0);
   if(o.character) t += PRICES.character + PRICES.characterExtra * (Math.min(MAX_PEOPLE, Math.max(1, o.ppl)) - 1);
   if(o.q==='4k') t += PRICES.q4k;
   if(o.rush) t += PRICES.rush;
@@ -569,7 +795,7 @@ function orderTotal(o){
 /* ---- Translations (English is read from the page) ---- */
 var T = { en:{
   sec15:'15 seconds', sec30:'30 seconds', fHandleG:'Instagram handle (optional)', reDG:'For the draft stage only.', wReel:'Reel', wScene:'Scene', soonBar:'Ordering opens soon.', soonH:'Ordering opens soon', soonNote:'Prices for reference. Ordering opens soon.', fullP2:'We take a limited number of orders each day so every reel gets proper attention. Follow us on Instagram to hear the moment ordering opens.', p1:'1 person', p2:'2 people', spotsN:'Spots left today: {n}', wDone:'Draft mode: nothing was sent. On the live site this email would join the waitlist.', wErr:'Please enter a valid email.', fNotesReq:'Describe the scene you want', fNotesOpt:'Anything to add? (optional)', nHintS:'For example: a first class where everything goes wrong, with our logo on the wall.', nHintG:'For example: he joins my pilates class for the first time and regrets it.', qInc:'included',
-  dLib:'3 business days', dStd:'5 business days', dRush:'48 hours', delivery:'Draft in',
+  dLib:'5 business days', dStd:'5 business days', dRush:'48 hours', delivery:'Draft in',
   errFields:'Please complete the highlighted fields.',
   done:'Draft mode: nothing was charged and nothing was sent. This is the order the studio would receive:'
 }, pt:{
@@ -609,7 +835,7 @@ var T = { en:{
   q2:'Posso falar com alguém primeiro?', a2:'Sim. Escreva para hello@oopsleys.com ou envie mensagem para @theoopsleys no Instagram.',
   q3:'Como são feitos os reels?', a3:'Com ferramentas de animação por IA, dirigidas cena a cena.',
   q4:'Posso encomendar um reel todos os meses?', a4:'Vem aí um plano mensal para estúdios. Envie mensagem se quiser ser das primeiras.',
-  dLib:'3 dias úteis', dStd:'7 dias úteis', dRush:'48 horas', delivery:'Entrega',
+  dLib:'5 dias úteis', dStd:'7 dias úteis', dRush:'48 horas', delivery:'Entrega',
   errFields:'Preencha os campos assinalados.',
   done:'Modo de rascunho: nada foi cobrado nem enviado. Esta é a encomenda que o estúdio receberia:'
 }, tr:{
@@ -649,7 +875,7 @@ var T = { en:{
   q2:'Önce biriyle konuşabilir miyim?', a2:'Evet. hello@oopsleys.com adresine e-posta ya da Instagram\'da @theoopsleys hesabına mesaj gönderin.',
   q3:'Reel\'ler nasıl yapılıyor?', a3:'Sahne sahne yönetilen yapay zekâ animasyon araçlarıyla.',
   q4:'Her ay bir reel sipariş edebilir miyim?', a4:'Stüdyolar için aylık plan yakında geliyor. İlk olmak isterseniz bize yazın.',
-  dLib:'3 iş günü', dStd:'7 iş günü', dRush:'48 saat', delivery:'Teslimat',
+  dLib:'5 iş günü', dStd:'7 iş günü', dRush:'48 saat', delivery:'Teslimat',
   errFields:'Lütfen işaretli alanları doldurun.',
   done:'Taslak modu: hiçbir ücret alınmadı ve hiçbir şey gönderilmedi. Stüdyonun alacağı sipariş şu:'
 }};
@@ -694,7 +920,7 @@ T.es = {
   portH:'Del mismo estudio', portP:'Dos mundos animados, una sola creadora.',
   port1:'Comedia de pilates sin palabras, en Instagram.', port1go:'Ver en Instagram →',
   port2:'Una serie animada para niños pequeños, en YouTube.', port2go:'Ver en YouTube →',
-  dLib:'3 días hábiles', dStd:'7 días hábiles', dRush:'48 horas', delivery:'Entrega',
+  dLib:'5 días hábiles', dStd:'7 días hábiles', dRush:'48 horas', delivery:'Entrega',
   errFields:'Completa los campos marcados.',
   done:'Modo borrador: no se ha cobrado ni enviado nada. Este es el pedido que recibiría el estudio:'
 };
@@ -952,21 +1178,21 @@ Object.assign(T.es,{libD:'Elige un reel publicado y creamos una versión nueva c
   cusD:'Un momento nuevo creado para tu negocio: tu espacio, tus colores, tu logo. Borrador en 5 días hábiles.',
   tplD:'Elige una escena que ya sabemos que funciona y la hacemos para ti. La opción más rápida y económica. Borrador en 5 días hábiles.',
   giftD:'Describe el momento que tienes en mente y lo convertimos en una escena. Solo para uso personal. Borrador en 5 días hábiles.',
-  heroNote:'Desde $179 · Primer borrador en 3 a 5 días hábiles',heroNoteG:'Desde $99 · Primer borrador en 5 días hábiles',
+  heroNote:'Desde $179 · Primer borrador en 5 días hábiles',heroNoteG:'Desde $99 · Primer borrador en 5 días hábiles',
   ruD:'Borrador en 48 horas desde nuestra confirmación.',delivery:'Borrador en',dStd:'5 días hábiles',
   t1p:'El plazo del borrador empieza cuando confirmamos tu pedido y tenemos todo lo que necesitamos de ti, como tu logo o una foto. Cuando apruebas el borrador, la versión final llega en un día hábil.'});
 Object.assign(T.pt,{libD:'Escolha um reel publicado e criamos uma versão nova com o seu logótipo. É animado de novo de raiz, por isso os detalhes e o movimento serão diferentes do original. Por agora, os nossos reels passam-se num estúdio de pilates. Rascunho em 3 dias úteis.',
   cusD:'Um momento novo criado para o seu negócio: o seu espaço, as suas cores, o seu logótipo. Rascunho em 5 dias úteis.',
   tplD:'Escolha uma cena que já sabemos que resulta e fazemo-la para si. A opção mais rápida e económica. Rascunho em 5 dias úteis.',
   giftD:'Descreva o momento que tem em mente e nós transformamo-lo numa cena. Apenas para uso pessoal. Rascunho em 5 dias úteis.',
-  heroNote:'Desde $179 · Primeiro rascunho em 3 a 5 dias úteis',heroNoteG:'Desde $99 · Primeiro rascunho em 5 dias úteis',
+  heroNote:'Desde $179 · Primeiro rascunho em 5 dias úteis',heroNoteG:'Desde $99 · Primeiro rascunho em 5 dias úteis',
   ruD:'Rascunho em 48 horas após a nossa confirmação.',delivery:'Rascunho em',dStd:'5 dias úteis',
   t1p:'O prazo do rascunho começa quando confirmamos a sua encomenda e temos tudo o que precisamos de si, como o logótipo ou uma foto. Depois de aprovar o rascunho, a versão final chega no prazo de um dia útil.'});
 Object.assign(T.tr,{libD:'Yayınlanmış bir reel seçin, logonuzla yeni bir versiyonunu hazırlayalım. Sıfırdan yeniden canlandırıldığı için ayrıntılar ve hareketler orijinalinden farklı olur. Şimdilik reel\'lerimiz bir pilates stüdyosunda geçiyor. Taslak 3 iş gününde.',
   cusD:'İşletmeniz için hazırlanan yeni bir an: mekânınız, renkleriniz ve logonuz. Taslak 5 iş gününde.',
   tplD:'İşe yaradığını bildiğimiz bir sahneyi seçin, sizin için hazırlayalım. En hızlı ve en uygun fiyatlı seçenek. Taslak 5 iş gününde.',
   giftD:'Aklınızdaki anı anlatın, biz onu bir sahneye dönüştürelim. Yalnızca kişisel kullanım. Taslak 5 iş gününde.',
-  heroNote:'$179\'dan başlayan fiyatlar · İlk taslak 3 ila 5 iş gününde',heroNoteG:'$99\'dan başlayan fiyatlar · İlk taslak 5 iş gününde',
+  heroNote:'$179\'dan başlayan fiyatlar · İlk taslak 5 iş gününde',heroNoteG:'$99\'dan başlayan fiyatlar · İlk taslak 5 iş gününde',
   ruD:'Onayımızdan sonraki 48 saat içinde taslak.',delivery:'Taslak süresi',dStd:'5 iş günü',
   t1p:'Taslak süresi, siparişinizi onayladığımızda ve logonuz ya da fotoğrafınız gibi sizden gereken her şey elimize ulaştığında başlar. Taslağı onayladıktan sonra son sürüm bir iş günü içinde ulaşır.'});
 
@@ -985,70 +1211,83 @@ Object.assign(T.tr,{soonP:'E-postanızı bırakın, siparişler açılır açıl
 
 Object.assign(T.en,{fromP:'from {p}'}); Object.assign(T.es,{fromP:'desde {p}'}); Object.assign(T.pt,{fromP:'desde {p}'}); Object.assign(T.tr,{fromP:'en az {p}'});
 
-Object.assign(T.en,{sending:'Sending your order…',errSend:'Sorry, we could not send your order. Please try again, or email hello@oopsleys.com.',errClosed:'Ordering has just closed for today. You can join the waitlist above.',errFile:'One of the files is too large or not an image. Logos up to 5 MB, photos up to 6 MB.',thanksH:'Thank you! Your order is in.',thanksP:'Order {id}. Your card is only reserved for now. We will email you from hello@oopsleys.com within 2 business days to confirm, and charge it only then.',cancelMsg:'The payment was not completed, so no order was placed and nothing was charged. You can try again below.'});
-Object.assign(T.es,{sending:'Enviando tu pedido…',errSend:'No hemos podido enviar tu pedido. Inténtalo de nuevo o escríbenos a hello@oopsleys.com.',errClosed:'Los pedidos acaban de cerrarse por hoy. Puedes apuntarte a la lista de espera más arriba.',errFile:'Uno de los archivos es demasiado grande o no es una imagen. Logos de hasta 5 MB, fotos de hasta 6 MB.',thanksH:'¡Gracias! Hemos recibido tu pedido.',thanksP:'Pedido {id}. Por ahora tu tarjeta solo queda reservada. Te escribiremos desde hello@oopsleys.com en un plazo de 2 días hábiles para confirmarlo, y solo entonces se hará el cargo.',cancelMsg:'El pago no se completó, así que no se ha hecho ningún pedido ni ningún cargo. Puedes intentarlo de nuevo más abajo.'});
-Object.assign(T.pt,{sending:'A enviar a sua encomenda…',errSend:'Não foi possível enviar a sua encomenda. Tente de novo ou escreva para hello@oopsleys.com.',errClosed:'As encomendas acabaram de fechar por hoje. Pode juntar-se à lista de espera mais acima.',errFile:'Um dos ficheiros é demasiado grande ou não é uma imagem. Logótipos até 5 MB, fotos até 6 MB.',thanksH:'Obrigado! Recebemos a sua encomenda.',thanksP:'Encomenda {id}. Por agora o seu cartão fica apenas reservado. Escrevemos-lhe a partir de hello@oopsleys.com no prazo de 2 dias úteis para confirmar, e só então é feita a cobrança.',cancelMsg:'O pagamento não foi concluído, por isso não foi feita nenhuma encomenda nem cobrança. Pode tentar de novo mais abaixo.'});
-Object.assign(T.tr,{sending:'Siparişiniz gönderiliyor…',errSend:'Siparişiniz gönderilemedi. Lütfen yeniden deneyin ya da hello@oopsleys.com adresine yazın.',errClosed:'Siparişler bugün için az önce kapandı. Yukarıdan bekleme listesine katılabilirsiniz.',errFile:'Dosyalardan biri çok büyük ya da görsel değil. Logolar en fazla 5 MB, fotoğraflar en fazla 6 MB olabilir.',thanksH:'Teşekkürler! Siparişiniz alındı.',thanksP:'Sipariş {id}. Kartınızdaki tutar şimdilik yalnızca ayrıldı. Onay için 2 iş günü içinde hello@oopsleys.com adresinden size yazacağız, ödeme ancak o zaman alınır.',cancelMsg:'Ödeme tamamlanmadı; sipariş oluşturulmadı ve ücret alınmadı. Aşağıdan yeniden deneyebilirsiniz.'});
+Object.assign(T.en,{sending:'Sending your order…',errSend:'Sorry, we could not send your order. Please try again, or email hello@oopsleys.com.',errClosed:'Ordering has just closed for today. You can join the waitlist above.',errFile:'One of the files is too large or not an image. Logos up to 5 MB, photos up to 6 MB.',thanksH:'Thank you! Your order is in.',thanksP:'Order {id}. Your card is only reserved for now. We will email you within 2 business days to confirm, and charge it only then.',cancelMsg:'The payment was not completed, so no order was placed and nothing was charged. You can try again below.'});
+Object.assign(T.es,{sending:'Enviando tu pedido…',errSend:'No hemos podido enviar tu pedido. Inténtalo de nuevo o escríbenos a hello@oopsleys.com.',errClosed:'Los pedidos acaban de cerrarse por hoy. Puedes apuntarte a la lista de espera más arriba.',errFile:'Uno de los archivos es demasiado grande o no es una imagen. Logos de hasta 5 MB, fotos de hasta 6 MB.',thanksH:'¡Gracias! Hemos recibido tu pedido.',thanksP:'Pedido {id}. Por ahora tu tarjeta solo queda reservada. Te escribiremos en un plazo de 2 días hábiles para confirmarlo, y solo entonces se hará el cargo.',cancelMsg:'El pago no se completó, así que no se ha hecho ningún pedido ni ningún cargo. Puedes intentarlo de nuevo más abajo.'});
+Object.assign(T.pt,{sending:'A enviar a sua encomenda…',errSend:'Não foi possível enviar a sua encomenda. Tente de novo ou escreva para hello@oopsleys.com.',errClosed:'As encomendas acabaram de fechar por hoje. Pode juntar-se à lista de espera mais acima.',errFile:'Um dos ficheiros é demasiado grande ou não é uma imagem. Logótipos até 5 MB, fotos até 6 MB.',thanksH:'Obrigado! Recebemos a sua encomenda.',thanksP:'Encomenda {id}. Por agora o seu cartão fica apenas reservado. Escrevemos-lhe no prazo de 2 dias úteis para confirmar, e só então é feita a cobrança.',cancelMsg:'O pagamento não foi concluído, por isso não foi feita nenhuma encomenda nem cobrança. Pode tentar de novo mais abaixo.'});
+Object.assign(T.tr,{sending:'Siparişiniz gönderiliyor…',errSend:'Siparişiniz gönderilemedi. Lütfen yeniden deneyin ya da hello@oopsleys.com adresine yazın.',errClosed:'Siparişler bugün için az önce kapandı. Yukarıdan bekleme listesine katılabilirsiniz.',errFile:'Dosyalardan biri çok büyük ya da görsel değil. Logolar en fazla 5 MB, fotoğraflar en fazla 6 MB olabilir.',thanksH:'Teşekkürler! Siparişiniz alındı.',thanksP:'Sipariş {id}. Kartınızdaki tutar şimdilik yalnızca ayrıldı. Onay için 2 iş günü içinde size yazacağız, ödeme ancak o zaman alınır.',cancelMsg:'Ödeme tamamlanmadı; sipariş oluşturulmadı ve ücret alınmadı. Aşağıdan yeniden deneyebilirsiniz.'});
 
-Object.assign(T.en,{"libT": "Your version of one of our reels", "cusT": "Custom video", "tplT": "One of our scenes", "giftT": "Your own idea", "kindS": "A short animated video made for your business: your space, your colors, your logo. Post it as a reel or a story, or run it as an ad. Draft in 5 business days.", "kindG": "Describe the moment you have in mind and we turn it into a short animated scene, ready to post on your own accounts. Draft in 5 business days.", "baseTS": "Budget option: a remake of one of our reels", "baseDS": "For pilates and fitness studios. A new version of a published reel with your logo. Similar to the original, never identical. Draft in 3 business days.", "baseTG": "Budget option: one of our scenes", "baseDG": "Choose a scene we already know works and we make it for you. The most affordable way to order.", "pN": "people", "chD": "We design a character inspired by a real person: hair, beard, glasses, style. A cartoon likeness, not an exact portrait. Adults only. Up to {n} people; each extra person is {p} more.", "fullBar": "We are fully booked right now.", "fullH": "We are fully booked right now", "fullP": "We take a limited number of orders each day so every reel gets proper attention. Leave your email and we will write to you as soon as a spot opens. No payment and no details needed now.", "viewNote": "Prices for reference. Ordering reopens when a spot is free.", "heroOpen": "No call needed. Order in about three minutes.", "heroSoon": "Ordering opens soon. Join the waitlist in a few seconds.", "heroFull": "We are fully booked right now. Join the waitlist in a few seconds."});
-Object.assign(T.es,{"h1": "Reels animados y anuncios cortos para tu negocio.", "heroP": "Vídeos animados, cortos y divertidos, que tus clientes querrán compartir, con tu logo en la escena. Para estudios, salones, clínicas, cafeterías, tiendas y cualquier negocio pequeño.", "s1h": "Elige la duración", "s1p": "15 o 30 segundos, hecho para tu negocio. Añade extras si quieres.", "s1pG": "15 o 30 segundos, a partir de tu idea. Añade extras si quieres.", "moreH": "Ejemplos de nuestro trabajo", "moreP": "Por ahora, nuestros reels publicados son del mundo del pilates. El tuyo se crea desde cero, en torno a tu negocio o tu historia.", "l1": "2. Tu vídeo", "cusT": "Vídeo a medida", "tplT": "Una de nuestras escenas", "kindS": "Un vídeo animado corto creado para tu negocio: tu espacio, tus colores, tu logo. Publícalo como reel o historia, o úsalo como anuncio. Borrador en 5 días hábiles.", "kindG": "Describe el momento que tienes en mente y lo convertimos en una escena animada corta, lista para publicar en tus cuentas personales. Borrador en 5 días hábiles.", "baseTS": "Opción económica: una versión de uno de nuestros reels", "baseDS": "Para estudios de pilates y fitness. Una versión nueva de un reel publicado, con tu logo. Parecida al original, nunca idéntica. Borrador en 3 días hábiles.", "baseTG": "Opción económica: una de nuestras escenas", "baseDG": "Elige una escena que ya sabemos que funciona y la hacemos para ti. La forma más económica de pedir.", "soon": "Estos reels transcurren en un estudio de pilates. Para cualquier otro tipo de negocio, pide un vídeo a medida.", "toCustom": "Cambiar a un vídeo a medida", "eqHint": "Por ejemplo: estudio de pilates, peluquería, clínica dental, cafetería, tienda online", "t3p": "Tu vídeo es tuyo y puedes usarlo donde quieras: redes sociales, tu web y anuncios de pago. El personaje de los Oopsleys sigue siendo nuestro.", "t5p": "Los vídeos personales son tuyos: publícalos y compártelos donde quieras, también en Instagram. Solo que no son para promocionar un negocio: para eso, pide un vídeo para negocios. El personaje de los Oopsleys sigue siendo nuestro.", "pN": "personas", "chD": "Diseñamos un personaje inspirado en una persona real: pelo, barba, gafas, estilo. Un parecido en dibujo animado, no un retrato exacto. Solo adultos. Hasta {n} personas; cada persona adicional cuesta {p} más.", "heroOpen": "Sin llamadas. Haz tu pedido en unos tres minutos.", "heroSoon": "Los pedidos se abren pronto. Apúntate a la lista de espera en unos segundos.", "heroFull": "Ahora mismo estamos completos. Apúntate a la lista de espera en unos segundos.", "orderP": "Vertical, con música y efectos de sonido y sin diálogo, listo para Reels e Historias. Precios en dólares estadounidenses.", "a1": "No hay diálogo. Esa es la idea: el reel funciona en cualquier idioma. Cada vídeo lleva su propia música de fondo y sus efectos de sonido, creados junto con la animación.", "l0": "1. ¿Para quién es el vídeo?", "l2": "3. Extras", "l3": "4. Detalles", "whoS": "Mi negocio", "whoSD": "Un reel o anuncio corto con tu logo: para un estudio, salón, clínica, cafetería, tienda o cualquier negocio pequeño.", "whoG": "Para mí, o un regalo", "whoGD": "Una escena personal: un cumpleaños, un aniversario, un momento divertido con alguien a quien quieres."});
-Object.assign(T.pt,{"h1": "Reels animados e anúncios curtos para o seu negócio.", "heroP": "Vídeos animados, curtos e divertidos, que os seus clientes vão querer partilhar, com o seu logótipo na cena. Para estúdios, salões, clínicas, cafés, lojas e qualquer pequeno negócio.", "s1h": "Escolha a duração", "s1p": "15 ou 30 segundos, feito para o seu negócio. Junte extras se quiser.", "s1pG": "15 ou 30 segundos, a partir da sua ideia. Junte extras se quiser.", "moreH": "Exemplos do nosso trabalho", "moreP": "Por agora, os nossos reels publicados são do mundo do pilates. O seu é criado de raiz, à volta do seu negócio ou da sua história.", "l1": "2. O seu vídeo", "cusT": "Vídeo personalizado", "tplT": "Uma das nossas cenas", "kindS": "Um vídeo animado curto criado para o seu negócio: o seu espaço, as suas cores, o seu logótipo. Publique-o como reel ou story, ou use-o como anúncio. Rascunho em 5 dias úteis.", "kindG": "Descreva o momento que tem em mente e nós transformamo-lo numa cena animada curta, pronta a publicar nas suas contas pessoais. Rascunho em 5 dias úteis.", "baseTS": "Opção económica: uma versão de um dos nossos reels", "baseDS": "Para estúdios de pilates e fitness. Uma versão nova de um reel publicado, com o seu logótipo. Parecida com o original, nunca idêntica. Rascunho em 3 dias úteis.", "baseTG": "Opção económica: uma das nossas cenas", "baseDG": "Escolha uma cena que já sabemos que resulta e nós fazemo-la para si. A forma mais económica de encomendar.", "soon": "Estes reels passam-se num estúdio de pilates. Para qualquer outro tipo de negócio, encomende um vídeo personalizado.", "toCustom": "Mudar para um vídeo personalizado", "eqHint": "Por exemplo: estúdio de pilates, cabeleireiro, clínica dentária, café, loja online", "t3p": "O seu vídeo é seu e pode usá-lo onde quiser: redes sociais, o seu site e anúncios pagos. A personagem dos Oopsleys continua a ser nossa.", "t5p": "Os vídeos pessoais são seus: publique-os e partilhe-os onde quiser, incluindo no Instagram. Só não servem para promover um negócio: para isso, encomende um vídeo para negócios. A personagem dos Oopsleys continua a ser nossa.", "pN": "pessoas", "chD": "Criamos uma personagem inspirada numa pessoa real: cabelo, barba, óculos, estilo. Uma semelhança em desenho animado, não um retrato exato. Apenas adultos. Até {n} pessoas; cada pessoa adicional custa mais {p}.", "heroOpen": "Sem chamadas. Encomende em cerca de três minutos.", "heroSoon": "As encomendas abrem em breve. Junte-se à lista de espera em poucos segundos.", "heroFull": "De momento estamos completos. Junte-se à lista de espera em poucos segundos.", "orderP": "Vertical, com música e efeitos sonoros e sem diálogo, pronto para Reels e Stories. Preços em dólares americanos.", "a1": "Não há diálogo. É essa a ideia: o reel funciona em qualquer língua. Cada vídeo traz a sua própria música de fundo e os seus efeitos sonoros, criados em conjunto com a animação.", "l0": "1. Para quem é o vídeo?", "l2": "3. Extras", "l3": "4. Detalhes", "whoS": "O meu negócio", "whoSD": "Um reel ou anúncio curto com o seu logótipo: para um estúdio, salão, clínica, café, loja ou qualquer pequeno negócio.", "whoG": "Para mim, ou um presente", "whoGD": "Uma cena pessoal: um aniversário, uma data especial, um momento divertido com alguém de quem gosta."});
-Object.assign(T.tr,{"h1": "İşletmeniz için animasyon reel'ler ve kısa reklamlar.", "heroP": "Müşterilerinizin paylaşmak isteyeceği kısa ve eğlenceli animasyon videolar, sahnede sizin logonuzla. Stüdyolar, salonlar, klinikler, kafeler, mağazalar ve her küçük işletme için.", "s1h": "Süreyi seçin", "s1p": "15 ya da 30 saniye, işletmeniz için hazırlanır. Dilerseniz ekstralar ekleyin.", "s1pG": "15 ya da 30 saniye, kendi fikrinizden. Dilerseniz ekstralar ekleyin.", "moreH": "Çalışmalarımızdan örnekler", "moreP": "Şimdilik yayınladığımız reel'ler pilates dünyasından. Sizinki, işletmenize ya da hikâyenize göre sıfırdan hazırlanır.", "l1": "2. Videonuz", "cusT": "Özel video", "tplT": "Sahnelerimizden biri", "kindS": "İşletmeniz için hazırlanan kısa bir animasyon video: sizin mekânınız, sizin renkleriniz, sizin logonuz. Reel ya da hikâye olarak paylaşın ya da reklam olarak kullanın. Taslak 5 iş gününde.", "kindG": "Aklınızdaki anı anlatın, biz onu kişisel hesaplarınızda paylaşmaya hazır kısa bir animasyon sahneye dönüştürelim. Taslak 5 iş gününde.", "baseTS": "Ekonomik seçenek: reel'lerimizden birinin yeni versiyonu", "baseDS": "Pilates ve fitness stüdyoları için. Yayınlanmış bir reel'in logonuzla hazırlanan yeni versiyonu. Orijinaline benzer, ama asla birebir aynı olmaz. Taslak 3 iş gününde.", "baseTG": "Ekonomik seçenek: sahnelerimizden biri", "baseDG": "İşe yaradığını bildiğimiz bir sahneyi seçin, sizin için hazırlayalım. Sipariş vermenin en uygun fiyatlı yolu.", "soon": "Bu reel'ler bir pilates stüdyosunda geçiyor. Başka türden bir işletme için özel video sipariş edin.", "toCustom": "Özel videoya geç", "eqHint": "Örneğin: pilates stüdyosu, kuaför, diş kliniği, kafe, online mağaza", "t3p": "Videonuz sizindir; dilediğiniz yerde kullanabilirsiniz: sosyal medya, web siteniz ve ücretli reklamlar. Oopsleys karakteri ise bize aittir.", "t5p": "Kişisel videolar sizindir; Instagram dahil dilediğiniz yerde paylaşabilirsiniz. Yalnızca bir işletmeyi tanıtmak için kullanılamaz: bunun için işletme videosu sipariş edin. Oopsleys karakteri ise bize aittir.", "pN": "kişi", "chD": "Gerçek bir kişiden esinlenen bir karakter tasarlıyoruz: saç, sakal, gözlük, tarz. Birebir portre değil, çizgi film benzerliği. Yalnızca yetişkinler. En fazla {n} kişi; her ek kişi için {p} eklenir.", "heroOpen": "Görüşme gerekmez. Yaklaşık üç dakikada sipariş verin.", "heroSoon": "Siparişler yakında açılıyor. Birkaç saniyede bekleme listesine katılın.", "heroFull": "Şu anda doluyuz. Birkaç saniyede bekleme listesine katılın.", "orderP": "Dikey, müzikli ve ses efektli, diyalogsuz; Reels ve Hikâyeler için hazır. Fiyatlar ABD doları cinsindendir.", "a1": "Diyalog yok. Fikir de bu: reel her dilde işe yarar. Her video, animasyonla birlikte oluşturulan kendi fon müziği ve ses efektleriyle gelir.", "l0": "1. Video kimin için?", "l2": "3. Ekstralar", "l3": "4. Ayrıntılar", "whoS": "İşletmem", "whoSD": "Logonuzla bir reel ya da kısa reklam: stüdyo, salon, klinik, kafe, mağaza ya da her küçük işletme için.", "whoG": "Kendim için ya da hediye", "whoGD": "Kişisel bir sahne: bir doğum günü, bir yıl dönümü, sevdiğiniz biriyle eğlenceli bir an."});
+Object.assign(T.en,{"libT": "One of our videos", "cusT": "A new story", "tplT": "One of our videos", "giftT": "A new story", "baseTS": "Budget option: a remake of one of our reels", "pN": "people", "chD": "We design a cartoon character inspired by a real person: hair, beard, glasses, style. It is inspired by them, not an exact portrait. Up to {n} people; each extra person is {p} more. Children can be included only when their parent or legal guardian places the order.", "fullBar": "We are fully booked right now.", "fullH": "We are fully booked right now", "fullP": "We take a limited number of orders each day so every reel gets proper attention. Leave your email and we will write to you as soon as a spot opens. No payment and no details needed now.", "viewNote": "Prices for reference. Ordering reopens when a spot is free.", "heroOpen": "No call needed. Order in about three minutes.", "heroSoon": "Ordering opens soon. Join the waitlist in a few seconds.", "heroFull": "We are fully booked right now. Join the waitlist in a few seconds.", "navOrder": "Order", "wz1": "Your video", "wz2": "Make it yours", "wz3": "Details", "wNextT": "Next", "wBackT": "Back", "errPick": "Please choose one of the options above.", "thanksBack": "Back to the home page", "ctaEndH": "Ready to start?", "revH": "Your order", "navWork": "Work", "wkP2": "Want one of these? Tap the order button under a video and we make a new version of it for you: with your logo for a business, or with characters inspired by you. The price is on each button and depends on the video's length. It will look similar to the original, never identical.", "chT": "Character inspired by a real person", "w4p": "Your logo on the wall, your colors in the room, and even a character inspired by you.", "s2pG": "Choose the occasion and tell us who it is for. Add a photo if you want characters inspired by real people.", "fPhoto": "Reference photos for the character", "photoHint": "Everyday photos, fully clothed, with the face clearly visible. Location data is removed from your photos before they are sent.", "cLike": "Every adult in the photos has agreed to a character inspired by them.", "kidsQ": "Is anyone in the photos under 18?", "kidsNo": "No, adults only", "kidsYes": "Yes", "kidRules": "For children we accept everyday photos only: fully clothed, no swimwear, bath or underwear photos. Scenes with children are family scenes only. We may decline an order and release your card.", "cKid": "I am the parent or legal guardian of every child in the photos. I agree that their photos are used, with AI tools, only to create a cartoon character inspired by them for this video.", "t10p": "We use your email, logo and photos only to make and deliver your order. Reference photos are deleted after delivery. We never sell them, and we pass them to no one except the animation tools that produce your video.", "t11h": "Children", "t11p": "A character inspired by a child is made only when the child's parent or legal guardian places the order and confirms it in the form. We accept everyday, fully clothed photos only, and we make family scenes only. Children's photos are used only to create the character for that order, are deleted after delivery and within 30 days at the latest, and are never used in advertising or shown as examples. A video that includes a child's character is never shown among our examples without written permission from the parent or guardian. You can ask us to delete the photos at any time: hello@oopsleys.com. Only adults can place orders.", "t12h": "Inspired by, not a portrait", "t12p": "A character based on a photo is a cartoon character inspired by the person: hair, build, style. It is not an exact portrait.", "q6": "Can my children appear in the video?", "a6": "Yes, as cartoon characters inspired by them. Only a parent or legal guardian can order this, and confirms it in the form. We ask for everyday photos, make family scenes only, and delete the photos within 30 days at the latest.", "q7": "Will the character look exactly like me?", "a7": "The character is inspired by you and your features: your hair, your style and your general look, drawn in the Oopsleys style. It will remind people of you, but it will not look exactly like you.", "t13h": "Where you can order from", "t13p": "We take orders from almost everywhere. We cannot take orders from places under comprehensive US sanctions: Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk regions.", "sanction": "We can't take orders from places under US sanctions.", "sndOn": "Turn sound on", "sndOff": "Turn sound off", "sndHint": "Tap the speaker on a video to hear its music and sound effects.", "portMe": "The main character is based on the studio's creator herself.", "a1": "There is no dialogue. That is the idea: the reel works in every language. Each video comes with its own background music and sound effects, created together with the animation. Tap the speaker on any video on this site to hear it.", "l2": "Make it yours", "kR": "One of our videos, with a character inspired by you or with your logo", "kRS": "One of our videos", "kRD": "Pick the video you like. We make a new version of it for you. Similar to the original, never identical.", "kC": "A new story", "kCD": "Tell us your idea and we turn it into a new reel, made from scratch.", "rlL": "Choose a video", "len30D": "One situation, about three moments.", "len45D": "About four or five moments.", "len60D": "About six moments.", "lenHint": "We fit your idea to the length you choose. If it needs more time, we tell you before charging.", "secs": "seconds", "aboutSecs": "about {n} seconds", "bizT": "It is for my business", "bizD": "We put your logo and your brand colors in the scene.", "bizS": "For a business, with logo and brand colors", "stWhere": "Where does it happen?", "stWhat": "What happens?", "stEnd": "How does it end?", "stHint": "A few short lines are enough. One situation works best.", "packsH": "What you can order", "pk3T": "Starring you", "pk3D": "Add characters inspired by real people to any video: {a} for the first person, {b} for each one after. For example, one of our videos with characters inspired by a couple is {c} in total.", "heroNote": "From {a} · First draft in 5 business days", "heroNoteG": "From {a} with our characters · from {b} with characters inspired by the two of you", "s1h": "Choose your video", "s1p": "Pick one of our videos, or start a new story and choose its length.", "s1pG": "Pick one of our videos, or start a new story and choose its length.", "inc1": "A vertical 9:16 video: the format of Reels, TikTok and Shorts", "t9h": "After you approve", "t9p": "Approving the draft is your last step. Once the final version is delivered, the order is complete; further changes would be a new order.", "t14h": "Fitting your idea to the length", "t14p": "We adapt your idea to the length you chose, and may shorten or merge moments so that it works. If it does not fit, we tell you before charging, so you can choose a longer reel.", "t2p": "One round of changes to the draft is included. Each extra round is {p}, and you can buy it when you need it.", "rvH": "Buy an extra round of changes", "rvP": "For an order whose draft you have already received. One round is included in every order; each extra round is {p}. Available until the final version is delivered.", "rvId": "Order number", "rvEmail": "The email you ordered with", "rvNotes": "What would you like changed?", "rvTerms": "I understand that this buys one more round of changes to the draft, and that it is available only until the final version is delivered.", "rvPay": "Continue to payment · {p}", "rvErrOrder": "We could not find a paid order with this number and email.", "rvLink": "Buy an extra round", "rvDone": "Draft mode: nothing was charged and nothing was sent.", "cf3p": "A first draft in 5 business days. When our schedule allows, a 48-hour option is offered.", "bizHook": "Already sharing our reels? Get the same reel with your logo in the scene, or with a character inspired by you.", "moreP": "Every video here can be made for you: with your logo, or with characters inspired by you.", "fNotesOpt": "Anything you would like changed? (optional)"});
+Object.assign(T.es,{"exH": "Dónde aparece tu negocio", "exP": "Tres fotogramas de nuestros vídeos. En el tuyo, los puntos marcados llevan tu nombre y tu logo.", "exL1": "El nombre de tu negocio aquí", "exL2": "Tu logo aquí", "exL3": "Tu logo en las bolsas", "h1": "Reels animados y anuncios cortos para tu negocio.", "heroP": "Vídeos animados, cortos y divertidos, que tus clientes querrán compartir, con tu logo en la escena. Para estudios, salones, clínicas, cafeterías, tiendas y cualquier negocio pequeño.", "s1h": "Elige tu vídeo", "s1p": "Elige uno de nuestros vídeos, o empieza una historia nueva y elige su duración.", "s1pG": "Elige uno de nuestros vídeos, o empieza una historia nueva y elige su duración.", "moreH": "Ejemplos de nuestro trabajo", "moreP": "Cualquier vídeo de aquí puede hacerse para ti: con tu logo, o con personajes inspirados en ti.", "l1": "Tu vídeo", "cusT": "Una historia nueva", "tplT": "Uno de nuestros vídeos", "baseTS": "Opción económica: una versión de uno de nuestros reels", "soon": "La mayoría transcurre en un estudio de pilates o en casa. Si ninguno encaja con tu negocio, pide un vídeo a medida.", "toCustom": "Cambiar a un vídeo a medida", "eqHint": "Por ejemplo: estudio de pilates, peluquería, clínica dental, cafetería, tienda online", "t3p": "Tu vídeo es tuyo y puedes usarlo donde quieras: redes sociales, tu web y anuncios de pago. El personaje de los Oopsleys sigue siendo nuestro.", "t5p": "Los vídeos personales son tuyos: publícalos y compártelos donde quieras, también en Instagram. Solo que no son para promocionar un negocio: para eso, pide un vídeo para negocios. El personaje de los Oopsleys sigue siendo nuestro.", "pN": "personas", "chD": "Diseñamos un personaje de dibujos inspirado en una persona real: pelo, barba, gafas, estilo. Está inspirado en ella; no es un retrato exacto. Hasta {n} personas; cada persona adicional cuesta {p} más. Los menores solo pueden incluirse si el pedido lo hace su padre, su madre o su tutor legal.", "heroOpen": "Sin llamadas. Haz tu pedido en unos tres minutos.", "heroSoon": "Los pedidos se abren pronto. Apúntate a la lista de espera en unos segundos.", "heroFull": "Ahora mismo estamos completos. Apúntate a la lista de espera en unos segundos.", "orderP": "Vertical, con música y efectos de sonido y sin diálogo, listo para Reels e Historias. Precios en dólares estadounidenses.", "a1": "No hay diálogo. Esa es la idea: el reel funciona en cualquier idioma. Cada vídeo lleva su propia música de fondo y sus efectos de sonido, creados junto con la animación. Toca el altavoz de cualquier vídeo de esta web para escucharlo.", "l2": "Hazlo tuyo", "l3": "Tus datos", "hH1": "Vídeos animados cortos, hechos por encargo.", "hP": "Somos el estudio detrás de The Oopsleys, la comedia animada sin palabras con más de 10 millones de visualizaciones en Instagram. Convertimos tu negocio, o tu propia historia, en un vídeo animado corto con el mismo estilo, listo para Reels, Historias y anuncios.", "chH": "¿Para quién es el vídeo?", "chS": "Para mi negocio", "chSP": "Un reel o anuncio corto con tu logo en la escena. Para estudios, salones, clínicas, cafeterías, tiendas y cualquier negocio pequeño.", "chSGo": "Vídeos para negocios →", "chG": "Para mí, o un regalo", "chGP": "Una escena personal sobre ti y las personas que quieres: un cumpleaños, un aniversario o simplemente un momento divertido.", "chGGo": "Vídeos personales →", "navOrder": "Pedir", "wz1": "Tu vídeo", "wz2": "Hazlo tuyo", "wz3": "Detalles", "wNextT": "Siguiente", "wBackT": "Atrás", "errPick": "Elige una de las opciones de arriba.", "thanksBack": "Volver al inicio", "ctaEndH": "¿Empezamos?", "incH": "Qué recibes", "inc1": "Un vídeo vertical 9:16: el formato de Reels, TikTok y Shorts", "inc2": "Creado desde cero para ti, con música y efectos de sonido originales", "inc3": "Tu logo y tus colores en la escena", "inc3G": "Tu ocasión y tu historia en la escena", "inc4": "Un borrador para aprobar antes de la versión final", "inc5": "Una ronda de cambios incluida", "inc6": "Archivo Full HD por correo, tuyo para usarlo donde quieras", "cfH": "Pide con tranquilidad", "cf1h": "Tu tarjeta solo queda reservada", "cf1p": "No se cobra nada hasta que confirmamos que podemos hacer tu vídeo. Si no podemos, se libera la reserva.", "cf2h": "Primero apruebas un borrador", "cf2p": "Ves un borrador antes de la versión final, con una ronda de cambios incluida.", "cf3h": "Plazos claros", "cf3p": "Un primer borrador en 5 días hábiles. Cuando nuestra agenda lo permite, ofrecemos una opción de 48 horas.", "cf4h": "Reembolso completo hasta que empezamos", "cf4p": "¿Cambias de idea antes de que empecemos a trabajar? Te devolvemos todo el dinero.", "audS": "Negocios", "audG": "Personal", "revH": "Tu pedido", "navWork": "Trabajos", "wkH": "Nuestro trabajo", "wkP": "Todos los vídeos que ves aquí los hemos hecho nosotros, con el estilo Oopsleys. El tuyo se crea desde cero, en torno a tu negocio o tu historia.", "wkS1": "Escenas en el estudio", "wkS2": "Escenas de pareja y del día a día", "moreAll": "Ver todos nuestros trabajos →", "portH": "Sobre el estudio", "portP": "Oopsleys Animation Studio es un pequeño estudio independiente, creador de dos mundos animados: The Oopsleys, una comedia sin palabras sobre el pilates y la vida diaria, y Lumi and the Magical World, una serie para niños pequeños. Cada vídeo por encargo lo hace la misma creadora.", "fmtL": "Vídeo vertical (9:16) para Instagram Reels, TikTok y YouTube Shorts", "q5": "¿Puedo pedir un vídeo horizontal?", "a5": "Por ahora no. Todos los vídeos son verticales (9:16), pensados para Reels, TikTok y Shorts. No es un vídeo horizontal para una subida normal a YouTube ni para una pantalla de televisión.", "wkPick": "Pedir este", "wkP2": "¿Quieres uno de estos? Toca el botón de pedido debajo de un vídeo y creamos una versión nueva para ti: con tu logo si es para un negocio, o con personajes inspirados en ti. El precio aparece en cada botón y depende de la duración del vídeo. Será parecida al original, nunca idéntica.", "wkAll": "Todos", "wkT1": "Pilates", "wkT2": "Pareja y casa", "wkT3": "Otros negocios", "chT": "Personaje inspirado en una persona real", "w4p": "Tu logo en la pared, tus colores en la sala e incluso un personaje inspirado en ti.", "s2pG": "Elige la ocasión y dinos para quién es. Añade una foto si quieres personajes inspirados en personas reales.", "fPhoto": "Fotos de referencia para el personaje", "photoHint": "Fotos cotidianas, con ropa y con la cara bien visible. Los datos de ubicación se eliminan de tus fotos antes de enviarlas.", "cLike": "Todos los adultos de las fotos han aceptado que se cree un personaje inspirado en ellos.", "kidsQ": "¿Hay algún menor de 18 años en las fotos?", "kidsNo": "No, solo adultos", "kidsYes": "Sí", "kidRules": "Para menores solo aceptamos fotos cotidianas: con ropa, sin fotos en bañador, en el baño o en ropa interior. Las escenas con menores son solo escenas familiares. Podemos rechazar un pedido y liberar tu tarjeta.", "cKid": "Soy el padre, la madre o el tutor legal de todos los menores que aparecen en las fotos. Acepto que sus fotos se usen, con herramientas de IA, únicamente para crear un personaje de dibujos inspirado en ellos para este vídeo.", "t10p": "Usamos tu correo, tu logo y tus fotos solo para crear y entregar tu pedido. Las fotos de referencia se eliminan después de la entrega. Nunca las vendemos, y no las pasamos a nadie salvo a las herramientas de animación con las que se produce tu vídeo.", "t11h": "Menores", "t11p": "Un personaje inspirado en un menor solo se crea cuando el pedido lo hace su padre, su madre o su tutor legal y lo confirma en el formulario. Solo aceptamos fotos cotidianas, con ropa, y solo hacemos escenas familiares. Las fotos de menores se usan únicamente para crear el personaje de ese pedido, se eliminan después de la entrega y como máximo a los 30 días, y nunca se usan en publicidad ni se muestran como ejemplo. Un vídeo con el personaje de un menor nunca se muestra entre nuestros ejemplos sin permiso escrito de su padre, su madre o su tutor. Puedes pedirnos que eliminemos las fotos en cualquier momento: hello@oopsleys.com. Solo los adultos pueden hacer pedidos.", "t12h": "Inspirado, no un retrato", "t12p": "Un personaje basado en una foto es un personaje de dibujos inspirado en la persona: pelo, complexión, estilo. No es un retrato exacto.", "q6": "¿Pueden aparecer mis hijos en el vídeo?", "a6": "Sí, como personajes de dibujos inspirados en ellos. Solo puede pedirlo su padre, su madre o su tutor legal, que lo confirma en el formulario. Pedimos fotos cotidianas, hacemos solo escenas familiares y eliminamos las fotos como máximo a los 30 días.", "q7": "¿El personaje será idéntico a mí?", "a7": "El personaje se inspira en ti y en tus rasgos: tu pelo, tu estilo y tu aspecto general, dibujado en el estilo Oopsleys. Recordará a ti, pero no será idéntico a ti.", "t13h": "Desde dónde puedes pedir", "t13p": "Aceptamos pedidos de casi todo el mundo. No podemos aceptar pedidos desde lugares sujetos a sanciones integrales de Estados Unidos: Cuba, Irán, Corea del Norte, Siria y las regiones de Crimea, Donetsk y Lugansk.", "sanction": "No podemos aceptar pedidos desde lugares sujetos a sanciones de Estados Unidos.", "sndOn": "Activar el sonido", "sndOff": "Silenciar", "sndHint": "Toca el altavoz de un vídeo para escuchar su música y sus efectos de sonido.", "portMe": "El personaje principal está basado en la propia creadora del estudio.", "kR": "Uno de nuestros vídeos, con un personaje inspirado en ti o con tu logo", "kRS": "Uno de nuestros vídeos", "kRD": "Elige el vídeo que te gusta. Creamos una versión nueva para ti. Parecida al original, nunca idéntica.", "kC": "Una historia nueva", "kCD": "Cuéntanos tu idea y la convertimos en un reel nuevo, hecho desde cero.", "rlL": "Elige un vídeo", "len30D": "Una situación, unos tres momentos.", "len45D": "Unos cuatro o cinco momentos.", "len60D": "Unos seis momentos.", "lenHint": "Adaptamos tu idea a la duración que elijas. Si necesita más tiempo, te lo decimos antes de cobrar.", "secs": "segundos", "aboutSecs": "unos {n} segundos", "bizT": "Es para mi negocio", "bizD": "Ponemos tu logo y los colores de tu marca en la escena.", "bizS": "Para un negocio, con logo y colores de marca", "stWhere": "¿Dónde ocurre?", "stWhat": "¿Qué pasa?", "stEnd": "¿Cómo termina?", "stHint": "Bastan unas líneas cortas. Una sola situación funciona mejor.", "packsH": "Qué puedes pedir", "pk3T": "Contigo de protagonista", "pk3D": "Añade personajes inspirados en personas reales a cualquier vídeo: {a} por la primera persona y {b} por cada una adicional. Por ejemplo, uno de nuestros vídeos con personajes inspirados en una pareja cuesta {c} en total.", "heroNote": "Desde {a} · Primer borrador en 5 días hábiles", "heroNoteG": "Desde {a} con nuestros personajes · desde {b} con personajes inspirados en los dos", "t9h": "Después de tu aprobación", "t9p": "Aprobar el borrador es tu último paso. Una vez entregada la versión final, el pedido está completo; cualquier cambio posterior sería un pedido nuevo.", "t14h": "Tu idea, ajustada a la duración", "t14p": "Adaptamos tu idea a la duración que elegiste, y podemos acortar o unir momentos para que funcione. Si no cabe, te lo decimos antes de cobrar para que puedas elegir un reel más largo.", "t2p": "Una ronda de cambios en el borrador está incluida. Cada ronda extra cuesta {p}, y puedes comprarla cuando la necesites.", "rvH": "Comprar una ronda extra de cambios", "rvP": "Para un pedido del que ya has recibido el borrador. Cada pedido incluye una ronda; cada ronda extra cuesta {p}. Disponible hasta que se entregue la versión final.", "rvId": "Número de pedido", "rvEmail": "El correo con el que hiciste el pedido", "rvNotes": "¿Qué te gustaría cambiar?", "rvTerms": "Entiendo que esto compra una ronda más de cambios en el borrador, y que solo está disponible hasta que se entregue la versión final.", "rvPay": "Continuar al pago · {p}", "rvErrOrder": "No hemos encontrado un pedido pagado con ese número y ese correo.", "rvLink": "Comprar una ronda extra", "rvDone": "Modo borrador: no se ha cobrado ni enviado nada.", "bizHook": "¿Ya compartes nuestros reels? Consigue el mismo reel con tu logo en la escena, o con un personaje inspirado en ti.", "fNotesOpt": "¿Algo que te gustaría cambiar? (opcional)", "libT": "Uno de nuestros vídeos", "giftT": "Una historia nueva"});
+Object.assign(T.pt,{"exH": "Onde o seu negócio aparece", "exP": "Três imagens dos nossos vídeos. No seu, os pontos assinalados levam o seu nome e o seu logótipo.", "exL1": "O nome do seu negócio aqui", "exL2": "O seu logótipo aqui", "exL3": "O seu logótipo nos sacos", "h1": "Reels animados e anúncios curtos para o seu negócio.", "heroP": "Vídeos animados, curtos e divertidos, que os seus clientes vão querer partilhar, com o seu logótipo na cena. Para estúdios, salões, clínicas, cafés, lojas e qualquer pequeno negócio.", "s1h": "Escolha o seu vídeo", "s1p": "Escolha um dos nossos vídeos, ou comece uma história nova e escolha a duração.", "s1pG": "Escolha um dos nossos vídeos, ou comece uma história nova e escolha a duração.", "moreH": "Exemplos do nosso trabalho", "moreP": "Qualquer vídeo aqui pode ser feito para si: com o seu logótipo, ou com personagens inspiradas em si.", "l1": "O seu vídeo", "cusT": "Uma história nova", "tplT": "Um dos nossos vídeos", "baseTS": "Opção económica: uma versão de um dos nossos reels", "soon": "A maioria passa-se num estúdio de pilates ou em casa. Se nenhum se adequar ao seu negócio, encomende um vídeo personalizado.", "toCustom": "Mudar para um vídeo personalizado", "eqHint": "Por exemplo: estúdio de pilates, cabeleireiro, clínica dentária, café, loja online", "t3p": "O seu vídeo é seu e pode usá-lo onde quiser: redes sociais, o seu site e anúncios pagos. A personagem dos Oopsleys continua a ser nossa.", "t5p": "Os vídeos pessoais são seus: publique-os e partilhe-os onde quiser, incluindo no Instagram. Só não servem para promover um negócio: para isso, encomende um vídeo para negócios. A personagem dos Oopsleys continua a ser nossa.", "pN": "pessoas", "chD": "Criamos uma personagem de desenho animado inspirada numa pessoa real: cabelo, barba, óculos, estilo. É inspirada nela; não é um retrato exato. Até {n} pessoas; cada pessoa adicional custa mais {p}. Os menores só podem ser incluídos quando a encomenda é feita pelo pai, pela mãe ou pelo tutor legal.", "heroOpen": "Sem chamadas. Encomende em cerca de três minutos.", "heroSoon": "As encomendas abrem em breve. Junte-se à lista de espera em poucos segundos.", "heroFull": "De momento estamos completos. Junte-se à lista de espera em poucos segundos.", "orderP": "Vertical, com música e efeitos sonoros e sem diálogo, pronto para Reels e Stories. Preços em dólares americanos.", "a1": "Não há diálogo. É essa a ideia: o reel funciona em qualquer língua. Cada vídeo traz a sua própria música de fundo e os seus efeitos sonoros, criados em conjunto com a animação. Toque no altifalante de qualquer vídeo deste site para o ouvir.", "l2": "Torne-o seu", "l3": "Os seus dados", "hH1": "Vídeos animados curtos, feitos por encomenda.", "hP": "Somos o estúdio por trás de The Oopsleys, a comédia animada sem palavras com mais de 10 milhões de visualizações no Instagram. Transformamos o seu negócio, ou a sua própria história, num vídeo animado curto no mesmo estilo, pronto para Reels, Stories e anúncios.", "chH": "Para quem é o vídeo?", "chS": "Para o meu negócio", "chSP": "Um reel ou anúncio curto com o seu logótipo na cena. Para estúdios, salões, clínicas, cafés, lojas e qualquer pequeno negócio.", "chSGo": "Vídeos para negócios →", "chG": "Para mim, ou um presente", "chGP": "Uma cena pessoal sobre si e as pessoas de quem gosta: um aniversário, uma data especial ou apenas um momento divertido.", "chGGo": "Vídeos pessoais →", "navOrder": "Pedir", "wz1": "O seu vídeo", "wz2": "Torne-o seu", "wz3": "Detalhes", "wNextT": "Seguinte", "wBackT": "Voltar", "errPick": "Escolha uma das opções acima.", "thanksBack": "Voltar ao início", "ctaEndH": "Vamos começar?", "incH": "O que recebe", "inc1": "Um vídeo vertical 9:16: o formato de Reels, TikTok e Shorts", "inc2": "Criado de raiz para si, com música e efeitos sonoros originais", "inc3": "O seu logótipo e as suas cores na cena", "inc3G": "A sua ocasião e a sua história na cena", "inc4": "Um rascunho para aprovar antes da versão final", "inc5": "Uma ronda de alterações incluída", "inc6": "Ficheiro Full HD por email, seu para usar onde quiser", "cfH": "Encomende com confiança", "cf1h": "O seu cartão fica apenas reservado", "cf1p": "Nada é cobrado até confirmarmos que conseguimos fazer o seu vídeo. Se não conseguirmos, a reserva é libertada.", "cf2h": "Primeiro aprova um rascunho", "cf2p": "Vê um rascunho antes da versão final, com uma ronda de alterações incluída.", "cf3h": "Prazos claros", "cf3p": "Um primeiro rascunho em 5 dias úteis. Quando a nossa agenda permite, oferecemos uma opção de 48 horas.", "cf4h": "Reembolso total até começarmos", "cf4p": "Mudou de ideias antes de começarmos a trabalhar? Devolvemos todo o dinheiro.", "audS": "Negócios", "audG": "Pessoal", "revH": "A sua encomenda", "navWork": "Vídeos", "wkH": "O nosso trabalho", "wkP": "Todos os vídeos que vê aqui foram feitos por nós, no estilo Oopsleys. O seu é criado de raiz, à volta do seu negócio ou da sua história.", "wkS1": "Cenas no estúdio", "wkS2": "Cenas de casal e do dia a dia", "moreAll": "Ver todos os nossos trabalhos →", "portH": "Sobre o estúdio", "portP": "O Oopsleys Animation Studio é um pequeno estúdio independente, criador de dois mundos animados: The Oopsleys, uma comédia sem palavras sobre pilates e o dia a dia, e Lumi and the Magical World, uma série para crianças pequenas. Cada vídeo por encomenda é feito pela mesma criadora.", "fmtL": "Vídeo vertical (9:16) para Instagram Reels, TikTok e YouTube Shorts", "q5": "Posso pedir um vídeo horizontal?", "a5": "Por agora não. Todos os vídeos são verticais (9:16), pensados para Reels, TikTok e Shorts. Não é um vídeo horizontal para um carregamento normal no YouTube nem para um ecrã de televisão.", "wkPick": "Pedir este", "wkP2": "Quer um destes? Toque no botão de encomenda por baixo de um vídeo e criamos uma versão nova para si: com o seu logótipo, se for para um negócio, ou com personagens inspiradas em si. O preço aparece em cada botão e depende da duração do vídeo. Será parecida com o original, nunca idêntica.", "wkAll": "Todos", "wkT1": "Pilates", "wkT2": "Casal e casa", "wkT3": "Outros negócios", "chT": "Personagem inspirada numa pessoa real", "w4p": "O seu logótipo na parede, as suas cores na sala e até uma personagem inspirada em si.", "s2pG": "Escolha a ocasião e diga-nos para quem é. Junte uma foto se quiser personagens inspiradas em pessoas reais.", "fPhoto": "Fotos de referência para a personagem", "photoHint": "Fotos do dia a dia, com roupa e com o rosto bem visível. Os dados de localização são removidos das suas fotos antes do envio.", "cLike": "Todos os adultos nas fotos aceitaram que seja criada uma personagem inspirada neles.", "kidsQ": "Há algum menor de 18 anos nas fotos?", "kidsNo": "Não, apenas adultos", "kidsYes": "Sim", "kidRules": "Para menores só aceitamos fotos do dia a dia: com roupa, sem fotos em fato de banho, no banho ou em roupa interior. As cenas com menores são apenas cenas de família. Podemos recusar uma encomenda e libertar o seu cartão.", "cKid": "Sou o pai, a mãe ou o tutor legal de todos os menores que aparecem nas fotos. Aceito que as fotos deles sejam usadas, com ferramentas de IA, apenas para criar uma personagem de desenho animado inspirada neles para este vídeo.", "t10p": "Usamos o seu email, o seu logótipo e as suas fotos apenas para criar e entregar a sua encomenda. As fotos de referência são eliminadas depois da entrega. Nunca as vendemos, e não as passamos a ninguém além das ferramentas de animação com que o seu vídeo é produzido.", "t11h": "Menores", "t11p": "Uma personagem inspirada num menor só é criada quando a encomenda é feita pelo pai, pela mãe ou pelo tutor legal, que o confirma no formulário. Só aceitamos fotos do dia a dia, com roupa, e só fazemos cenas de família. As fotos de menores são usadas apenas para criar a personagem dessa encomenda, são eliminadas depois da entrega e no máximo ao fim de 30 dias, e nunca são usadas em publicidade nem mostradas como exemplo. Um vídeo com a personagem de um menor nunca é mostrado entre os nossos exemplos sem autorização escrita do pai, da mãe ou do tutor. Pode pedir-nos que eliminemos as fotos a qualquer momento: hello@oopsleys.com. Só adultos podem fazer encomendas.", "t12h": "Inspirada, não um retrato", "t12p": "Uma personagem baseada numa foto é uma personagem de desenho animado inspirada na pessoa: cabelo, constituição, estilo. Não é um retrato exato.", "q6": "Os meus filhos podem aparecer no vídeo?", "a6": "Sim, como personagens de desenho animado inspiradas neles. Só o pai, a mãe ou o tutor legal pode fazer este pedido, e confirma-o no formulário. Pedimos fotos do dia a dia, fazemos apenas cenas de família e eliminamos as fotos no máximo ao fim de 30 dias.", "q7": "A personagem vai ser igual a mim?", "a7": "A personagem é inspirada em si e nos seus traços: o seu cabelo, o seu estilo e o seu aspeto geral, desenhada no estilo Oopsleys. Vai lembrar a sua pessoa, mas não será exatamente igual a si.", "t13h": "De onde pode encomendar", "t13p": "Aceitamos encomendas de quase todo o mundo. Não podemos aceitar encomendas de locais sujeitos a sanções abrangentes dos Estados Unidos: Cuba, Irão, Coreia do Norte, Síria e as regiões da Crimeia, Donetsk e Lugansk.", "sanction": "Não podemos aceitar encomendas de locais sujeitos a sanções dos Estados Unidos.", "sndOn": "Ligar o som", "sndOff": "Desligar o som", "sndHint": "Toque no altifalante de um vídeo para ouvir a música e os efeitos sonoros.", "portMe": "A personagem principal é baseada na própria criadora do estúdio.", "kR": "Um dos nossos vídeos, com uma personagem inspirada em si ou com o seu logótipo", "kRS": "Um dos nossos vídeos", "kRD": "Escolha o vídeo de que gosta. Criamos uma versão nova para si. Parecida com o original, nunca idêntica.", "kC": "Uma história nova", "kCD": "Conte-nos a sua ideia e transformamo-la num reel novo, feito de raiz.", "rlL": "Escolha um vídeo", "len30D": "Uma situação, cerca de três momentos.", "len45D": "Cerca de quatro ou cinco momentos.", "len60D": "Cerca de seis momentos.", "lenHint": "Adaptamos a sua ideia à duração que escolher. Se precisar de mais tempo, avisamos antes de cobrar.", "secs": "segundos", "aboutSecs": "cerca de {n} segundos", "bizT": "É para o meu negócio", "bizD": "Colocamos o seu logótipo e as cores da sua marca na cena.", "bizS": "Para um negócio, com logótipo e cores da marca", "stWhere": "Onde acontece?", "stWhat": "O que acontece?", "stEnd": "Como termina?", "stHint": "Bastam algumas linhas curtas. Uma só situação funciona melhor.", "packsH": "O que pode encomendar", "pk3T": "Consigo como protagonista", "pk3D": "Junte personagens inspiradas em pessoas reais a qualquer vídeo: {a} pela primeira pessoa e {b} por cada pessoa adicional. Por exemplo, um dos nossos vídeos com personagens inspiradas num casal custa {c} no total.", "heroNote": "Desde {a} · Primeiro rascunho em 5 dias úteis", "heroNoteG": "Desde {a} com as nossas personagens · desde {b} com personagens inspiradas nos dois", "t9h": "Depois da sua aprovação", "t9p": "Aprovar o rascunho é o seu último passo. Depois de entregue a versão final, a encomenda está concluída; alterações posteriores seriam uma nova encomenda.", "t14h": "A sua ideia, ajustada à duração", "t14p": "Adaptamos a sua ideia à duração que escolheu, e podemos encurtar ou juntar momentos para que funcione. Se não couber, avisamos antes de cobrar, para que possa escolher um reel mais longo.", "t2p": "Está incluída uma ronda de alterações ao rascunho. Cada ronda extra custa {p}, e pode comprá-la quando precisar.", "rvH": "Comprar uma ronda extra de alterações", "rvP": "Para uma encomenda cujo rascunho já recebeu. Cada encomenda inclui uma ronda; cada ronda extra custa {p}. Disponível até à entrega da versão final.", "rvId": "Número da encomenda", "rvEmail": "O email com que fez a encomenda", "rvNotes": "O que gostaria de alterar?", "rvTerms": "Compreendo que isto compra mais uma ronda de alterações ao rascunho, e que só está disponível até à entrega da versão final.", "rvPay": "Continuar para o pagamento · {p}", "rvErrOrder": "Não encontrámos uma encomenda paga com esse número e esse email.", "rvLink": "Comprar uma ronda extra", "rvDone": "Modo de rascunho: nada foi cobrado nem enviado.", "bizHook": "Já partilha os nossos reels? Receba o mesmo reel com o seu logótipo na cena, ou com uma personagem inspirada em si.", "fNotesOpt": "Algo que gostaria de alterar? (opcional)", "libT": "Um dos nossos vídeos", "giftT": "Uma história nova"});
+Object.assign(T.tr,{"exH": "İşletmeniz videoda nerede görünür", "exP": "Videolarımızdan üç kare. Sizin videonuzda işaretli yerlerde sizin adınız ve logonuz olur.", "exL1": "İşletmenizin adı burada", "exL2": "Logonuz burada", "exL3": "Logonuz çantalarda", "h1": "İşletmeniz için animasyon reel'ler ve kısa reklamlar.", "heroP": "Müşterilerinizin paylaşmak isteyeceği kısa ve eğlenceli animasyon videolar, sahnede sizin logonuzla. Stüdyolar, salonlar, klinikler, kafeler, mağazalar ve her küçük işletme için.", "s1h": "Videonuzu seçin", "s1p": "Videolarımızdan birini seçin ya da yeni bir hikâye başlatıp süresini belirleyin.", "s1pG": "Videolarımızdan birini seçin ya da yeni bir hikâye başlatıp süresini belirleyin.", "moreH": "Çalışmalarımızdan örnekler", "moreP": "Buradaki her video sizin için yapılabilir: logonuzla ya da sizden esinlenen karakterlerle.", "l1": "Videonuz", "cusT": "Yeni bir hikâye", "tplT": "Videolarımızdan biri", "baseTS": "Ekonomik seçenek: reel'lerimizden birinin yeni versiyonu", "soon": "Çoğu bir pilates stüdyosunda ya da evde geçiyor. Hiçbiri işletmenize uymuyorsa özel video sipariş edin.", "toCustom": "Özel videoya geç", "eqHint": "Örneğin: pilates stüdyosu, kuaför, diş kliniği, kafe, online mağaza", "t3p": "Videonuz sizindir; dilediğiniz yerde kullanabilirsiniz: sosyal medya, web siteniz ve ücretli reklamlar. Oopsleys karakteri ise bize aittir.", "t5p": "Kişisel videolar sizindir; Instagram dahil dilediğiniz yerde paylaşabilirsiniz. Yalnızca bir işletmeyi tanıtmak için kullanılamaz: bunun için işletme videosu sipariş edin. Oopsleys karakteri ise bize aittir.", "pN": "kişi", "chD": "Gerçek bir kişiden esinlenen bir çizgi film karakteri tasarlıyoruz: saç, sakal, gözlük, tarz. Karakter o kişiden esinlenir; birebir portre değildir. En fazla {n} kişi; her ek kişi için {p} eklenir. Çocuklar yalnızca siparişi anne, baba ya da yasal vasi verdiğinde dahil edilebilir.", "heroOpen": "Görüşme gerekmez. Yaklaşık üç dakikada sipariş verin.", "heroSoon": "Siparişler yakında açılıyor. Birkaç saniyede bekleme listesine katılın.", "heroFull": "Şu anda doluyuz. Birkaç saniyede bekleme listesine katılın.", "orderP": "Dikey, müzikli ve ses efektli, diyalogsuz; Reels ve Hikâyeler için hazır. Fiyatlar ABD doları cinsindendir.", "a1": "Diyalog yok. Fikir de bu: reel her dilde işe yarar. Her video, animasyonla birlikte oluşturulan kendi fon müziği ve ses efektleriyle gelir. Dinlemek için bu sitedeki herhangi bir videonun hoparlör simgesine dokunun.", "l2": "Size özel yapın", "l3": "Bilgileriniz", "hH1": "Siparişe özel kısa animasyon videolar.", "hP": "Instagram'da 10 milyondan fazla görüntülenen, sözsüz animasyon komedisi The Oopsleys'in arkasındaki stüdyoyuz. İşletmenizi ya da kendi hikâyenizi aynı tarzda kısa bir animasyon videoya dönüştürüyoruz; Reels, Hikâyeler ve reklamlar için hazır.", "chH": "Video kimin için?", "chS": "İşletmem için", "chSP": "Sahnede logonuzun yer aldığı bir reel ya da kısa reklam. Stüdyolar, salonlar, klinikler, kafeler, mağazalar ve her küçük işletme için.", "chSGo": "İşletmeler için videolar →", "chG": "Kendim için ya da hediye", "chGP": "Siz ve sevdikleriniz hakkında kişisel bir sahne: bir doğum günü, bir yıl dönümü ya da sadece eğlenceli bir an.", "chGGo": "Kişisel videolar →", "navOrder": "Sipariş", "wz1": "Videonuz", "wz2": "Size özel yapın", "wz3": "Ayrıntılar", "wNextT": "İleri", "wBackT": "Geri", "errPick": "Lütfen yukarıdaki seçeneklerden birini seçin.", "thanksBack": "Ana sayfaya dön", "ctaEndH": "Başlayalım mı?", "incH": "Neler alırsınız", "inc1": "Dikey 9:16 video: Reels, TikTok ve Shorts formatı", "inc2": "Sizin için sıfırdan hazırlanır; özgün müzik ve ses efektleriyle", "inc3": "Sahnede logonuz ve renkleriniz", "inc3G": "Sahnede sizin özel gününüz ve hikâyeniz", "inc4": "Son sürümden önce onaylayacağınız bir taslak", "inc5": "Bir tur değişiklik dahil", "inc6": "E-postayla Full HD dosya; dilediğiniz yerde kullanabilirsiniz", "cfH": "Güvenle sipariş verin", "cf1h": "Kartınızdaki tutar yalnızca ayrılır", "cf1p": "Videonuzu yapabileceğimizi onaylayana kadar hiçbir ücret alınmaz. Yapamazsak bloke kaldırılır.", "cf2h": "Önce bir taslağı onaylarsınız", "cf2p": "Son sürümden önce bir taslak görürsünüz; bir tur değişiklik dahildir.", "cf3h": "Net teslim süreleri", "cf3p": "İlk taslak 5 iş gününde. Programımız uygun olduğunda 48 saatlik bir seçenek de sunulur.", "cf4h": "Başlayana kadar tam iade", "cf4p": "Çalışmaya başlamadan önce fikrinizi mi değiştirdiniz? Paranızın tamamını iade ederiz.", "audS": "İşletme", "audG": "Kişisel", "revH": "Siparişiniz", "navWork": "İşler", "wkH": "Çalışmalarımız", "wkP": "Burada gördüğünüz tüm videoları Oopsleys tarzında biz hazırladık. Sizinki, işletmenize ya da hikâyenize göre sıfırdan hazırlanır.", "wkS1": "Stüdyo sahneleri", "wkS2": "Çift ve günlük hayat sahneleri", "moreAll": "Tüm çalışmalarımızı görün →", "portH": "Stüdyo hakkında", "portP": "Oopsleys Animation Studio, iki animasyon dünyasının arkasındaki küçük ve bağımsız bir stüdyodur: pilates ve gündelik hayat üzerine sözsüz bir komedi olan The Oopsleys ve küçük çocuklar için bir dizi olan Lumi and the Magical World. Siparişe özel her videoyu aynı yaratıcı hazırlar.", "fmtL": "Instagram Reels, TikTok ve YouTube Shorts için dikey video (9:16)", "q5": "Yatay video alabilir miyim?", "a5": "Şimdilik hayır. Tüm videolar dikeydir (9:16); Reels, TikTok ve Shorts için hazırlanır. Normal bir YouTube yüklemesi ya da televizyon ekranı için yatay video değildir.", "wkPick": "Bunu sipariş et", "wkP2": "Bunlardan birini mi istiyorsunuz? Bir videonun altındaki sipariş düğmesine dokunun, sizin için yeni bir versiyonunu hazırlayalım: işletmeler için logonuzla, ya da sizden esinlenen karakterlerle. Fiyat her düğmenin üzerinde yazar ve videonun süresine göre değişir. Orijinaline benzer, ama asla birebir aynı olmaz.", "wkAll": "Tümü", "wkT1": "Pilates", "wkT2": "Çift ve ev", "wkT3": "Diğer işletmeler", "chT": "Gerçek bir kişiden esinlenen karakter", "w4p": "Duvarda logonuz, salonda renkleriniz ve hatta sizden esinlenen bir karakter.", "s2pG": "Vesileyi seçin ve kimin için olduğunu yazın. Gerçek kişilerden esinlenen karakterler isterseniz bir fotoğraf ekleyin.", "fPhoto": "Karakter için referans fotoğraflar", "photoHint": "Gündelik, giyinik ve yüzün net göründüğü fotoğraflar. Konum bilgisi, fotoğraflarınız gönderilmeden önce silinir.", "cLike": "Fotoğraflardaki tüm yetişkinler, kendilerinden esinlenen bir karakter yapılmasına onay verdi.", "kidsQ": "Fotoğraflarda 18 yaşından küçük biri var mı?", "kidsNo": "Hayır, yalnızca yetişkinler", "kidsYes": "Evet", "kidRules": "Çocuklar için yalnızca gündelik fotoğraflar kabul ediyoruz: giyinik; mayolu, banyoda ya da iç çamaşırlı fotoğraf olmaz. Çocukların yer aldığı sahneler yalnızca aile sahneleridir. Bir siparişi reddedip kartınızdaki blokeyi kaldırabiliriz.", "cKid": "Fotoğraflardaki tüm çocukların annesi, babası ya da yasal vasisiyim. Fotoğraflarının, yapay zekâ araçlarıyla, yalnızca bu video için onlardan esinlenen bir çizgi film karakteri oluşturmak amacıyla kullanılmasını kabul ediyorum.", "t10p": "E-postanızı, logonuzu ve fotoğraflarınızı yalnızca siparişinizi hazırlamak ve teslim etmek için kullanırız. Referans fotoğraflar teslimattan sonra silinir. Bunları asla satmayız ve videonuzun üretildiği animasyon araçları dışında kimseye vermeyiz.", "t11h": "Çocuklar", "t11p": "Bir çocuktan esinlenen karakter, yalnızca siparişi çocuğun annesi, babası ya da yasal vasisi verdiğinde ve bunu formda onayladığında yapılır. Yalnızca gündelik, giyinik fotoğrafları kabul ederiz ve yalnızca aile sahneleri hazırlarız. Çocuk fotoğrafları yalnızca o siparişin karakterini oluşturmak için kullanılır, teslimattan sonra ve en geç 30 gün içinde silinir; asla reklamda kullanılmaz ve örnek olarak gösterilmez. Bir çocuğun karakterinin yer aldığı video, anne, baba ya da vasinin yazılı izni olmadan örneklerimiz arasında gösterilmez. Fotoğrafların silinmesini dilediğiniz zaman isteyebilirsiniz: hello@oopsleys.com. Yalnızca yetişkinler sipariş verebilir.", "t12h": "Esinlenen karakter, portre değil", "t12p": "Bir fotoğrafa dayanan karakter, o kişiden esinlenen bir çizgi film karakteridir: saç, yapı, tarz. Birebir portre değildir.", "q6": "Çocuklarım videoda yer alabilir mi?", "a6": "Evet, onlardan esinlenen çizgi film karakterleri olarak. Bunu yalnızca anne, baba ya da yasal vasi sipariş edebilir ve formda onaylar. Gündelik fotoğraflar isteriz, yalnızca aile sahneleri hazırlarız ve fotoğrafları en geç 30 gün içinde sileriz.", "q7": "Karakter bana birebir benzeyecek mi?", "a7": "Karakter sizden ve özelliklerinizden esinlenir: saçınız, tarzınız ve genel görünümünüz, Oopsleys tarzında çizilir. Sizi andırır, ama size birebir benzemez.", "t13h": "Nereden sipariş verilebilir", "t13p": "Dünyanın neredeyse her yerinden sipariş alıyoruz. ABD'nin kapsamlı yaptırımları altındaki yerlerden sipariş alamıyoruz: Küba, İran, Kuzey Kore, Suriye ile Kırım, Donetsk ve Luhansk bölgeleri.", "sanction": "ABD yaptırımları altındaki yerlerden sipariş alamıyoruz.", "sndOn": "Sesi aç", "sndOff": "Sesi kapat", "sndHint": "Müziğini ve ses efektlerini duymak için bir videonun hoparlör simgesine dokunun.", "portMe": "Ana karakter, stüdyonun yaratıcısının kendisine dayanıyor.", "kR": "Videolarımızdan biri, sizden esinlenen bir karakterle ya da logonuzla", "kRS": "Videolarımızdan biri", "kRD": "Beğendiğiniz videoyu seçin. Sizin için yeni bir versiyonunu hazırlarız. Orijinaline benzer, ama asla birebir aynı olmaz.", "kC": "Yeni bir hikâye", "kCD": "Fikrinizi anlatın, sıfırdan yeni bir reel'e dönüştürelim.", "rlL": "Bir video seçin", "len30D": "Tek bir durum, yaklaşık üç an.", "len45D": "Yaklaşık dört ya da beş an.", "len60D": "Yaklaşık altı an.", "lenHint": "Fikrinizi seçtiğiniz süreye uyarlarız. Daha fazla süre gerekiyorsa, ödeme almadan önce size haber veririz.", "secs": "saniye", "aboutSecs": "yaklaşık {n} saniye", "bizT": "İşletmem için", "bizD": "Logonuzu ve marka renklerinizi sahneye yerleştiririz.", "bizS": "İşletme için, logo ve marka renkleriyle", "stWhere": "Nerede geçiyor?", "stWhat": "Ne oluyor?", "stEnd": "Nasıl bitiyor?", "stHint": "Birkaç kısa satır yeterli. Tek bir durum en iyi sonucu verir.", "packsH": "Neler sipariş edebilirsiniz", "pk3T": "Başrolde siz", "pk3D": "Herhangi bir videoya gerçek kişilerden esinlenen karakterler ekleyin: ilk kişi için {a}, sonraki her kişi için {b}. Örneğin, bir çiftten esinlenen karakterlerle videolarımızdan biri toplam {c}.", "heroNote": "Fiyatlar {a} ile başlar · İlk taslak 5 iş gününde", "heroNoteG": "Bizim karakterlerimizle en az {a} · ikinizden esinlenen karakterlerle en az {b}", "t9h": "Onayınızdan sonra", "t9p": "Taslağı onaylamak son adımınızdır. Son versiyon teslim edildikten sonra sipariş tamamlanır; sonraki değişiklikler yeni bir sipariş olur.", "t14h": "Fikrinizin süreye uyarlanması", "t14p": "Fikrinizi seçtiğiniz süreye uyarlarız; işe yaraması için bazı anları kısaltabilir ya da birleştirebiliriz. Sığmıyorsa, daha uzun bir reel seçebilmeniz için ödeme almadan önce size haber veririz.", "t2p": "Taslak için bir değişiklik turu dahildir. Her ek tur {p} tutarındadır ve ihtiyaç duyduğunuzda satın alabilirsiniz.", "rvH": "Ek bir değişiklik turu satın alın", "rvP": "Taslağını zaten aldığınız bir sipariş için. Her siparişe bir tur dahildir; her ek tur {p} tutarındadır. Son versiyon teslim edilene kadar geçerlidir.", "rvId": "Sipariş numarası", "rvEmail": "Sipariş verirken kullandığınız e-posta", "rvNotes": "Neyin değişmesini istersiniz?", "rvTerms": "Bunun taslak için bir değişiklik turu daha satın aldığını ve yalnızca son versiyon teslim edilene kadar geçerli olduğunu anlıyorum.", "rvPay": "Ödemeye geç · {p}", "rvErrOrder": "Bu numara ve e-postayla ödenmiş bir sipariş bulamadık.", "rvLink": "Ek tur satın alın", "rvDone": "Taslak modu: hiçbir ödeme alınmadı ve hiçbir şey gönderilmedi.", "bizHook": "Reel'lerimizi zaten paylaşıyor musunuz? Aynı reel'i sahnede logonuzla ya da sizden esinlenen bir karakterle alın.", "fNotesOpt": "Değişmesini istediğiniz bir şey var mı? (isteğe bağlı)", "libT": "Videolarımızdan biri", "giftT": "Yeni bir hikâye"});
+T.he = {"fHandleG": "שם משתמש באינסטגרם (לא חובה)", "wReel": "ריל", "wScene": "סצנה", "soonBar": "ההזמנות נפתחות בקרוב.", "soonH": "ההזמנות נפתחות בקרוב", "soonNote": "המחירים להתרשמות. ההזמנות נפתחות בקרוב.", "fullP2": "אנחנו מקבלים מספר מוגבל של הזמנות ביום, כדי שכל ריל יקבל את מלוא תשומת הלב. עקבו אחרינו באינסטגרם כדי לדעת ברגע שההזמנות נפתחות.", "p1": "אדם אחד", "p2": "2 אנשים", "pN": "אנשים", "spotsN": "מקומות שנותרו היום: {n}", "wDone": "מצב טיוטה: שום דבר לא נשלח. באתר החי המייל הזה היה מצטרף לרשימת ההמתנה.", "wErr": "נא להזין כתובת מייל תקינה.", "fNotesReq": "תארו את הסצנה שאתם רוצים", "fNotesOpt": "יש משהו שתרצו לשנות? (לא חובה)", "nHintS": "לדוגמה: שיעור ראשון שבו הכול משתבש, עם הלוגו שלנו על הקיר.", "nHintG": "לדוגמה: הוא מצטרף אליי לשיעור פילאטיס בפעם הראשונה ומתחרט.", "qInc": "כלול", "dLib": "5 ימי עסקים", "dStd": "5 ימי עסקים", "dRush": "48 שעות", "delivery": "טיוטה תוך", "errFields": "נא להשלים את השדות המסומנים.", "done": "מצב טיוטה: לא בוצע חיוב ושום דבר לא נשלח. זו ההזמנה שהסטודיו היה מקבל:", "soonP": "השאירו מייל ונכתוב לכם ברגע שההזמנות נפתחות. אין צורך בתשלום או בפרטים עכשיו.", "wCapMsg": "נא לסמן את התיבה ״אני לא רובוט״ וללחוץ שוב על הכפתור.", "wSending": "שולחים…", "wOk": "נרשמתם. נשלח לכם מייל ברגע שההזמנות נפתחות.", "wFail": "מצטערים, זה לא עבר. נסו שוב, או כתבו אל hello@oopsleys.com ונוסיף אתכם.", "fromP": "החל מ-{p}", "sending": "שולחים את ההזמנה…", "errSend": "מצטערים, לא הצלחנו לשלוח את ההזמנה. נסו שוב, או כתבו אל hello@oopsleys.com.", "errClosed": "ההזמנות נסגרו להיום ממש עכשיו. אפשר להצטרף לרשימת ההמתנה למעלה.", "errFile": "אחד הקבצים גדול מדי או שאינו תמונה. לוגו עד 5 מ״ב, תמונות עד 6 מ״ב.", "thanksH": "תודה! ההזמנה התקבלה.", "thanksP": "הזמנה {id}. בשלב זה הסכום רק נשמר בכרטיס. נשלח לכם מייל תוך 2 ימי עסקים כדי לאשר, ורק אז נחייב.", "cancelMsg": "התשלום לא הושלם, ולכן לא נוצרה הזמנה ולא בוצע חיוב. אפשר לנסות שוב למטה.", "libT": "אחד הסרטונים שלנו", "cusT": "סיפור חדש", "tplT": "אחד הסרטונים שלנו", "giftT": "סיפור חדש", "baseTS": "אפשרות חסכונית: גרסה חדשה לאחד הרילס שלנו", "chD": "אנחנו מעצבים דמות מצוירת בהשראת אדם אמיתי: שיער, זקן, משקפיים, סגנון. הדמות נוצרת בהשראתו, ואינה דיוקן מדויק. עד {n} אנשים; כל אדם נוסף בתוספת {p}. אפשר לכלול ילדים רק כשההורה או האפוטרופוס החוקי שלהם הוא שמזמין.", "fullBar": "כרגע אנחנו בתפוסה מלאה.", "fullH": "כרגע אנחנו בתפוסה מלאה", "fullP": "אנחנו מקבלים מספר מוגבל של הזמנות ביום, כדי שכל ריל יקבל את מלוא תשומת הלב. השאירו מייל ונכתוב לכם ברגע שמתפנה מקום. אין צורך בתשלום או בפרטים עכשיו.", "viewNote": "המחירים להתרשמות. ההזמנות ייפתחו שוב כשיתפנה מקום.", "heroOpen": "בלי שיחת טלפון. מזמינים בכשלוש דקות.", "heroSoon": "ההזמנות נפתחות בקרוב. הצטרפו לרשימת ההמתנה בכמה שניות.", "heroFull": "כרגע אנחנו בתפוסה מלאה. הצטרפו לרשימת ההמתנה בכמה שניות.", "navOrder": "הזמנה", "wz1": "הסרטון", "wz2": "התאמה", "wz3": "פרטים", "wNextT": "הבא", "wBackT": "חזרה", "errPick": "נא לבחור באחת האפשרויות למעלה.", "thanksBack": "חזרה לעמוד הבית", "ctaEndH": "מוכנים להתחיל?", "revH": "ההזמנה שלכם", "navWork": "עבודות", "wkP2": "רוצים אחד מאלה? לחצו על כפתור ההזמנה שמתחת לסרטון, וניצור בשבילכם גרסה חדשה שלו: עם הלוגו שלכם לעסק, או עם דמויות בהשראתכם. המחיר מופיע על כל כפתור ותלוי באורך הסרטון. היא תהיה דומה למקור, אף פעם לא זהה.", "chT": "דמות בהשראת אדם אמיתי", "w4p": "הלוגו שלכם על הקיר, הצבעים שלכם בחדר, ואפילו דמות בהשראתכם.", "s2pG": "בחרו את האירוע וספרו לנו בשביל מי זה. צרפו תמונה אם אתם רוצים דמויות בהשראת אנשים אמיתיים.", "fPhoto": "תמונות להשראה לדמות", "photoHint": "תמונות יומיומיות, בלבוש מלא, שבהן הפנים נראות בבירור. נתוני המיקום מוסרים מהתמונות לפני השליחה.", "cLike": "כל המבוגרים שבתמונות הסכימו שתיווצר דמות בהשראתם.", "kidsQ": "האם יש בתמונות מישהו מתחת לגיל 18?", "kidsNo": "לא, רק מבוגרים", "kidsYes": "כן", "kidRules": "לילדים אנחנו מקבלים רק תמונות יומיומיות: בלבוש מלא, בלי תמונות בבגד ים, באמבטיה או בהלבשה תחתונה. סצנות עם ילדים הן סצנות משפחתיות בלבד. אנחנו רשאים לדחות הזמנה ולשחרר את הכרטיס.", "cKid": "אני ההורה או האפוטרופוס החוקי של כל ילד שמופיע בתמונות. אני מסכים/ה שהתמונות ישמשו, באמצעות כלי בינה מלאכותית, אך ורק ליצירת דמות מצוירת בהשראתם לסרטון הזה.", "t10p": "אנחנו משתמשים במייל, בלוגו ובתמונות שלכם רק כדי להכין ולמסור את ההזמנה. תמונות ההשראה נמחקות אחרי המסירה. אנחנו לא מוכרים אותן, ולא מעבירים אותן לאף אחד מלבד כלי האנימציה שבהם מופק הסרטון.", "t11h": "ילדים", "t11p": "דמות בהשראת ילד נוצרת רק כשההורה או האפוטרופוס החוקי של הילד הוא שמזמין ומאשר זאת בטופס. אנחנו מקבלים רק תמונות יומיומיות בלבוש מלא, ויוצרים רק סצנות משפחתיות. תמונות של ילדים משמשות אך ורק ליצירת הדמות לאותה הזמנה, נמחקות אחרי המסירה ולכל המאוחר תוך 30 יום, ולעולם אינן משמשות לפרסום ואינן מוצגות כדוגמה. סרטון שכולל דמות של ילד לא יוצג בין הדוגמאות שלנו בלי אישור בכתב מההורה או מהאפוטרופוס. אפשר לבקש מאיתנו למחוק את התמונות בכל רגע: hello@oopsleys.com. רק מבוגרים יכולים להזמין.", "t12h": "בהשראה, לא דיוקן", "t12p": "דמות שמבוססת על תמונה היא דמות מצוירת בהשראת האדם: שיער, מבנה גוף, סגנון. היא אינה דיוקן מדויק.", "q6": "הילדים שלי יכולים להופיע בסרטון?", "a6": "כן, כדמויות מצוירות בהשראתם. רק הורה או אפוטרופוס חוקי יכול להזמין זאת, והוא מאשר זאת בטופס. אנחנו מבקשים תמונות יומיומיות, יוצרים רק סצנות משפחתיות, ומוחקים את התמונות לכל המאוחר תוך 30 יום.", "q7": "הדמות תיראה בדיוק כמוני?", "a7": "הדמות נוצרת בהשראתכם ובהשראת המאפיינים שלכם: השיער, הסגנון והמראה הכללי, בסגנון Oopsleys. היא תזכיר אתכם, אבל לא תיראה בדיוק כמוכם.", "skip": "דילוג לטופס ההזמנה", "draft": "תצוגת טיוטה. העמוד הזה אינו חי והתשלומים אינם מחוברים.", "fullLink": "הצטרפות לרשימת ההמתנה", "a11yBtn": "נגישות", "a11y1": "השהיית סרטונים", "a11y2": "טקסט גדול יותר", "a11y3": "ניגודיות גבוהה", "audS": "עסקים", "audG": "אישי", "hH1": "סרטוני אנימציה קצרים, בהזמנה אישית.", "fmtL": "סרטון אנכי (9:16) לאינסטגרם רילס, לטיקטוק וליוטיוב שורטס", "hP": "אנחנו הסטודיו שמאחורי The Oopsleys, קומדיית האנימציה ללא מילים עם יותר מ-10 מיליון צפיות באינסטגרם. אנחנו הופכים את העסק שלכם, או את הסיפור האישי שלכם, לסרטון אנימציה קצר באותו סגנון, מוכן לרילס, לסטוריז ולמודעות.", "pr1": "יותר מ-10 מיליון צפיות באינסטגרם", "pr2": "יותר מ-10,000 עוקבים", "wkH": "העבודות שלנו", "wkP": "כל סרטון כאן נוצר על ידינו, בסגנון Oopsleys. הסרטון שלכם נוצר מאפס, סביב העסק שלכם או הסיפור שלכם.", "wkPick": "להזמין את זה", "chH": "בשביל מי הסרטון?", "chS": "לעסק שלי", "chSP": "ריל או מודעה קצרה עם הלוגו שלכם בתוך הסצנה. לסטודיו, למספרה, לקליניקה, לבית קפה, לחנות ולכל עסק קטן.", "chSGo": "סרטונים לעסקים ←", "chG": "בשבילי, או במתנה", "chGP": "סצנה אישית עליכם ועל האנשים שאתם אוהבים: יום הולדת, יום נישואים או סתם רגע מצחיק.", "chGGo": "סרטונים אישיים ←", "h1": "רילס מונפשים ומודעות קצרות לעסק שלכם.", "h1G": "שניכם, בריל של Oopsleys.", "heroPG": "רגע מונפש קצר שנוצר לבן או לבת הזוג, לחבר או לחברה הכי טובים, או לשותפה לפילאטיס. בחרו את האירוע, תארו את הסצנה, ואנחנו נעשה את השאר.", "heroP": "סרטוני אנימציה קצרים ומצחיקים שהלקוחות שלכם ירצו לשתף, עם הלוגו שלכם בתוך הסצנה. לסטודיו, למספרה, לקליניקה, לבית קפה, לחנות ולכל עסק קטן.", "ctaBuild": "לבניית ההזמנה", "ctaPrices": "למחירים", "heroNoteG": "החל מ-{a} עם הדמויות שלנו · החל מ-{b} עם דמויות בהשראת שניכם", "heroNote": "החל מ-{a} · טיוטה ראשונה תוך 5 ימי עסקים", "whyH": "למה העסק שלכם צריך את זה", "whyP": "שדרגו את השיווק שלכם עם רילס מונפשים בסגנון שהגיע למיליוני צפיות.", "whyHG": "למה זו מתנה מעולה", "w1h": "תוכן שאנשים משתפים", "w1p": "רגעים מצחיקים ומוכרים הם אלה שלקוחות שולחים לחברים ומשתפים בסטורי.", "w2h": "לקוחות חדשים שמים לב אליכם", "w2p": "ריל מונפש בולט בפיד מלא בפוסטים שנראים אותו דבר, ונותן לאנשים חדשים סיבה להציץ בעסק שלכם.", "w3h": "בלי צילומים, בלי עריכה", "w3p": "בלי מצלמה, בלי דוגמנים ובלי יום צילום. ממלאים טופס ואנחנו עושים את השאר.", "w4h": "המותג שלכם בתוך הסצנה", "exH": "איפה העסק שלכם מופיע", "exP": "שלוש תמונות מתוך הסרטונים שלנו. בסרטון שלכם, במקומות המסומנים יופיעו השם והלוגו שלכם.", "exL1": "שם העסק שלכם כאן", "exL2": "הלוגו שלכם כאן", "exL3": "הלוגו שלכם על השקיות", "g1h": "אישי, לא גנרי", "g1p": "סצנה על שניכם אומרת יותר מעוד שובר מתנה.", "g2h": "מגיע במייל", "g2p": "בלי משלוח ובלי אריזה. מוכן לשליחה בהודעה או להעלאה ביום עצמו.", "g3h": "נועד לשיתוף", "g3p": "ריל קצר שהחברים שלכם באמת יראו עד הסוף.", "incH": "מה מקבלים", "inc1": "סרטון אנכי 9:16: הפורמט של רילס, טיקטוק ושורטס", "inc2": "נוצר מאפס בשבילכם, עם מוזיקה ואפקטים קוליים מקוריים", "inc3": "הלוגו והצבעים שלכם בתוך הסצנה", "inc3G": "האירוע והסיפור שלכם בתוך הסצנה", "inc4": "טיוטה לאישור לפני הגרסה הסופית", "inc5": "סבב תיקונים אחד כלול", "inc6": "קובץ באיכות Full HD במייל, שלכם לשימוש בכל מקום", "howH": "איך זה עובד", "s1h": "בוחרים סרטון", "s1pG": "בחרו אחד מהסרטונים שלנו, או התחילו סיפור חדש ובחרו את האורך שלו.", "s1p": "בחרו אחד מהסרטונים שלנו, או התחילו סיפור חדש ובחרו את האורך שלו.", "s2h": "מספרים לנו את הפרטים", "s2p": "ספרו לנו על העסק ועל הסצנה שאתם רוצים, והעלו את הלוגו.", "s3h": "מקבלים את הריל", "s3p": "אנחנו מאשרים את ההזמנה, שולחים טיוטה לאישור, ואחר כך את הקובץ הסופי במייל. סבב תיקונים אחד לטיוטה כלול. הגרסה שאושרה היא הסופית.", "moreH": "דוגמאות מהעבודות שלנו", "moreP": "כל סרטון כאן יכול להיעשות בשבילכם: עם הלוגו שלכם, או עם דמויות בהשראתכם.", "moreAll": "לכל העבודות שלנו ←", "orderH": "בניית ההזמנה", "orderP": "אנכי, עם מוזיקה ואפקטים קוליים ובלי דיבור, מוכן לרילס ולסטוריז. המחירים בדולר אמריקאי.", "wEmail": "המייל שלכם", "wNote": "נשלח לכם מייל רק בנוגע להזמנות אצלנו. אפשר להסיר את עצמכם מהרשימה בכל רגע.", "igFollow": "עקבו אחרינו באינסטגרם", "l1": "הסרטון שלכם", "rlL": "בחרו סרטון", "pickHint": "לחצו על אחד כדי לבחור בו. הבחירה מופיעה בסיכום לפני השליחה.", "soon": "רובם מתרחשים בסטודיו לפילאטיס או בבית. אם אף אחד לא מתאים לעסק שלכם, הזמינו סרטון בהתאמה אישית.", "toCustom": "מעבר לסרטון בהתאמה אישית", "lenL": "אורך", "l2": "מתאימים אותו אליכם", "fPeople": "כמה אנשים?", "ruT": "מסירה מזורזת", "ruD": "טיוטה תוך 48 שעות מרגע האישור שלנו.", "qL": "איכות", "qHint": "אינסטגרם מציג רילס באיכות 1080p לכל היותר. 4K מיועד למסכים גדולים.", "l3": "הפרטים שלכם", "fName": "השם שלכם", "fEmail": "מייל למסירה", "fHandle": "שם משתמש באינסטגרם או שם העסק", "choose": "בחרו…", "other": "אחר", "sanction": "איננו יכולים לקבל הזמנות ממקומות שנתונים לסנקציות של ארצות הברית.", "fEquip": "סוג העסק", "eqHint": "לדוגמה: סטודיו לפילאטיס, מספרה, מרפאת שיניים, בית קפה, חנות אינטרנטית", "fOcc": "אירוע", "oc1": "יום נישואים", "oc2": "יום הולדת", "oc3": "לשותפה שלי לפילאטיס", "oc4": "חתונה או אירוסין", "oc5": "סתם כי בא לי", "fFor": "בשביל מי זה?", "fNotes": "תארו את הסצנה שאתם רוצים", "fLogo": "לוגו (PNG או SVG)", "fColors": "יש העדפת צבעים? (לא חובה)", "cHint": "אנחנו משלבים את הצבעים שלכם בסגנון שלנו.", "fRole": "מי תהיה הדמות?", "r1": "לקוח או לקוחה", "r2": "בעל העסק או איש צוות", "cTerms": "אני מסכים/ה לתנאים שלמטה. ברור לי שאחרי שאאשר את הטיוטה, ההזמנה סופית ואי אפשר לקבל החזר.", "payNote": "בשלב זה הסכום רק נשמר בכרטיס. אנחנו מאשרים תוך 2 ימי עסקים ורק אז מחייבים. אם לא נוכל להכין את הבקשה, השמירה משתחררת ולא תשלמו דבר.", "pay": "המשך לתשלום", "cfH": "מזמינים בראש שקט", "cf1h": "הסכום רק נשמר בכרטיס", "cf1p": "לא מחייבים דבר עד שנאשר שאנחנו יכולים להכין את הסרטון. אם לא נוכל, השמירה משתחררת.", "cf2h": "קודם מאשרים טיוטה", "cf2p": "רואים טיוטה לפני הגרסה הסופית, וסבב תיקונים אחד כלול.", "cf3h": "זמני מסירה ברורים", "cf3p": "טיוטה ראשונה תוך 5 ימי עסקים. כשהלוח שלנו מאפשר, מוצעת גם אפשרות של 48 שעות.", "cf4h": "החזר מלא עד שמתחילים", "cf4p": "התחרטתם לפני שהתחלנו לעבוד? מקבלים את כל הכסף בחזרה.", "fineH": "התנאים, במילים פשוטות", "t8h": "מזמינים עכשיו, החיוב רק עם האישור", "t8p": "משלימים את ההזמנה מיד. הסכום נשמר בכרטיס ולא מחויב. אנחנו מאשרים תוך 2 ימי עסקים ורק אז מחייבים. אם לא נוכל להכין את הסרטון, השמירה משתחררת.", "t1h": "מסירה", "t1p": "זמן הטיוטה מתחיל מרגע שאישרנו את ההזמנה וקיבלנו מכם את כל מה שצריך, כמו הלוגו או תמונה. אחרי שתאשרו את הטיוטה, הגרסה הסופית מגיעה תוך יום עסקים אחד.", "t7h": "קודם טיוטה", "t7p": "מקבלים טיוטה ברזולוציה נמוכה לאישור, לפני שאנחנו מפיקים את האיכות הסופית. סבב תיקונים אחד לטיוטה כלול.", "t2h": "תיקונים", "t2p": "סבב תיקונים אחד לטיוטה כלול. כל סבב נוסף עולה {p}, ואפשר לקנות אותו כשצריך.", "t3h": "איך אפשר להשתמש בסרטון", "t3p": "הסרטון שלכם, לשימוש בכל מקום: רשתות חברתיות, האתר שלכם ומודעות ממומנות. הדמות של Oopsleys עצמה נשארת שלנו.", "t6h": "כל ריל הוא יחיד במינו", "t6p": "כל סרטון מונפש מאפס. גרסה חדשה של ריל קיים תהיה דומה למקור, אף פעם לא זהה.", "t9h": "אחרי האישור שלכם", "t9p": "אישור הטיוטה הוא השלב האחרון שלכם. אחרי שהגרסה הסופית נמסרה, ההזמנה הושלמה; שינויים נוספים הם הזמנה חדשה.", "t4h": "החזרים", "t4p": "החזר מלא עד שמתחילים לעבוד. אחרי שאישרתם את הטיוטה, ההזמנה סופית ואי אפשר לקבל החזר. אם קובץ הגיע פגום, נשלח אותו שוב.", "t10h": "הפרטים שלכם", "faqH": "שאלות", "q1": "יש סאונד או דיבור?", "a1": "אין דיבור. זה הרעיון: הריל עובד בכל שפה. כל סרטון מגיע עם מוזיקת רקע ואפקטים קוליים משלו, שנוצרים יחד עם האנימציה. לחצו על סמל הרמקול בכל סרטון באתר כדי לשמוע אותו.", "q2": "אפשר לדבר עם מישהו לפני כן?", "a2": "כן. כתבו אל hello@oopsleys.com או שלחו הודעה באינסטגרם אל @theoopsleys.", "q3": "איך נוצרים הרילס?", "a3": "בכלי אנימציה מבוססי בינה מלאכותית, בבימוי סצנה אחר סצנה.", "q5": "אפשר לקבל סרטון אופקי?", "a5": "כרגע לא. כל סרטון הוא אנכי (9:16), מותאם לרילס, לטיקטוק ולשורטס. זה לא סרטון אופקי להעלאה רגילה ליוטיוב או למסך טלוויזיה.", "q4": "אפשר להזמין ריל כל חודש?", "a4": "תוכנית חודשית לעסקים בדרך. שלחו לנו הודעה אם אתם רוצים להיות הראשונים.", "portH": "על הסטודיו", "portP": "Oopsleys Animation Studio הוא סטודיו עצמאי קטן שמאחורי שני עולמות מונפשים: The Oopsleys, קומדיה ללא מילים על פילאטיס ועל חיי היומיום, ו-Lumi and the Magical World, סדרה לילדים צעירים. כל סרטון בהזמנה אישית נוצר על ידי אותה יוצרת.", "port1": "קומדיית פילאטיס ללא מילים, באינסטגרם.", "port1go": "לצפייה באינסטגרם ←", "port2": "סדרת אנימציה לילדים צעירים, ביוטיוב.", "port2go": "לצפייה ביוטיוב ←", "a11yS": "נגישות: אנחנו פועלים לעמוד בהנחיות WCAG 2.1 AA. אם משהו קשה לשימוש, כתבו לנו ונעזור.", "t13h": "מאיפה אפשר להזמין", "t13p": "אנחנו מקבלים הזמנות כמעט מכל העולם. איננו יכולים לקבל הזמנות ממקומות שנתונים לסנקציות מקיפות של ארצות הברית: קובה, איראן, צפון קוריאה, סוריה ואזורי קרים, דונצק ולוהנסק.", "sndOn": "הפעלת קול", "sndOff": "השתקה", "sndHint": "לחצו על הרמקול שעל הסרטון כדי לשמוע את המוזיקה והאפקטים.", "portMe": "הדמות הראשית מבוססת על יוצרת הסטודיו עצמה.", "kR": "אחד הסרטונים שלנו, עם דמות בהשראתכם או עם הלוגו שלכם", "kRS": "אחד הסרטונים שלנו", "kRD": "בחרו את הסרטון שאהבתם. ניצור בשבילכם גרסה חדשה שלו. דומה למקור, אף פעם לא זהה.", "kC": "סיפור חדש", "kCD": "ספרו לנו את הרעיון שלכם, ונהפוך אותו לריל חדש שנוצר מאפס.", "len30D": "סיטואציה אחת, כשלושה רגעים.", "len45D": "כארבעה או חמישה רגעים.", "len60D": "כשישה רגעים.", "lenHint": "אנחנו מתאימים את הרעיון לאורך שתבחרו. אם הוא צריך יותר זמן, נגיד לכם לפני החיוב.", "secs": "שניות", "aboutSecs": "כ-{n} שניות", "bizT": "זה לעסק שלי", "bizD": "אנחנו משלבים בסצנה את הלוגו ואת צבעי המותג שלכם.", "bizS": "לעסק, עם לוגו וצבעי המותג", "stWhere": "איפה זה קורה?", "stWhat": "מה קורה?", "stEnd": "איך זה נגמר?", "stHint": "כמה שורות קצרות מספיקות. סיטואציה אחת עובדת הכי טוב.", "packsH": "מה אפשר להזמין", "pk3T": "אתם בתפקיד הראשי", "pk3D": "אפשר להוסיף לכל סרטון דמויות בהשראת אנשים אמיתיים: {a} לאדם הראשון ו-{b} לכל אדם נוסף. לדוגמה, אחד הסרטונים שלנו עם דמויות בהשראת זוג עולה {c} בסך הכול.", "t14h": "התאמת הרעיון לאורך", "t14p": "אנחנו מתאימים את הרעיון שלכם לאורך שבחרתם, וייתכן שנקצר או נאחד רגעים כדי שזה יעבוד. אם הוא לא נכנס, נגיד לכם לפני החיוב, כדי שתוכלו לבחור ריל ארוך יותר.", "rvH": "קניית סבב תיקונים נוסף", "rvP": "להזמנה שכבר קיבלתם את הטיוטה שלה. בכל הזמנה כלול סבב אחד; כל סבב נוסף עולה {p}. אפשרי עד למסירת הגרסה הסופית.", "rvId": "מספר הזמנה", "rvEmail": "המייל שאיתו הזמנתם", "rvNotes": "מה תרצו לשנות?", "rvTerms": "ברור לי שזו קנייה של סבב תיקונים נוסף לטיוטה, ושהיא אפשרית רק עד למסירת הגרסה הסופית.", "rvPay": "המשך לתשלום · {p}", "rvErrOrder": "לא מצאנו הזמנה ששולמה עם המספר והמייל האלה.", "rvLink": "לקניית סבב נוסף", "rvDone": "מצב טיוטה: לא בוצע חיוב ושום דבר לא נשלח.", "bizHook": "כבר משתפים את הרילס שלנו? קבלו את אותו ריל עם הלוגו שלכם בתוך הסצנה, או עם דמות בהשראתכם."};
 
 var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
-var aud = 'studio';
+var aud = 'studio', audChosen = false;
+var view = 'home', step = 1, retState = null;
 var nodes = document.querySelectorAll('[data-i18n]');
 nodes.forEach(function(n){ var k=n.getAttribute('data-i18n'); if(!(k in T.en)) T.en[k]=n.textContent; });
 function tr(k){ return (T[lang] && T[lang][k]) || T.en[k] || k; }
 function setLang(l){
   lang = T[l] ? l : 'en';
-  document.documentElement.lang = lang;
+  document.documentElement.lang = lang; document.documentElement.dir = lang==='he' ? 'rtl' : 'ltr';
   nodes.forEach(function(n){ n.textContent = tr(n.getAttribute('data-i18n')); });
   document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang===lang)); });
+  document.querySelectorAll('.reel > video').forEach(function(v){ if(window.sndSet) sndSet(v, !v.muted); });
   try{ localStorage.setItem('oopsLang', lang); }catch(e){}
   render();
 }
 
 var $ = function(id){ return document.getElementById(id); };
 function state(){
-  var f = document.querySelector('input[name=format]:checked').value;
-  return { aud:aud, format:f, ppl:Number(document.querySelector('input[name=ppl]:checked').value), q:document.querySelector('input[name=q]:checked').value, scene:(document.querySelector('input[name=scene]:checked')||{}).value||'', pick:(document.querySelector('input[name=pick]:checked')||{}).value||'', len:Number(document.querySelector('input[name=len]:checked').value),
-    character:$('ad-character').checked, rush:$('ad-rush').checked, revision:$('ad-revision').checked };
+  var kind = $('kind-custom').checked ? 'custom' : 'ready';
+  var f = kind==='ready' ? (aud==='studio' ? 'lib' : 'tpl') : (aud==='studio' ? 'custom' : 'gift');
+  var pk = kind==='ready' ? ((document.querySelector('input[name=pick]:checked')||{}).value || '') : '';
+  return { aud:aud, kind:kind, format:f, ppl:Number(document.querySelector('input[name=ppl]:checked').value), q:document.querySelector('input[name=q]:checked').value, scene:(f==='tpl' ? pk : ''), pick:pk,
+    len: kind==='ready' ? (VIDEO_SECS[pk] || 0) : Number(document.querySelector('input[name=len]:checked').value),
+    character:$('ad-character').checked, rush:RUSH_OK && $('ad-rush').checked, revision:false,
+    kids:$('ad-character').checked ? ((document.querySelector('input[name=kids]:checked')||{}).value || '') : '' };
 }
 function lines(o){
   var a=[];
-  a.push(tr(o.format==='lib'?'libT':o.format==='gift'?'giftT':o.format==='tpl'?'tplT':'cusT')+(o.format==='lib'&&o.pick?' · '+tr('wReel')+' #'+o.pick:'')+(o.format==='tpl'&&o.scene?' · '+tr('wScene')+' #'+o.scene:'')+' · '+tr(o.len===15?'sec15':'sec30'));
+  a.push(o.kind==='ready' ? tr('kRS')+(o.pick ? ' #'+o.pick+' · '+tr('aboutSecs').replace('{n}', o.len) : '') : tr('kC')+' · '+o.len+' '+tr('secs'));
+  if(aud==='studio') a.push(tr('bizS'));
   a.push(o.q==='4k'?'4K':'1080p');
   if(o.character) a.push(tr('chT')+(o.ppl>1?' · '+o.ppl+' '+tr('pN'):(aud==='studio'?' ('+tr($('role').value)+')':'')));
   if(o.rush) a.push(tr('ruT'));
-  if(o.revision) a.push(tr('reT'));
-  a.push(tr('delivery')+': '+(o.rush?tr('dRush'):o.format==='lib'?tr('dLib'):tr('dStd')));
+  a.push(tr('delivery')+': '+(o.rush?tr('dRush'):tr('dStd')));
   return a;
 }
 function render(){
-  var o = state(), lib = o.format==='lib';
-  o = state();
+  var o = state(), ready = o.kind==='ready';
   document.querySelectorAll('[data-aud]').forEach(function(el){ el.hidden = el.dataset.aud !== aud; });
-  document.querySelectorAll('[data-audlink]').forEach(function(el){ el.setAttribute('aria-current', String(el.dataset.audlink===aud)); });
-  var personal = o.format==='gift' || o.format==='tpl';
-  var kind = (lib || o.format==='tpl') ? 'tpl' : 'custom';
-  $('len15t').textContent = tr('sec15')+' · $'+PRICES[kind+'15'];
-  $('len30t').textContent = tr('sec30')+' · $'+PRICES[kind+'30'];
-  $(aud==='gift' ? 'aud-gift' : 'aud-studio').checked = true;
-  $('useBase').checked = lib || o.format==='tpl';
-  $('kindP').textContent = tr(aud==='gift'?'kindG':'kindS');
-  $('baseT').textContent = tr(aud==='gift'?'baseTG':'baseTS');
-  $('baseD').textContent = tr(aud==='gift'?'baseDG':'baseDS');
-  $('basePrice').textContent = tr('fromP').replace('{p}','$'+PRICES.tpl15);
+  document.querySelectorAll('[data-audlink]').forEach(function(el){ el.setAttribute('aria-current', String(view==='aud' && el.dataset.audlink===aud)); });
+  $('navOrder').setAttribute('aria-current', String(view==='order')); $('navWork').setAttribute('aria-current', String(view==='work'));
+  document.querySelectorAll('[data-view]').forEach(function(el){ el.hidden = el.dataset.view.split(' ').indexOf(view) < 0; });
+  var personal = aud==='gift', P = function(n){ return '$'+n; }, couple = PRICES.ready35 + PRICES.character + PRICES.characterExtra;
+  $('isBiz').checked = aud==='studio';
+  $('kRP').textContent = tr('fromP').replace('{p}', P(PRICES.ready35)); $('kCP').textContent = tr('fromP').replace('{p}', P(PRICES.custom30));
+  [30,45,60].forEach(function(n){ $('len'+n+'t').textContent = n+' '+tr('secs'); $('len'+n+'p').textContent = P(PRICES['custom'+n]); });
+  $('lenBox').hidden = ready;
+  $('ruPrice').textContent = '+'+P(PRICES.rush); $('box-rush').hidden = !RUSH_OK;
+  document.querySelector('[data-i18n=heroNote]').textContent = tr('heroNote').replace('{a}', P(PRICES.ready35));
+  document.querySelector('[data-i18n=heroNoteG]').textContent = tr('heroNoteG').replace('{a}', P(PRICES.ready35)).replace('{b}', P(couple));
+  document.querySelectorAll('.pickbtn').forEach(function(b){ b.textContent = tr('wkPick')+' · '+P(videoPrice(b.dataset.pick)); });
+  $('pk1P').textContent = tr('fromP').replace('{p}', P(PRICES.ready35)); $('pk2P').textContent = tr('fromP').replace('{p}', P(PRICES.custom30)); $('pk3P').textContent = '+'+P(PRICES.character);
+  $('pk3D').textContent = tr('pk3D').replace('{a}', P(PRICES.character)).replace('{b}', P(PRICES.characterExtra)).replace('{c}', P(couple));
+  document.querySelector('[data-i18n=t2p]').textContent = tr('t2p').replace('{p}', P(PRICES.revision));
+  $('rvP').textContent = tr('rvP').replace('{p}', P(PRICES.revision)); $('rvPay').textContent = tr('rvPay').replace('{p}', P(PRICES.revision));
   $('chPrice').textContent = '+$'+PRICES.character;
   $('chDesc').textContent = tr('chD').replace('{p}','$'+PRICES.characterExtra).replace('{n}',MAX_PEOPLE);
-  $('reDesc').textContent = tr('reD');
   var full = isFull();
   $('fullBar').hidden = !full; $('fullBox').hidden = !full;
-  $('form').classList.toggle('viewonly', full);
-  $('fs1').disabled = full; $('fs2').disabled = full;
-  ['fs3','payNote','totalbar'].forEach(function(id){ $(id).hidden = full; });
+  var paid = !!(retState && retState.paid);
+  $('form').hidden = paid || full; $('packs').hidden = !full || paid; if(paid) $('fullBox').hidden = true;
+  $('fs1').hidden = step!==1; $('fs2').hidden = step!==2;
+  $('fs3').hidden = full || step!==3; $('payNote').hidden = full || step!==3; $('review').hidden = full || step!==3; $('totalbar').hidden = full; $('wiz').hidden = full;
+  $('wBack').hidden = step===1; $('wNext').hidden = step===3; $('paySubmit').hidden = step!==3;
+  document.querySelectorAll('#wiz button').forEach(function(b){ var n = +b.dataset.step; b.classList.toggle('done', n<step); if(n===step) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current'); b.disabled = n>step; });
   $('viewNote').hidden = !full;
   if(full){ $('err').hidden = true; $('result').hidden = true; }
   var hasWl = SITE.draft || !!SITE.waitlistUrl;
@@ -1062,12 +1301,11 @@ function render(){
   $('viewNote').textContent = tr(pre ? 'soonNote' : 'viewNote');
   $('heroCta').textContent = !full ? tr('heroOpen') : hasWl ? tr(pre ? 'heroSoon' : 'heroFull') : '';
   $('fullBarLink').textContent = tr(hasWl ? 'fullLink' : 'igFollow'); $('fullBarLink').href = hasWl ? '#order' : SITE.instagram;
-  $('ctaMain').textContent = tr(!full ? 'ctaBuild' : hasWl ? 'fullLink' : 'igFollow'); $('ctaMain').href = (full && !hasWl) ? SITE.instagram : '#order';
-  $('box-scenes').hidden = o.format!=='tpl';
-  document.querySelectorAll('.sc').forEach(function(l){ var i=l.querySelector('input'); l.querySelector('.nm').textContent = tr(i.name==='pick'?'wReel':'wScene')+' '+i.value; });
-  var needDesc = o.format==='custom' || o.format==='gift';
-  $('notesLab').textContent = tr(needDesc?'fNotesReq':'fNotesOpt');
-  $('notesHint').textContent = needDesc ? tr(o.format==='gift'?'nHintG':'nHintS') : '';
+  ['ctaMain','ctaEnd'].forEach(function(id){ $(id).textContent = tr(!full ? 'ctaBuild' : hasWl ? 'fullLink' : 'igFollow'); $(id).href = (full && !hasWl) ? SITE.instagram : '#order'; });
+  document.querySelectorAll('.sc').forEach(function(l){ var i=l.querySelector('input'); l.querySelector('.nm').textContent = '#'+i.value+' · $'+videoPrice(i.value); });
+  var needDesc = o.kind==='custom';
+  $('box-notes').hidden = needDesc; ['box-st1','box-st2','box-st3'].forEach(function(id){ $(id).hidden = !needDesc; });
+  $('notesLab').textContent = tr('fNotesOpt'); $('notesHint').textContent = '';
   $('q1080t').textContent = '1080p Full HD · '+tr('qInc');
   $('q4kt').textContent = '4K · +$'+PRICES.q4k;
   $('box-occ').hidden = !personal;
@@ -1076,19 +1314,18 @@ function render(){
   $('box-people').hidden = !o.character;
   for(var n=1; n<=MAX_PEOPLE; n++) $('ppl'+n+'t').textContent = (n===1 ? tr('p1') : n+' '+tr('pN'))+' · +$'+(PRICES.character+PRICES.characterExtra*(n-1));
   $('handleLab').textContent = tr(aud==='gift'?'fHandleG':'fHandle');
-  $('box-link').hidden = !lib;
-  $('box-reels').hidden = !lib;
-  if(o.scene) $('scenesGrid').setAttribute('aria-invalid','false');
+  $('box-reels').hidden = !ready;
   if(o.pick) $('reelsGrid').setAttribute('aria-invalid','false');
   $('box-scene').hidden = personal;
   $('box-brand').hidden = personal;
   $('box-likeness').hidden = !o.character;
-  $('sum').textContent = lines(o).join(' · ');
-  $('amt').textContent = '$'+orderTotal(o);
+  $('box-kids').hidden = !o.character; $('kidRules').hidden = o.kids!=='yes'; $('box-guardian').hidden = o.kids!=='yes';
+  if(o.kids) $('kidsSeg').setAttribute('aria-invalid','false');
+  $('wkP2').textContent = tr('wkP2');
+  $('sum').textContent = lines(o).join(' · '); $('sum2').textContent = lines(o).join(' · ') + ' · $' + orderTotal(o);
+  $('amt').textContent = orderTotal(o) ? '$'+orderTotal(o) : tr('fromP').replace('{p}', P(PRICES.ready35));
 }
-$('useBase').addEventListener('change', function(){ $(aud==='gift' ? (this.checked?'fmt-tpl':'fmt-gift') : (this.checked?'fmt-lib':'fmt-custom')).checked = true; });
-$('aud-studio').addEventListener('change', function(){ if(this.checked) setAud('studio'); });
-$('aud-gift').addEventListener('change', function(){ if(this.checked) setAud('gift'); });
+$('isBiz').addEventListener('change', function(){ setAud(this.checked ? 'studio' : 'gift'); });
 $('form').addEventListener('change', render);
 $('notes').addEventListener('input', function(){ $('count').textContent = this.value.length; });
 $('logo').addEventListener('change', function(){
@@ -1099,57 +1336,98 @@ document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListene
 
 $('form').addEventListener('submit', function(e){
   e.preventDefault();
+  if(step < 3){ if(stepOk(step)) goStep(step+1); return; }
   var o = state(), bad = [];
   function need(id, ok){ var el=$(id); el.setAttribute('aria-invalid', String(!ok)); if(!ok) bad.push(el); }
   need('name', $('name').value.trim().length>1);
   need('email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('email').value.trim()));
   need('handle', aud==='gift' || $('handle').value.trim().length>1);
-  need('country', $('country').value!=='');
-  need('notes', !(o.format==='custom' || o.format==='gift') || $('notes').value.trim().length>=10);
-  var lk = $('link').value.trim();
-  need('link', o.format!=='lib' || lk==='' || /^https?:\/\//.test(lk));
-  need('reelsGrid', o.format!=='lib' || !!o.pick || lk!=='');
-  need('scenesGrid', o.format!=='tpl' || !!o.scene);
-  var boxes = [['terms',true],['likeness',o.character]];
+  var cust = o.kind==='custom';
+  need('st-where', !cust || $('st-where').value.trim().length>1);
+  need('st-what', !cust || $('st-what').value.trim().length>=10);
+  need('st-end', !cust || $('st-end').value.trim().length>1);
+  need('reelsGrid', cust || !!o.pick);
+  need('kidsSeg', !o.character || o.kids!=='');
+  var boxes = [['terms',true],['likeness',o.character],['guardian',o.kids==='yes']];
   boxes.forEach(function(b){ if(b[1] && !$(b[0]).checked) bad.push($(b[0])); });
   var err=$('err'), res=$('result');
-  if(bad.length){ err.textContent = tr('errFields'); err.hidden=false; res.hidden=true; bad[0].focus(); bad[0].scrollIntoView({block:'center'}); return; }
+  if(bad.length){ var fsb = bad[0].closest('fieldset'); if(fsb && fsb.hidden) goStep(fsb.id==='fs3' ? 3 : fsb.id==='fs2' ? 2 : 1); err.textContent = tr('errFields'); err.hidden=false; res.hidden=true; bad[0].focus(); bad[0].scrollIntoView({block:'center'}); return; }
   err.hidden = true;
   if(!SITE.draft){ sendOrder(o); return; }
   res.textContent = '';
   var p=document.createElement('p'); p.textContent=tr('done'); res.appendChild(p);
   var ul=document.createElement('ul');
-  lines(o).concat([$('name').value.trim()+' · '+$('email').value.trim(), $('handle').value.trim()+' · '+$('country').value, '$'+orderTotal(o)])
+  lines(o).concat([$('name').value.trim()+' · '+$('email').value.trim(), $('handle').value.trim(), '$'+orderTotal(o)])
     .forEach(function(s){ var li=document.createElement('li'); li.textContent=s; ul.appendChild(li); });
   res.appendChild(ul); res.hidden=false; res.scrollIntoView({block:'center'});
 });
 
 function setAud(a){
-  aud = a==='gift' ? 'gift' : 'studio';
-  var cur = document.querySelector('input[name=format]:checked').value;
-  var curPersonal = cur==='gift' || cur==='tpl';
-  if(aud==='gift' && !curPersonal){ $('fmt-gift').checked = true; $('len-15').checked = true; }
-  if(aud==='studio' && curPersonal){ $('fmt-custom').checked = true; $('len-30').checked = true; }
+  aud = a==='gift' ? 'gift' : 'studio'; audChosen = true;
   render();
 }
 function route(){
   var h = location.hash;
-  if(h==='#gifts') setAud('gift'); else if(h==='#studios') setAud('studio'); else if(h==='#order') $('order').scrollIntoView();
+  if(h==='#gifts' || h==='#personal'){ view = 'aud'; setAud('gift'); }
+  else if(h==='#studios' || h==='#business'){ view = 'aud'; setAud('studio'); }
+  else if(h==='#order'){ view = 'order'; render(); }
+  else if(h==='#work'){ view = 'work'; render(); }
+  else if(h==='#revision'){ view = 'revision'; render(); }
+  else { view = 'home'; render(); }
+  if(view!=='order' && retState){ retState = null; render(); }
+  window.scrollTo(0, 0); setTimeout(function(){ if(!retState) window.scrollTo(0, 0); }, 0);
+  document.documentElement.classList.add('ready');
 }
+function stepOk(n){
+  var o = state(), g = null;
+  if(n===1){
+    if(o.kind==='ready' && !o.pick) g = $('reelsGrid');
+  }
+  if(g){ g.setAttribute('aria-invalid','true'); var err = $('err'); err.textContent = tr('errPick'); err.hidden = false; g.scrollIntoView({block:'center'}); return false; }
+  $('err').hidden = true; return true;
+}
+function goStep(n){
+  step = Math.max(1, Math.min(3, n)); render();
+  $('order').scrollIntoView(); try{ $('wiz').focus({preventScroll:true}); }catch(e){}
+}
+document.querySelectorAll('.pickbtn').forEach(function(b){ b.addEventListener('click', function(){
+  if(!audChosen && (b.dataset.for === 'studio' || b.dataset.for === 'gift')) aud = b.dataset.for;
+  $('kind-ready').checked = true;
+  var r = document.querySelector('input[name="pick"][value="' + b.dataset.pick + '"]'); if(r) r.checked = true;
+  step = 1; $('err').hidden = true;
+  if(location.hash === '#order') route(); else location.hash = '#order';
+}); });
+$('wNext').addEventListener('click', function(){ if(stepOk(step)) goStep(step+1); });
+$('wBack').addEventListener('click', function(){ $('err').hidden = true; goStep(step-1); });
+$('wiz').addEventListener('click', function(e){ var b = e.target.closest ? e.target.closest('button[data-step]') : null; if(b && +b.dataset.step < step){ $('err').hidden = true; goStep(+b.dataset.step); } });
 window.addEventListener('hashchange', route);
 document.querySelectorAll('[data-audlink]').forEach(function(a){ a.addEventListener('click', function(){ setAud(a.dataset.audlink); }); });
-if(location.hash==='#gifts'){ aud='gift'; $('fmt-gift').checked=true; $('len-15').checked=true; }
+if(location.hash==='#gifts' || location.hash==='#personal'){ aud='gift'; }
 var NUM = {reel1:1,reel2:2,reel3:3,n1:4,n6:5,n2:6,n3:7,n4:8,n5:9,v10:10,v11:11,v12:12,v13:13};
 document.querySelectorAll('video').forEach(function(x){
   var k = (x.getAttribute('src').match(/media\/(\w+)\.mp4/)||[])[1];
   if(NUM[k] && !x.getAttribute('aria-label')) x.setAttribute('aria-label','Reel '+NUM[k]);
 });
 var A11Y = { pause:false };
+var SND_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>';
+var SND_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+function sndSet(v, on){
+  v.muted = !on; var b = v.parentNode.querySelector('.snd'); if(!b) return;
+  b.setAttribute('aria-pressed', String(on)); b.innerHTML = on ? SND_ON : SND_OFF; b.setAttribute('aria-label', tr(on ? 'sndOff' : 'sndOn'));
+}
+document.querySelectorAll('.reel > video').forEach(function(v){
+  var b = document.createElement('button'); b.type = 'button'; b.className = 'snd'; v.parentNode.appendChild(b);
+  b.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation(); var on = v.muted;
+    document.querySelectorAll('.reel > video').forEach(function(o){ if(o !== v && !o.muted) sndSet(o, false); });
+    sndSet(v, on); if(on){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+  });
+});
 (function(){
   var vids = document.querySelectorAll('video');
   function go(x){ if(A11Y.pause) return; var p = x.play(); if(p && p.catch) p.catch(function(){}); }
   if(!('IntersectionObserver' in window)){ vids.forEach(go); window.__kick = function(){ vids.forEach(go); }; return; }
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) go(e.target); else e.target.pause(); }); }, {threshold:0.25});
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) go(e.target); else { e.target.pause(); if(!e.target.muted) sndSet(e.target, false); } }); }, {threshold:0.25});
   vids.forEach(function(x){ io.observe(x); });
   window.__kick = function(){ vids.forEach(function(x){ io.unobserve(x); io.observe(x); }); };
 })();
@@ -1157,7 +1435,7 @@ function a11yApply(){
   var d = document.documentElement;
   d.classList.toggle('a11y-big', $('a11y-big').checked);
   d.classList.toggle('a11y-contrast', $('a11y-contrast').checked);
-  A11Y.pause = $('a11y-pause').checked;
+  A11Y.pause = $('a11y-pause').checked; d.classList.toggle('a11y-pause', A11Y.pause);
   document.querySelectorAll('video').forEach(function(x){ x.controls = A11Y.pause; if(A11Y.pause) x.pause(); });
   if(!A11Y.pause && window.__kick) window.__kick();
   try{ localStorage.setItem('oopsA11y', JSON.stringify({p:A11Y.pause, b:$('a11y-big').checked, c:$('a11y-contrast').checked})); }catch(e){}
@@ -1177,7 +1455,7 @@ function a11yApply(){
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !pan.hidden){ setOpen(false); btn.focus(); } });
   a11yApply();
 })();
-$('toCustom').addEventListener('click', function(){ $('fmt-custom').checked = true; render(); $('useBase').focus(); });
+$('toCustom').addEventListener('click', function(){ $('kind-custom').checked = true; render(); $('kind-custom').focus(); });
 if(!SITE.draft){ var dbar = document.querySelector('.draft'); if(dbar) dbar.hidden = true; }
 $('fullToggle').addEventListener('click', function(){ CAPACITY.closed = !CAPACITY.closed; this.setAttribute('aria-pressed', String(isFull())); render(); });
 /* ---- Waitlist: sends the email to the mailing service. wCapState: 0 not loaded, 1 loading, 2 ready, 3 failed ---- */
@@ -1222,47 +1500,66 @@ $('wBtn').addEventListener('click', function(){
   });
 });
 /* ---- Live ordering: the backend decides whether ordering is open, sets the price and creates the payment page ---- */
-var sending = false, retState = null, previewKey = '';
+var sending = false, previewKey = '';
 try{ previewKey = new URLSearchParams(location.search).get('preview') || sessionStorage.getItem('oopsPreview') || ''; if(previewKey) sessionStorage.setItem('oopsPreview', previewKey); }catch(e){}
 function applyMode(m){ SITE.prelaunch = m === 'soon'; CAPACITY.closed = m !== 'open'; render(); }
 function checkStatus(){
   if(SITE.draft || !SITE.api) return;
-  fetch(SITE.api + '/api/status' + (previewKey ? '?preview=' + encodeURIComponent(previewKey) : '')).then(function(r){ return r.json(); }).then(function(d){ if(d && d.mode) applyMode(d.mode); }).catch(function(){});
+  fetch(SITE.api + '/api/status' + (previewKey ? '?preview=' + encodeURIComponent(previewKey) : '')).then(function(r){ return r.json(); }).then(function(d){ if(d && d.mode){ RUSH_OK = !!d.rush; applyMode(d.mode); } }).catch(function(){});
 }
-function shrink(file){   // photos are resized in the browser so uploads stay small and fast
+function shrink(file, always){   // photos are resized in the browser so uploads stay small and fast
   return new Promise(function(done){
     if(!/^image\/(jpeg|png|webp|heic|heif)$/.test(file.type) || !window.createImageBitmap) return done(file);
     createImageBitmap(file).then(function(bmp){
       var k = Math.min(1, 1800 / Math.max(bmp.width, bmp.height)), c = document.createElement('canvas');
       c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
       c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
-      c.toBlob(function(b){ done(b && b.size < file.size ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type:'image/jpeg' }) : file); }, 'image/jpeg', .86);
+      c.toBlob(function(b){ done(b && (always || b.size < file.size) ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type:'image/jpeg' }) : file); }, 'image/jpeg', .86);
     }).catch(function(){ done(file); });
   });
 }
 function orderErr(k){ var err = $('err'); err.textContent = tr(k); err.hidden = false; err.scrollIntoView({ block:'center' }); }
 function sendOrder(o){
   if(sending) return;
-  var btn = document.querySelector('#totalbar button'), personal = o.format === 'gift' || o.format === 'tpl';
+  var btn = $('paySubmit'), personal = o.format === 'gift' || o.format === 'tpl';
   var logo = personal ? null : $('logo').files[0], photos = o.character ? Array.prototype.slice.call($('photo').files, 0, MAX_PEOPLE) : [];
   if(logo && logo.size > 5 * 1024 * 1024){ orderErr('errFile'); return; }
   sending = true; btn.disabled = true; btn.textContent = tr('sending'); $('err').hidden = true;
-  Promise.all(photos.map(shrink)).then(function(ph){
+  Promise.all(photos.map(function(f){ return shrink(f, true); })).then(function(ph){
     if(ph.some(function(f){ return f.size > 6 * 1024 * 1024; })) throw { k:'errFile' };
     var fd = new FormData(), v = function(id){ return $(id).value.trim(); };
+    var story = o.kind==='custom' ? ['איפה: '+v('st-where'), 'מה קורה: '+v('st-what'), 'סוף: '+v('st-end')].join('\n') : v('notes');
     [['aud',aud],['format',o.format],['len',o.len],['q',o.q],['character',o.character?'1':''],['ppl',o.ppl],['rush',o.rush?'1':''],['revision',o.revision?'1':''],
-     ['pick',o.pick],['scene',o.scene],['link',o.format==='lib'?v('link'):''],['role',$('role').value],['name',v('name')],['email',v('email')],['handle',v('handle')],['country',$('country').value],
-     ['equip',personal?'':v('equip')],['occ',personal?$('occ').value:''],['forwho',personal?v('forwho'):''],['notes',v('notes')],['colors',personal?'':v('colors')],
-     ['lang',lang],['terms',$('terms').checked?'1':''],['likeness',$('likeness').checked?'1':''],['website',v('website')],['preview',previewKey]].forEach(function(p){ fd.append(p[0], p[1]); });
+     ['pick',o.pick],['scene',o.scene],['role',$('role').value],['name',v('name')],['email',v('email')],['handle',v('handle')],
+     ['equip',personal?'':v('equip')],['occ',personal?$('occ').value:''],['forwho',personal?v('forwho'):''],['notes',story],['colors',personal?'':v('colors')],
+     ['lang',lang],['terms',$('terms').checked?'1':''],['likeness',$('likeness').checked?'1':''],['v','2'],['kids',o.kids],['guardian',o.kids==='yes'&&$('guardian').checked?'1':''],['website',v('website')],['preview',previewKey]].forEach(function(p){ fd.append(p[0], p[1]); });
     if(logo) fd.append('logo', logo);
     ph.forEach(function(f){ fd.append('photo', f); });
     return fetch(SITE.api + '/api/order', { method:'POST', body:fd });
   }).then(function(r){ return r.json().then(function(d){ return { s:r.status, d:d }; }); }).then(function(x){
     if(x.s === 200 && x.d.url){ location.href = x.d.url; return; }
     if(x.s === 409){ applyMode(x.d.mode || 'full'); throw { k:'errClosed' }; }
-    throw { k: x.d.error === 'file' ? 'errFile' : x.d.error === 'fields' ? 'errFields' : 'errSend' };
+    throw { k: x.d.error === 'region' ? 'sanction' : x.d.error === 'file' ? 'errFile' : x.d.error === 'fields' ? 'errFields' : 'errSend' };
   }).catch(function(e){ sending = false; btn.disabled = false; btn.textContent = tr('pay'); orderErr((e && e.k) || 'errSend'); });
 }
+var rvSending = false;
+$('rvForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var id = $('rv-id').value.trim().toUpperCase(), em = $('rv-email').value.trim(), nt = $('rv-notes').value.trim(), bad = [], err = $('rvErr'), res = $('rvResult'), btn = $('rvPay');
+  function need(el, ok){ $(el).setAttribute('aria-invalid', String(!ok)); if(!ok) bad.push($(el)); }
+  need('rv-id', /^OP-[A-Z0-9]{7}$/.test(id)); need('rv-email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)); need('rv-notes', nt.length >= 10);
+  if(!$('rv-terms').checked) bad.push($('rv-terms'));
+  res.hidden = true;
+  if(bad.length){ err.textContent = tr('errFields'); err.hidden = false; bad[0].focus(); return; }
+  err.hidden = true;
+  if(SITE.draft){ res.textContent = tr('rvDone'); res.hidden = false; return; }
+  if(rvSending) return; rvSending = true; btn.disabled = true;
+  var fd = new FormData(); [['order',id],['email',em],['notes',nt],['terms','1'],['lang',lang],['website','']].forEach(function(p){ fd.append(p[0], p[1]); });
+  fetch(SITE.api + '/api/revision', { method:'POST', body:fd }).then(function(r){ return r.json().then(function(d){ return { s:r.status, d:d }; }); }).then(function(x){
+    if(x.s === 200 && x.d.url){ location.href = x.d.url; return; }
+    throw { k: x.s === 404 ? 'rvErrOrder' : x.d.error === 'region' ? 'sanction' : x.d.error === 'fields' ? 'errFields' : 'errSend' };
+  }).catch(function(e2){ rvSending = false; btn.disabled = false; err.textContent = tr((e2 && e2.k) || 'errSend'); err.hidden = false; });
+});
 function drawReturn(){
   var box = $('thanks'); if(!retState){ box.hidden = true; return; }
   box.textContent = '';
@@ -1270,6 +1567,7 @@ function drawReturn(){
     var h = document.createElement('h3'); h.textContent = tr('thanksH');
     var p = document.createElement('p'); p.style.marginTop = '8px'; p.textContent = tr('thanksP').replace('{id}', retState.id);
     box.appendChild(h); box.appendChild(p);
+    var back = document.createElement('a'); back.className = 'btn primary'; back.href = '#home'; back.textContent = tr('thanksBack'); back.style.marginTop = '18px'; box.appendChild(back);
   } else { var c = document.createElement('p'); c.textContent = tr('cancelMsg'); box.appendChild(c); }
   box.hidden = false;
 }
@@ -1281,9 +1579,11 @@ function readReturn(){
   try{ history.replaceState(null, '', location.pathname + '#order'); }catch(e){}
   setTimeout(function(){ var box = $('thanks'); box.scrollIntoView({ block:'center' }); box.focus({ preventScroll:true }); }, 400);
 }
+if(SITE.analytics && !SITE.draft){ var cfb = document.createElement('script'); cfb.type = 'module'; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', JSON.stringify({ token:SITE.analytics })); document.body.appendChild(cfb); }
 readReturn();
 var saved=null; try{ saved=localStorage.getItem('oopsLang'); }catch(e){}
 setLang(saved||'en');
+route();
 checkStatus();
 </script>
 </body>
