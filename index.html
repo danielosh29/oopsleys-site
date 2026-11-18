@@ -1413,6 +1413,11 @@ function setAud(a){
   aud = a==='gift' ? 'gift' : 'studio'; audChosen = true;
   render();
 }
+var HITS = {};
+function hit(p){
+  if(SITE.draft || HITS[p] || navigator.webdriver || location.hostname !== 'oopsleys.com') return; HITS[p] = 1;
+  try{ fetch(SITE.api + '/api/hit', { method:'POST', body:p, keepalive:true, mode:'cors', credentials:'omit', headers:{ 'content-type':'text/plain' } }).catch(function(){}); }catch(e){}
+}
 function route(){
   var h = location.hash;
   if(h==='#gifts' || h==='#personal'){ view = 'aud'; setAud('gift'); }
@@ -1422,6 +1427,7 @@ function route(){
   else if(h==='#revision'){ view = 'revision'; render(); }
   else { view = 'home'; render(); }
   if(view!=='order' && retState){ retState = null; render(); }
+  hit(view==='aud' ? (aud==='gift' ? 'gifts' : 'studios') : view);
   window.scrollTo(0, 0); setTimeout(function(){ if(!retState) window.scrollTo(0, 0); }, 0);
   document.documentElement.classList.add('ready');
 }
@@ -1438,6 +1444,7 @@ function goStep(n){
   $('order').scrollIntoView(); try{ $('wiz').focus({preventScroll:true}); }catch(e){}
 }
 document.querySelectorAll('.pickbtn').forEach(function(b){ b.addEventListener('click', function(){
+  hit('pick');
   if(!audChosen && (b.dataset.for === 'studio' || b.dataset.for === 'gift')) aud = b.dataset.for;
   $('kind-ready').checked = true;
   var r = document.querySelector('input[name="pick"][value="' + b.dataset.pick + '"]'); if(r) r.checked = true;
@@ -1483,7 +1490,7 @@ document.querySelectorAll('.reel > video').forEach(function(v){
   document.querySelectorAll('.pair').forEach(function(pair){
     var vs = [].slice.call(pair.querySelectorAll('video')), done = 0;
     function reset(){ if(!pair.classList.contains('playing')) return; done = 0; vs.forEach(function(v){ v.pause(); if(!v.muted) sndSet(v, false); v.load(); }); pair.classList.remove('playing'); }
-    function start(){ resets.forEach(function(r){ if(r !== reset) r(); }); done = 0; vs.forEach(function(v){ try{ v.currentTime = 0; }catch(e){} var p = v.play(); if(p && p.catch) p.catch(function(){}); }); }
+    function start(){ hit('play'); resets.forEach(function(r){ if(r !== reset) r(); }); done = 0; vs.forEach(function(v){ try{ v.currentTime = 0; }catch(e){} var p = v.play(); if(p && p.catch) p.catch(function(){}); }); }
     resets.push(reset);
     vs.forEach(function(v){
       var b = document.createElement('button'); b.type = 'button'; b.className = 'pplay';
