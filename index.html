@@ -414,7 +414,7 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
 <section class="hero hhome" data-view="home">
   <div class="h-head">
     <h1 data-i18n="hH1">Short animated videos, made to order.</h1>
-    <p class="hprice" data-i18n="heroNote">From $299 · First draft in 5 business days</p>
+    <p class="hprice" data-i18n="heroNote">Ordering opens soon · First draft in 5 business days</p>
   </div>
   <div class="h-vis">
     <p class="hpairh" data-i18n="pairH">The same reel, with your logo</p>
@@ -487,7 +487,7 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
     <p class="hook" data-aud="studio" data-i18n="bizHook">Already sharing our reels? Get the same reel with your logo in the scene.</p>
     <p class="note" data-aud="gift" data-i18n="heroNoteG" hidden>From $99 · First draft in 5 business days</p>
     <p class="holline" data-i18n="holXmas" hidden>For Christmas: order by Wednesday, December 9.</p>
-    <p class="note" data-aud="studio" data-i18n="heroNote">From $179 · First draft in 5 business days</p>
+    <p class="note" data-aud="studio" data-i18n="heroNote">Ordering opens soon · First draft in 5 business days</p>
     <ul class="proof">
       <li data-i18n="pr1">Over 15 million views on Instagram</li>
       <li data-i18n="pr2">Over 20,000 followers</li>
@@ -883,7 +883,7 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
     <div><b data-i18n="t8h">Order now, charged on confirmation</b><span data-i18n="t8p">You complete your order right away. Your card is reserved, not charged. We confirm within 2 business days and charge it then. If we cannot make it, the hold is released.</span></div>
     <div><b data-i18n="t1h">Delivery</b><span data-i18n="t1p">The draft time starts once we confirm your order and have everything we need from you, such as your logo or a photo. After you approve the draft, the final version arrives within one business day.</span></div>
     <div><b data-i18n="t7h">Draft first</b><span data-i18n="t7p">You get a low-resolution draft to approve before we render the final quality. One round of changes to the draft is included.</span></div>
-    <div><b data-i18n="t2h">Changes</b><span data-i18n="t2p">Each extra round of changes to the draft is $49.</span> <a href="#revision" data-i18n="rvLink">Buy an extra round</a></div>
+    <div><b data-i18n="t2h">Changes</b><span data-i18n="t2p">Each extra round of changes to the draft is available for an additional fee.</span> <a href="#revision" data-i18n="rvLink">Buy an extra round</a></div>
     <div><b data-i18n="t3h">How you can use it</b><span data-i18n="t3p">Your video is yours to use wherever you like: social media, your website and paid ads. The Oopsleys character itself stays ours.</span></div>
     <div><b data-i18n="t6h">Every reel is one of a kind</b><span data-i18n="t6p">Each video is animated from scratch. A new version of an existing reel will look similar to the original, never identical. The stories in our catalog are open to other customers too.</span></div>
     <div><b data-i18n="t14h">Fitting your idea to the length</b><span data-i18n="t14p">We adapt your idea to the length you chose, and may shorten or merge moments so that it works. If it does not fit, we tell you before charging, so you can choose a longer reel.</span></div>
@@ -1403,6 +1403,11 @@ Object.assign(T.es,{"soonC": "Los pedidos se abren pronto y se hacen solo en est
 Object.assign(T.pt,{"soonC": "As encomendas abrem em breve e fazem-se apenas neste site. Entretanto, para perguntas:"});
 Object.assign(T.tr,{"soonC": "Siparişler yakında açılıyor ve yalnızca bu sitede verilir. Bu arada sorularınız için:"});
 Object.assign(T.he,{"soonC": "ההזמנות נפתחות בקרוב ומתבצעות באתר הזה בלבד. בינתיים לשאלות:"});
+Object.assign(T.en,{"heroNoteS": "Ordering opens soon · First draft in 5 business days", "t2pS": "Each extra round of changes to the draft is available for an additional fee."});
+Object.assign(T.es,{"heroNoteS": "Los pedidos se abren pronto · Primer borrador en 5 días hábiles", "t2pS": "Se incluye una ronda de cambios. Las rondas extra tienen un coste adicional."});
+Object.assign(T.pt,{"heroNoteS": "As encomendas abrem em breve · Primeiro rascunho em 5 dias úteis", "t2pS": "Está incluída uma ronda de alterações. As rondas extra têm custo adicional."});
+Object.assign(T.tr,{"heroNoteS": "Siparişler yakında açılıyor · İlk taslak 5 iş gününde", "t2pS": "Bir tur değişiklik dahildir. Ek turlar ek ücrete tabidir."});
+Object.assign(T.he,{"heroNoteS": "ההזמנות נפתחות בקרוב · טיוטה ראשונה תוך 5 ימי עסקים", "t2pS": "סבב תיקונים אחד כלול. סבבים נוספים בתוספת תשלום."});
 
 var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
@@ -1458,12 +1463,14 @@ function render(){
   $('ruPrice').textContent = '+'+P(PRICES.rush); $('box-rush').hidden = !RUSH_OK;
   var dayFL = new Intl.DateTimeFormat('en-CA', { timeZone:'America/New_York' }).format(new Date());
   document.querySelectorAll('.holline').forEach(function(n){ n.hidden = CAPACITY.closed || dayFL > HOLIDAY.until; });
-  document.querySelectorAll('[data-i18n=heroNote]').forEach(function(n){ n.textContent = tr('heroNote').replace('{a}', P(PRICES.ready35)); });
+  var NOP = !!SITE.prelaunch;   // no prices anywhere until ordering opens
+  document.querySelectorAll('[data-i18n=rvLink]').forEach(function(a){ a.hidden = NOP; });   // extra rounds are for paying customers, and show a price
+  document.querySelectorAll('[data-i18n=heroNote]').forEach(function(n){ n.textContent = NOP ? tr('heroNoteS') : tr('heroNote').replace('{a}', P(PRICES.ready35)); });
   document.querySelector('[data-i18n=heroNoteG]').textContent = tr('heroNoteG').replace('{a}', P(PRICES.ready35)).replace('{b}', P(couple));
-  document.querySelectorAll('.pickbtn').forEach(function(b){ b.textContent = tr(b.dataset.label || 'wkPick')+' · '+P(videoPrice(b.dataset.pick)); });
-  $('pk1P').textContent = tr('fromP').replace('{p}', P(PRICES.ready35)); $('pk2P').textContent = tr('fromP').replace('{p}', P(PRICES.custom30)); $('pk3P').textContent = '+'+P(PRICES.character);
+  document.querySelectorAll('.pickbtn').forEach(function(b){ b.textContent = NOP ? tr('fullLink') : tr(b.dataset.label || 'wkPick')+' · '+P(videoPrice(b.dataset.pick)); });
+  $('pk1P').textContent = NOP ? '' : tr('fromP').replace('{p}', P(PRICES.ready35)); $('pk2P').textContent = NOP ? '' : tr('fromP').replace('{p}', P(PRICES.custom30)); $('pk3P').textContent = NOP ? '' : '+'+P(PRICES.character);
   $('pk3D').textContent = tr('pk3D').replace('{a}', P(PRICES.character)).replace('{b}', P(PRICES.characterExtra)).replace('{c}', P(couple));
-  document.querySelector('[data-i18n=t2p]').textContent = tr('t2p').replace('{p}', P(PRICES.revision));
+  document.querySelector('[data-i18n=t2p]').textContent = NOP ? tr('t2pS') : tr('t2p').replace('{p}', P(PRICES.revision));
   $('rvP').textContent = tr('rvP').replace('{p}', P(PRICES.revision)); $('rvPay').textContent = tr('rvPay').replace('{p}', P(PRICES.revision));
   $('chPrice').textContent = '+$'+PRICES.character;
   $('chDesc').textContent = tr('chD').replace('{p}','$'+PRICES.characterExtra).replace('{n}',MAX_PEOPLE);
@@ -1522,7 +1529,7 @@ function render(){
     $('psoonBtn').href = mail;
     document.querySelector('[data-i18n=heroNoteG]').textContent = tr('psoonNote');
     $('ctaMain').textContent = tr('psoonBtn'); $('ctaMain').href = mail; $('ctaEnd').textContent = tr('psoonBtn'); $('ctaEnd').href = mail; $('ctaPrices').hidden = true;
-  } else $('ctaPrices').hidden = false;
+  } else $('ctaPrices').hidden = NOP;
 }
 $('isBiz').addEventListener('change', function(){ setAud(this.checked ? 'studio' : 'gift'); });
 $('form').addEventListener('change', render);
