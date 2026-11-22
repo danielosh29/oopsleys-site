@@ -618,6 +618,7 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
     <h3 data-i18n="psoonH">Personal reels are coming soon</h3>
     <p class="lede" data-i18n="psoonP">We are starting with business reels. Tell us you would like a personal one, with the occasion if you have one in mind, and we will write to you when it opens. No payment and no photos needed.</p>
     <p style="margin-top:18px"><a class="btn primary" id="psoonBtn" href="mailto:hello@oopsleys.com" data-i18n="psoonBtn">Email us that you are interested</a></p>
+    <p style="margin-top:12px;font-size:.92rem;color:var(--muted)" data-i18n="psoonNoPh">For now, just tell us the occasion. Please don't email photos.</p>
   </div>
 
   <div class="builder full" id="fullBox">
@@ -1409,6 +1410,11 @@ Object.assign(T.es,{"heroNoteS": "Los pedidos se abren pronto · Primer borrador
 Object.assign(T.pt,{"heroNoteS": "As encomendas abrem em breve · Primeiro rascunho em 5 dias úteis", "t2pS": "Está incluída uma ronda de alterações. As rondas extra têm custo adicional."});
 Object.assign(T.tr,{"heroNoteS": "Siparişler yakında açılıyor · İlk taslak 5 iş gününde", "t2pS": "Bir tur değişiklik dahildir. Ek turlar ek ücrete tabidir."});
 Object.assign(T.he,{"heroNoteS": "ההזמנות נפתחות בקרוב · טיוטה ראשונה תוך 5 ימי עסקים", "t2pS": "סבב תיקונים אחד כלול. סבבים נוספים בתוספת תשלום."});
+Object.assign(T.en,{"psoonNoPh": "For now, just tell us the occasion. Please don't email photos."});
+Object.assign(T.es,{"psoonNoPh": "Por ahora, solo cuéntanos la ocasión. Por favor, no envíes fotos por correo."});
+Object.assign(T.pt,{"psoonNoPh": "Para já, diga-nos apenas a ocasião. Por favor, não envie fotografias por email."});
+Object.assign(T.tr,{"psoonNoPh": "Şimdilik yalnızca vesileyi yazın. Lütfen e-postayla fotoğraf göndermeyin."});
+Object.assign(T.he,{"psoonNoPh": "בינתיים, רק כתבו לנו מה האירוע. בבקשה לא לשלוח תמונות במייל."});
 
 var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
@@ -1530,7 +1536,7 @@ function render(){
     ['form','packs','fullBox','fullBar','viewNote','wiz','totalbar'].forEach(function(id){ $(id).hidden = true; });
     var mail = 'mailto:hello@oopsleys.com?subject=' + encodeURIComponent(tr('psoonSubj')) + '&body=' + encodeURIComponent(tr('psoonBody'));
     $('psoonBtn').href = mail;
-    document.querySelector('[data-i18n=heroNoteG]').textContent = tr('psoonNote');
+    document.querySelector('[data-i18n=heroNoteG]').textContent = tr('psoonNoPh');
     $('ctaMain').textContent = tr('psoonBtn'); $('ctaMain').href = mail; $('ctaEnd').textContent = tr('psoonBtn'); $('ctaEnd').href = mail; $('ctaPrices').hidden = true;
   } else $('ctaPrices').hidden = NOP;
 }
