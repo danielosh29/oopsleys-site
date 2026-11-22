@@ -631,6 +631,7 @@ html.a11y-contrast .incl li{border:1.5px solid #000}
     </div>
     <p id="igBox" style="margin-top:18px" hidden><a class="btn primary" id="igBtn" href="https://www.instagram.com/theoopsleys" data-i18n="igFollow">Follow us on Instagram</a></p>
     <p id="wMsg" role="status" style="margin-top:14px;font-weight:600" hidden></p>
+    <p id="soonContact" style="margin-top:18px;font-size:.95rem" hidden><span data-i18n="soonC">Orders open soon and are placed on this site only. Questions in the meantime:</span> <a href="mailto:hello@oopsleys.com">hello@oopsleys.com</a> · <a href="https://www.instagram.com/theoopsleys">@theoopsleys</a></p>
   </div>
 
   <form class="builder" id="form" novalidate hidden>
@@ -1397,6 +1398,11 @@ Object.assign(T.es,{"psoonH": "Los reels personales llegan pronto","psoonP": "Em
 Object.assign(T.pt,{"psoonH": "Os reels pessoais chegam em breve","psoonP": "Começamos com reels para negócios. Diga-nos que gostaria de um pessoal, com a ocasião se já tiver uma em mente, e escrevemos-lhe quando abrir. Sem pagamento e sem fotografias por agora.","psoonBtn": "Escreva-nos a dizer que tem interesse","psoonNote": "Em breve","psoonSubj": "Reel pessoal: tenho interesse","psoonBody": "Olá! Gostaria de um reel pessoal.\nA ocasião: \n\nObrigado!","errSoon": "Esta opção ainda não está aberta. Escolha um reel para negócios com o seu logótipo.","errPhoto": "Não conseguimos preparar essa fotografia em segurança. Escolha outra, em JPG ou PNG."});
 Object.assign(T.tr,{"psoonH": "Kişisel reel'ler yakında","psoonP": "İşletmeler için reel'lerle başlıyoruz. Kişisel bir reel istediğinizi bize yazın, aklınızda bir vesile varsa onu da belirtin; açıldığında size yazarız. Şimdilik ödeme ve fotoğraf gerekmez.","psoonBtn": "İlgilendiğinizi bize yazın","psoonNote": "Çok yakında","psoonSubj": "Kişisel reel: ilgileniyorum","psoonBody": "Merhaba! Kişisel bir reel isterim.\nVesile: \n\nTeşekkürler!","errSoon": "Bu seçenek henüz açık değil. Logonuzla işletme reel'i seçin.","errPhoto": "Bu fotoğrafı güvenli şekilde hazırlayamadık. Lütfen JPG veya PNG biçiminde başka bir fotoğraf seçin."});
 Object.assign(T.he,{"psoonH": "הריל האישי יגיע בקרוב","psoonP": "אנחנו מתחילים עם רילס לעסקים. כתבו לנו שהייתם רוצים ריל אישי, עם האירוע אם יש לכם אחד בראש, ונחזור אליכם כשזה ייפתח. בלי תשלום ובלי תמונות.","psoonBtn": "שלחו לנו מייל שזה מעניין אתכם","psoonNote": "בקרוב","psoonSubj": "ריל אישי: זה מעניין אותי","psoonBody": "היי! הייתי רוצה ריל אישי.\nהאירוע: \n\nתודה!","errSoon": "האפשרות הזו עדיין לא פתוחה. אפשר לבחור ריל עסקי עם הלוגו שלכם.","errPhoto": "לא הצלחנו להכין את התמונה בצורה בטוחה. אפשר לבחור תמונה אחרת, בפורמט JPG או PNG."});
+Object.assign(T.en,{"soonC": "Orders open soon and are placed on this site only. Questions in the meantime:"});
+Object.assign(T.es,{"soonC": "Los pedidos se abren pronto y se hacen solo en este sitio. Mientras tanto, para preguntas:"});
+Object.assign(T.pt,{"soonC": "As encomendas abrem em breve e fazem-se apenas neste site. Entretanto, para perguntas:"});
+Object.assign(T.tr,{"soonC": "Siparişler yakında açılıyor ve yalnızca bu sitede verilir. Bu arada sorularınız için:"});
+Object.assign(T.he,{"soonC": "ההזמנות נפתחות בקרוב ומתבצעות באתר הזה בלבד. בינתיים לשאלות:"});
 
 var wJoined = false, wMsgKey = '', wCapId = null, wCapState = 0;
 var lang = 'en';
@@ -1480,6 +1486,7 @@ function render(){
   document.querySelector('[data-i18n=fullBar]').textContent = tr(pre ? 'soonBar' : 'fullBar');
   document.querySelector('[data-i18n=fullH]').textContent = tr(pre ? 'soonH' : 'fullH');
   $('viewNote').textContent = tr(pre ? 'soonNote' : 'viewNote');
+  $('soonContact').hidden = !pre;
   $('heroCta').textContent = !full ? tr('heroOpen') : hasWl ? tr(pre ? 'heroSoon' : 'heroFull') : '';
   $('fullBarLink').textContent = tr(hasWl ? 'fullLink' : 'igFollow'); $('fullBarLink').href = hasWl ? '#order' : SITE.instagram;
   ['ctaMain','ctaEnd'].forEach(function(id){ $(id).textContent = tr(!full ? 'ctaBuild' : hasWl ? 'fullLink' : 'igFollow'); $(id).href = (full && !hasWl) ? SITE.instagram : '#order'; });
