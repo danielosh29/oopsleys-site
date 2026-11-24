@@ -1434,6 +1434,11 @@ Object.assign(T.es,{"leaveH": "Salir de la lista de espera", "leaveP": "Escribe 
 Object.assign(T.pt,{"leaveH": "Sair da lista de espera", "leaveP": "Indique o email com que se inscreveu e retiramo-lo da lista.", "leaveBtn": "Retirar-me da lista", "leaveLink": "Sair da lista", "leaveOk": "Feito. Se esse endereço estava na lista, foi removido.", "leaveFail": "Algo correu mal. Tente de novo ou escreva para hello@oopsleys.com."});
 Object.assign(T.tr,{"leaveH": "Bekleme listesinden çıkın", "leaveP": "Kaydolduğunuz e-postayı yazın, listeden kaldıralım.", "leaveBtn": "Beni listeden çıkar", "leaveLink": "Listeden çık", "leaveOk": "Tamam. Bu adres listedeyse kaldırıldı.", "leaveFail": "Bir şeyler ters gitti. Lütfen tekrar deneyin ya da hello@oopsleys.com adresine yazın."});
 Object.assign(T.he,{"leaveH": "הסרה מרשימת ההמתנה", "leaveP": "כתבו את הכתובת שנרשמתם איתה ונסיר אותה מהרשימה.", "leaveBtn": "הסירו אותי מהרשימה", "leaveLink": "הסרה מהרשימה", "leaveOk": "בוצע. אם הכתובת הייתה ברשימה, היא הוסרה.", "leaveFail": "משהו השתבש. נסו שוב, או כתבו ל־hello@oopsleys.com."});
+Object.assign(T.en,{"wTypo": "Did you mean %s? If the address is right, press the button again.", "wTypoUse": "Yes, use it"});
+Object.assign(T.es,{"wTypo": "¿Querías escribir %s? Si el correo es correcto, pulsa el botón otra vez.", "wTypoUse": "Sí, usarlo"});
+Object.assign(T.pt,{"wTypo": "Queria escrever %s? Se o email estiver certo, carregue no botão outra vez.", "wTypoUse": "Sim, usar"});
+Object.assign(T.tr,{"wTypo": "%s mi demek istediniz? Adres doğruysa düğmeye tekrar basın.", "wTypoUse": "Evet, bunu kullan"});
+Object.assign(T.he,{"wTypo": "התכוונתם ל־%s? אם הכתובת נכונה, לחצו שוב על הכפתור.", "wTypoUse": "כן, להשתמש בה"});
 
 var wJoined = false, wMsgKey = '', PAGE_T0 = Date.now();
 var lang = 'en';
@@ -1727,6 +1732,9 @@ $('toCustom').addEventListener('click', function(){ $('kind-custom').checked = t
 if(!SITE.draft){ var dbar = document.querySelector('.draft'); if(dbar) dbar.hidden = true; }
 if($('fullToggle')) $('fullToggle').addEventListener('click', function(){ CAPACITY.closed = !CAPACITY.closed; this.setAttribute('aria-pressed', String(isFull())); render(); });
 /* ---- Waitlist: the email and, if chosen, the interest go to our own order system. A hidden field and a minimum time catch bots; there is no third-party check. ---- */
+var MAIL_TYPO = {'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gnail.com':'gmail.com','gmail.co':'gmail.com','gmail.cm':'gmail.com','hotmial.com':'hotmail.com','hotmail.co':'hotmail.com','yaho.com':'yahoo.com','yahoo.co':'yahoo.com','outlok.com':'outlook.com','iclould.com':'icloud.com','icloud.co':'icloud.com'};
+function mailGuess(email){ var i = email.lastIndexOf('@'); if(i < 1) return ''; var u = email.slice(0, i), d = email.slice(i + 1).toLowerCase(); if(MAIL_TYPO[d]) return u + '@' + MAIL_TYPO[d]; var m = d.match(/[.](con|cmo|vom|comm|ocm|coom)$/); return m ? u + '@' + d.slice(0, d.length - m[1].length) + 'com' : ''; }
+var wTypoOk = '';
 var wOpened = 0;
 function wSay(k){ wMsgKey = k; var m = $('wMsg'); m.textContent = tr(k); m.hidden = false; }
 $('wEmail').addEventListener('focus', function(){ if(!wOpened) wOpened = Date.now(); });
@@ -1734,6 +1742,13 @@ $('wBtn').addEventListener('click', function(){
   var btn = this, email = $('wEmail').value.trim(), ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   $('wEmail').setAttribute('aria-invalid', String(!ok));
   if(!ok){ wSay('wErr'); return; }
+  var guess = mailGuess(email);
+  if(guess && wTypoOk !== email){
+    wTypoOk = email; wMsgKey = ''; var m = $('wMsg'); m.textContent = tr('wTypo').replace('%s', guess) + ' '; m.hidden = false;
+    var fix = document.createElement('button'); fix.type = 'button'; fix.className = 'btn'; fix.textContent = tr('wTypoUse'); fix.style.marginInlineStart = '8px';
+    fix.onclick = function(){ $('wEmail').value = guess; $('wEmail').setAttribute('aria-invalid', 'false'); m.hidden = true; wTypoOk = ''; };
+    m.appendChild(fix); return;
+  }
   if(SITE.draft){ wSay('wDone'); return; }
   btn.disabled = true; wSay('wSending');
   fetch(SITE.api + '/api/waitlist', { method:'POST', mode:'cors', credentials:'omit', headers:{ 'content-type':'application/json' },
